@@ -3,23 +3,23 @@
     <head>
         <title>Intramo</title>
         <link rel="stylesheet" href="csslibrary.css">
-        <script src="index.js" defer></script>
+        <script src="index.jss" defer></script>
     </head>
     <body>
         <div class="page" id="page-playerJoin" style="display: none;">
             <div class="prePlayerJoin">
                 <div class="wrapper">
                     <img src="assets/branding.png">
-                    <form class="form-container">
-                        <input type="text" placeholder="Spiel-PIN"/>
-                        <input type="text" placeholder="Name"/>
-                        <input type="submit" value="Eingabe"/>
-                    </form>
+                    <div class="form-container">
+                        <input id="gamePin" type="text" placeholder="Spiel-PIN"/>
+                        <input id="gameName" type="text" placeholder="Name"/>
+                        <button onclick="onLogin()">Beitreten</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="page" id="page-waiting" style="display: initial;">
+        <div class="page" id="page-waiting" style="display: none;">
             <div class="pageWaiting">
                 <div class="center">
                     <img src="assets/loading.svg">
@@ -86,12 +86,20 @@
             </div>        
         </div>
 
-        <div class="page" id="page-hostLobby" style="display: none;"></div>
+        <div class="page" id="page-hostLobby" style="display: initial;">
+            <div class="pageLobby">
+                <button>Weiter</button>
+                <div class="center" id="playerList"></div>
+            </div>
+        </div>
+
         <div class="page" id="page-hostPodium" style="display: none;"></div>
         <div class="page" id="page-hostLeaderboard" style="display: none;"></div>
         <div class="page" id="page-hostResults" style="display: none;"></div>
         <div class="page" id="page-hostAnswers" style="display: none;"></div>
-        <div class="page" id="page-hostQuestion" style="display: none;"></div>
+        <div class="page" id="page-hostQuestion" style="display: none;">
+            <h1><span class="var-hostQuestionName"></span></h1>
+        </div>
     </body>
 </html>
 

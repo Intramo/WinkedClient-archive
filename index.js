@@ -1,22 +1,31 @@
-var gameState = "answerNormal" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResults, hostAnswers, hostQuestion
+var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResults, hostAnswers, hostQuestion
 
-var playerAnswerStreak = 69
-var playerName = "John Doe"
-var playerPoints = 4269
-var answerCorrect = true
-var progress = "1 von 69"
+refreshDisplay();
 
-var hostAnswers = 9
-var hostCountdown = 14
-var hostQuestionName = "Testfrage?"
-var hostOptionNameRed = "Test1"
-var hostOptionNameBlue = "Test2"
-var hostOptionNameYellow = "Test3"
-var hostOptionNameGreen = "Test4"
+var playerAnswerStreak = 0
+var playerName = "None"
+var playerPoints = 0
+var answerCorrect = false
+var progress = "0 von 0"
+
+var hostAnswers = 0
+var hostCountdown = 0
+var hostQuestionName = ""
+var hostOptionNameRed = ""
+var hostOptionNameBlue = ""
+var hostOptionNameYellow = ""
+var hostOptionNameGreen = ""
 
 function onButtonPress(btn){ // A, B, C, D, Y, N
     gameState = "waiting"
     refreshDisplay();
+}
+
+function onLogin(){
+    let pin = document.getElementById('gamePin').value;
+    let name = document.getElementById('gameName').value;
+
+    connection.send(JSON.stringify({"packettype":"joinRequest", "session": pin, "name": name}))
 }
 
 function refreshDisplay(){
@@ -25,7 +34,7 @@ function refreshDisplay(){
     }
 
     document.getElementById("page-" + gameState).style.display = "initial";
-    
+
     for (const element of document.getElementsByClassName("var-playerAnswerStreak")) {element.innerHTML = playerAnswerStreak};
     for (const element of document.getElementsByClassName("var-playerName")) {element.innerHTML = playerName};
     for (const element of document.getElementsByClassName("var-playerPoints")) {element.innerHTML = playerPoints};
@@ -38,7 +47,55 @@ function refreshDisplay(){
     for (const element of document.getElementsByClassName("var-hostOptionNameRed")) {element.innerHTML = hostOptionNameRed};
     for (const element of document.getElementsByClassName("var-hostOptionNameBlue")) {element.innerHTML = hostOptionNameBlue};
     for (const element of document.getElementsByClassName("var-hostOptionNameYellow")) {element.innerHTML = hostOptionNameYellow};
+    for (const element of document.getElementsByClassName("var-hostOptionNameGreen")) {element.innerHTML = hostOptionNameGreen};
 }
 
+var connection = new WebSocket("ws://localhost:4348/");
 
-refreshDisplay();
+connection.onopen = function(e) {
+    console.log("Connection established")
+};
+
+connection.onmessage = function(event) {
+  let data = JSON.parse(event.data)
+
+  console.log(data)
+
+  if(data["packettype"] === "error"){
+    alert(data["message"])
+    return
+  }
+
+  if(data["packettype"] === "lobbyjoin"){
+    document.getElementById("playerList").insertAdjacentHTML('afterEnd', "<div>"+data["name"]+"</div>")
+    return
+  }
+
+  if(data["packettype"] === "gamestate"){
+    gameState = data["gameState"]
+    playerAnswerStreak = parseInt(data["playerAnswerStreak"])
+    playerName = data["playerName"]
+    playerPoints = parseInt(data["playerPoints"])
+    answerCorrect = data["answerCorrect"]
+    progress = data["progress"]
+    hostQuestionName = data["hostQuestionName"]
+    hostOptionNameRed = data["hostOptionNameRed"]
+    hostOptionNameBlue = data["hostOptionNameBlue"]
+    hostOptionNameYellow = data["hostOptionNameYellow"]
+    hostOptionNameGreen = data["hostOptionNameGreen"]
+    refreshDisplay();
+    return
+  }
+};
+
+connection.onclose = function(event) {
+    if (event.wasClean) {
+        console.log("Connection closed, code=${event.code} reason=${event.reason}")
+    } else {
+        alert('Verbindung abgebrochen');
+    }
+};
+
+connection.onerror = function(error) {
+    alert('Verbindungsfehler');
+};
