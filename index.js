@@ -25,9 +25,7 @@ function refreshDisplay(){
     }
 
     document.getElementById("page-" + gameState).style.display = "initial";
-
-    for (const element of document.getElementsByClassName("page")) {element.style.display = "none";}
-
+    
     for (const element of document.getElementsByClassName("var-playerAnswerStreak")) {element.innerHTML = playerAnswerStreak};
     for (const element of document.getElementsByClassName("var-playerName")) {element.innerHTML = playerName};
     for (const element of document.getElementsByClassName("var-playerPoints")) {element.innerHTML = playerPoints};
