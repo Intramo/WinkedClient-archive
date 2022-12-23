@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="csslibrary.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div class="prePlayerJoin" id="prePlayerJoin" style="display: none;">
+        <div class="wrapper" id="prePlayerJoin-PIN" style="display: initial;">
+            <img src="assets/branding.png">
+            <form class="form-container">
+                <input type="text" placeholder="Spiel-PIN"/>
+                <input type="submit" value="Eingabe"/>
+            </form>
+        </div>
+        <div class="wrapper" id="prePlayerJoin-Name" style="display: none;">
+            <img src="assets/branding.png">
+            <form class="form-container">
+                <input type="text" placeholder="Name"/>
+                <input type="submit" value="Eingabe"/>
+            </form>
+        </div>
+    </div>
+
+    <div class="pageHostAnswers" id="pageHostAnswers" style="display: none;">
+        <div class="topbar">
+            <p class="question">Wer hat die Kriegsverbrechen im Kosovo begangen?</p>
+        </div>
+
+        <div class="content">
+            <img src="assets/placeholder.jpg">
+        </div>
+
+        <div class="cards">
+            <button class="card-red">   <p class="char">A</p> <p class="text">Frederik</p> </button>
+            <button class="card-blue">  <p class="char">B</p> <p class="text">Pittiplatsch mit den albanischen Rebellen</p> </button>
+            <button class="card-yellow"><p class="char">C</p> <p class="text">Diese Antwort ist unnötig lang um herauszufinden, wie viel so in eine Zeile passt</p> </button>
+            <button class="card-green"> <p class="char">D</p> <p class="text">Fabian</p> </button>
+        </div>
+
+        <div class="seconds"><p>14</p></div>
+        <p class="answers">9 Antworten</p>
+    </div>
+
+    <div class="pagePlayerResultCorrect" id="pagePlayerResultCorrect" style="display: none;">
+        <div class="center">
+            <p class="indicator">Richtig</p>
+            <img src="assets/correct.svg">
+            <p class="answerstreak">Answer Streak 🔥 69</p>
+        </div>
+    </div>
+
+    <div class="pagePlayerSelectAnswers TrueFalse" id="pagePlayerSelectAnswersTrueFalse" style="display: none;">
+        <div class="topbar">
+            <p class="progress">1 von 69</p>
+            <p class="type">Quiz</p>
+            <p class="_placeholder" style="opacity: 0%;">1 von 69</p>
+        </div>
+
+        <div class="cards">
+            <button class="card-blue">Ja</button>
+            <button class="card-red">Nein</button>
+        </div>
+
+        <div class="footer">
+            <p class="name">John Doe</p>
+            <p class="points">4269</p>
+        </div>
+    </div>
+
+    <div class="pagePlayerResultWrong" id="pagePlayerResultWrong" style="display: none;">
+        <div class="center">
+            <p class="indicator">Falsch</p>
+            <img src="assets/wrong.svg">
+        </div>
+    </div>
+
+    <div class="pagePlayerSelectAnswers Normal" id="pagePlayerSelectAnswersNormal" style="display: none;">
+        <div class="topbar">
+            <p class="progress">1 von 69</p>
+            <p class="type">Quiz</p>
+            <p class="_placeholder" style="opacity: 0%;">1 von 69</p>
+        </div>
+
+        <div class="cards">
+            <button class="card-red">A</button>
+            <button class="card-blue">B</button>
+            <button class="card-yellow">C</button>
+            <button class="card-green">D</button>
+        </div>
+
+        <div class="footer">
+            <p class="name">John Doe</p>
+            <p class="points">4269</p>
+        </div>
+    </div>
+
+    <div class="pageWaiting" id="pageWaiting" style="display: flex;">
+        <div class="center">
+            <img src="assets/loading.svg">
+        </div>
+    </div>
+
+</body>
+
+</html>
