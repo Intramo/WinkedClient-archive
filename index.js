@@ -21,6 +21,7 @@ var hostOptionNameGreen = ""
 function onButtonPress(btn){ // A, B, C, D, Y, N
     gameState = "waiting"
     refreshDisplay();
+    connection.send(JSON.stringify({"packettype":"answer","answer":btn}))
 }
 
 function next(){
