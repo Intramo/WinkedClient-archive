@@ -2,6 +2,8 @@ var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFal
 
 refreshDisplay();
 
+var sessionCode = ""
+
 var playerAnswerStreak = 0
 var playerName = "None"
 var playerPoints = 0
@@ -21,10 +23,14 @@ function onButtonPress(btn){ // A, B, C, D, Y, N
     refreshDisplay();
 }
 
+function next(){
+    connection.send(JSON.stringify({"packettype":"next"}))
+}
+
 function onLogin(){
     let pin = document.getElementById('gamePin').value;
     let name = document.getElementById('gameName').value;
-
+    sessionCode = pin;
     connection.send(JSON.stringify({"packettype":"joinRequest", "session": pin, "name": name}))
 }
 
@@ -48,6 +54,7 @@ function refreshDisplay(){
     for (const element of document.getElementsByClassName("var-hostOptionNameBlue")) {element.innerHTML = hostOptionNameBlue};
     for (const element of document.getElementsByClassName("var-hostOptionNameYellow")) {element.innerHTML = hostOptionNameYellow};
     for (const element of document.getElementsByClassName("var-hostOptionNameGreen")) {element.innerHTML = hostOptionNameGreen};
+    for (const element of document.getElementsByClassName("var-sessionCode")) {element.innerHTML = sessionCode};
 }
 
 var connection = new WebSocket("ws://localhost:4348/");
@@ -67,7 +74,7 @@ connection.onmessage = function(event) {
   }
 
   if(data["packettype"] === "lobbyjoin"){
-    document.getElementById("playerList").insertAdjacentHTML('afterEnd', "<div>"+data["name"]+"</div>")
+    document.getElementById("playerList").innerHTML = document.getElementById("playerList").innerHTML + "<div>"+data["name"]+"</div>"
     return
   }
 

@@ -111,6 +111,21 @@ body > hr{
     padding: 6px;
 }
 
+.pageLobby > h1{
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 5rem;
+    background-color: #fff;
+    border: 1px solid;
+    border-bottom: 3px solid;
+    border-color: rgb(202, 202, 202);
+    border-radius: 3px;
+    color: black;
+    padding: 6px;
+}
+
 /**********************************************************************************************************************/
 
 .prePlayerJoin{
