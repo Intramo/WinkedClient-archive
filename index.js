@@ -18,6 +18,8 @@ var hostOptionNameBlue = ""
 var hostOptionNameYellow = ""
 var hostOptionNameGreen = ""
 
+var countdownTimer = 
+
 function onButtonPress(btn){ // A, B, C, D, Y, N
     gameState = "waiting"
     refreshDisplay();
@@ -58,7 +60,7 @@ function refreshDisplay(){
     for (const element of document.getElementsByClassName("var-sessionCode")) {element.innerHTML = sessionCode};
 }
 
-var connection = new WebSocket("ws://localhost:4348/");
+var connection = new WebSocket("ws://node2.endelon-hosting.de:4348/");
 
 connection.onopen = function(e) {
     console.log("Connection established")
