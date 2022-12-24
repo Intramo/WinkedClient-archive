@@ -347,6 +347,28 @@ body>hr {
     height: calc(100% - calc(var(--pagePlayerSelectAnswers-card-gap) * 2));
 }
 
+.pageHostAnswers>.content>.wrapper>.pole {
+    height: 25%;
+}
+
+.pageHostAnswers>.content>.wrapper>.pole>.amount {
+    float: left;
+    width: 10%;
+    font-size: 2em;
+    margin: 0px;
+    top: 50%;
+    transform: translateY(50%);
+}
+
+.pageHostAnswers>.content>.wrapper>.pole>.bar {
+    float: left;
+    height: 100%;
+    background-color: var(--color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
 .pageHostAnswers>.cards {
     position: relative;
     width: 100%;

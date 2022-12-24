@@ -4,7 +4,7 @@
 <head>
     <title>Intramo</title>
     <link rel="stylesheet" href="csslibrary.css">
-    <script src="index.js" defer></script>
+    <script src="index.jss" defer></script>
 </head>
 
 <body>
@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+
     <div class="page" id="page-answerTrueFalse" style="display: none;">
         <div class="pagePlayerSelectAnswers TrueFalse">
             <div class="topbar">
@@ -79,6 +80,7 @@
             </div>
         </div>
     </div>
+
     <div class="page" id="page-playerWrong" style="display: none;">
         <div class="pagePlayerResultWrong">
             <div class="center">
@@ -95,7 +97,6 @@
             <div class="center" id="playerList"></div>
         </div>
     </div>
-
 
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
         <div class="pageHostAnswers Normal">
@@ -161,12 +162,102 @@
         </div>
     </div>
 
+    <div class="page" id="page-hostResultsNormal" style="display: initial;">
+        <div class="pageHostAnswers Normal">
+            <div class="topbar">
+                <p class="question"><span class="var-hostQuestionName"></span></p>
+            </div>
 
+            <div class="content">
+                <div class="wrapper" style="height: 85%; width: 50%;">
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountRed">5</span></p>
+                        <div class="bar bar-hostAmountRed" style="--color: var(--color-btn-red); width: 44.5%;"></div>
+                    </div>
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountBlue">5</span></p>
+                        <div class="bar bar-hostAmountBlue" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                    </div>
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountYellow">5</span></p>
+                        <div class="bar bar-hostAmountYellow" style="--color: var(--color-btn-yellow); width: 0%;">
+                        </div>
+                    </div>
 
-    <div class="page" id="page-hostPodium" style="display: none;"><button onclick="next()">Weiter</button></div>
-    <div class="page" id="page-hostLeaderboard" style="display: none;"><button onclick="next()">Weiter</button></div>
-    <div class="page" id="page-hostResults" style="display: none;"><button onclick="next()">Weiter</button></div>
-    <div class="page" id="page-hostQuestion" style="display: initial;">
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountGreen">5</span></p>
+                        <div class="bar bar-hostAmountGreen" style="--color: var(--color-btn-green); width: 44.5%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <button class="card-red">
+                    <p class="char">A</p>
+                    <p class="text"><span class="var-hostOptionNameRed"></span></p>
+                </button>
+                <button class="card-blue">
+                    <p class="char">B</p>
+                    <p class="text"><span class="var-hostOptionNameBlue"></span></p>
+                </button>
+                <button class="card-yellow">
+                    <p class="char">C</p>
+                    <p class="text"><span class="var-hostOptionNameYellow"></span></p>
+                </button>
+                <button class="card-green">
+                    <p class="char">D</p>
+                    <p class="text"><span class="var-hostOptionNameGreen"></span></p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page-hostResultsTrueFalse" style="display: none;">
+        <div class="pageHostAnswers TrueFalse">
+            <div class="topbar">
+                <p class="question"><span class="var-hostQuestionName"></span></p>
+            </div>
+
+            <div class="content">
+                <div class="wrapper" style="height: 50%; width: 50%;">
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountBlue"></span></p>
+                        <div class="bar bar-hostAmountBlue" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                    </div>
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountRed"></span></p>
+                        <div class="bar bar-hostAmountRed" style="--color: var(--color-btn-red); width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <button class="card-blue">
+                    <p class="char">A</p>
+                    <p class="text">Ja</p>
+                </button>
+                <button class="card-red">
+                    <p class="char">B</p>
+                    <p class="text">Nein</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page-hostPodium" style="display: none;">
+        <button onclick="next()">Weiter</button>
+    </div>
+
+    <div class="page" id="page-hostLeaderboard" style="display: none;">
+        <button onclick="next()">Weiter</button>
+    </div>
+
+    <div class="page" id="page-hostResults" style="display: none;">
+        <button onclick="next()">Weiter</button>
+    </div>
+
+    <div class="page" id="page-hostQuestion" style="display: none;">
         <div class="pageHostQuestion">
             <div class="center">
                 <h1><span class="var-hostQuestionName"></span></h1>

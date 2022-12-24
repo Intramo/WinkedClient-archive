@@ -1,4 +1,4 @@
-var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResults, hostAnswers, hostQuestion
+var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
 
 refreshDisplay();
 
@@ -18,6 +18,10 @@ var hostOptionNameRed = ""
 var hostOptionNameBlue = ""
 var hostOptionNameYellow = ""
 var hostOptionNameGreen = ""
+var hostAmountRed = 0
+var hostAmountBlue = 0
+var hostAmountYellow = 0
+var hostAmountGreen = 0
 
 var countdownStart = 0
 var countdownDuration = 10000 //ms
@@ -43,6 +47,7 @@ function onButtonPress(btn) { // A, B, C, D, Y, N
 }
 
 function next() {
+    countdownStart = 2147483645
     connection.send(JSON.stringify({ "packettype": "next" }))
 }
 
@@ -73,6 +78,15 @@ function refreshDisplay() {
     for (const element of document.getElementsByClassName("var-hostOptionNameYellow")) { element.innerHTML = hostOptionNameYellow };
     for (const element of document.getElementsByClassName("var-hostOptionNameGreen")) { element.innerHTML = hostOptionNameGreen };
     for (const element of document.getElementsByClassName("var-sessionCode")) { element.innerHTML = sessionCode };
+
+    for (const element of document.getElementsByClassName("var-hostAmountRed")) { element.innerHTML = hostAmountRed };
+    for (const element of document.getElementsByClassName("var-hostAmountBlue")) { element.innerHTML = hostAmountBlue };
+    for (const element of document.getElementsByClassName("var-hostAmountYellow")) { element.innerHTML = hostAmountYellow };
+    for (const element of document.getElementsByClassName("var-hostAmountGreen")) { element.innerHTML = hostAmountGreen };
+    for (const element of document.getElementsByClassName("bar-hostAmountRed")) { element.style.width = (hostAmountRed / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
+    for (const element of document.getElementsByClassName("bar-hostAmountBlue")) { element.style.width = (hostAmountBlue / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
+    for (const element of document.getElementsByClassName("bar-hostAmountYellow")) { element.style.width = (hostAmountYellow / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
+    for (const element of document.getElementsByClassName("bar-hostAmountGreen")) { element.style.width = (hostAmountGreen / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
 }
 
 var connection = new WebSocket("ws://localhost:4348/");
@@ -109,6 +123,11 @@ connection.onmessage = function (event) {
         hostOptionNameYellow = data["hostOptionNameYellow"]
         hostOptionNameGreen = data["hostOptionNameGreen"]
         hostQuestionDuration = data["hostQuestionDuration"]
+        hostAmountRed = data["hostAmountRed"]
+        hostAmountBlue = data["hostAmountBlue"]
+        hostAmountYellow = data["hostAmountYellow"]
+        hostAmountGreen = data["hostAmountGreen"]
+
 
         if (gameState === "hostQuestion") {
             startCountdown(5 * 1000)
