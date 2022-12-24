@@ -34,6 +34,21 @@ body>hr {
     visibility: hidden;
 }
 
+body>button {
+    z-index: 10000000;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    font-size: 2rem;
+    background-color: #fff;
+    border: 1px solid;
+    border-bottom: 3px solid;
+    border-color: rgb(202, 202, 202);
+    border-radius: 3px;
+    color: black;
+    padding: 6px;
+}
+
 /**********************************************************************************************************************/
 
 .pageWaiting,
@@ -106,20 +121,6 @@ body>hr {
     margin: 10px;
 }
 
-.pageLobby>button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 2rem;
-    background-color: #fff;
-    border: 1px solid;
-    border-bottom: 3px solid;
-    border-color: rgb(202, 202, 202);
-    border-radius: 3px;
-    color: black;
-    padding: 6px;
-}
-
 .pageLobby>h1 {
     position: absolute;
     top: 10px;
@@ -136,7 +137,7 @@ body>hr {
 }
 
 .pageHostQuestion>.center>h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     background-color: #fff;
     border: 1px solid;
     border-bottom: 3px solid;
@@ -343,8 +344,12 @@ body>hr {
     align-items: center;
 }
 
-.pageHostAnswers>.content>img {
+.pageHostAnswers>.content>span {
     height: calc(100% - calc(var(--pagePlayerSelectAnswers-card-gap) * 2));
+}
+
+.pageHostAnswers>.content>span>img {
+    height: 100%;
 }
 
 .pageHostAnswers>.content>.wrapper>.pole {

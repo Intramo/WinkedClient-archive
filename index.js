@@ -18,6 +18,11 @@ var hostOptionNameRed = ""
 var hostOptionNameBlue = ""
 var hostOptionNameYellow = ""
 var hostOptionNameGreen = ""
+var hostOptionNameRedCorrect = ""
+var hostOptionNameBlueCorrect = ""
+var hostOptionNameYellowCorrect = ""
+var hostOptionNameGreenCorrect = ""
+var hostMedia = "<img src=\"assets/placeholder.jpg\">"
 var hostAmountRed = 0
 var hostAmountBlue = 0
 var hostAmountYellow = 0
@@ -47,7 +52,7 @@ function onButtonPress(btn) { // A, B, C, D, Y, N
 }
 
 function next() {
-    countdownStart = 2147483645
+    countdownStart = 2147483645 * 1000
     connection.send(JSON.stringify({ "packettype": "next" }))
 }
 
@@ -87,6 +92,8 @@ function refreshDisplay() {
     for (const element of document.getElementsByClassName("bar-hostAmountBlue")) { element.style.width = (hostAmountBlue / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
     for (const element of document.getElementsByClassName("bar-hostAmountYellow")) { element.style.width = (hostAmountYellow / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
     for (const element of document.getElementsByClassName("bar-hostAmountGreen")) { element.style.width = (hostAmountGreen / (hostAmountRed + hostAmountBlue + hostAmountYellow + hostAmountGreen)) * 89 + "%" };
+
+    for (const element of document.getElementsByClassName("var-hostMedia")) { element.innerHTML = hostMedia };
 }
 
 var connection = new WebSocket("ws://localhost:4348/");
@@ -97,8 +104,6 @@ connection.onopen = function (e) {
 
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
-
-    console.log(data)
 
     if (data["packettype"] === "error") {
         alert(data["message"])
@@ -127,7 +132,11 @@ connection.onmessage = function (event) {
         hostAmountBlue = data["hostAmountBlue"]
         hostAmountYellow = data["hostAmountYellow"]
         hostAmountGreen = data["hostAmountGreen"]
+        hostMedia = data["hostMedia"]
 
+        if (gameState === "hostLobby"){
+            document.getElementById("skipBtn").style.display = "initial"
+        }
 
         if (gameState === "hostQuestion") {
             startCountdown(5 * 1000)

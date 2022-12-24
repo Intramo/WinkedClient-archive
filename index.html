@@ -3,11 +3,15 @@
 
 <head>
     <title>Intramo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="csslibrary.css">
-    <script src="index.jss" defer></script>
+    <script src="index.js" defer></script>
 </head>
 
 <body>
+    <button onclick="next()" style="display: none;" id="skipBtn">Weiter</button>
+
     <div class="page" id="page-playerJoin" style="display: none;">
         <div class="prePlayerJoin">
             <div class="wrapper">
@@ -60,8 +64,8 @@
             </div>
 
             <div class="cards">
-                <button class="card-blue" onclick="onButtonPress('Y')">Wahr</button>
-                <button class="card-red" onclick="onButtonPress('N')">Falsch</button>
+                <button class="card-blue" onclick="onButtonPress('Y')">Ja</button>
+                <button class="card-red" onclick="onButtonPress('N')">Nein</button>
             </div>
 
             <div class="footer">
@@ -92,7 +96,6 @@
 
     <div class="page" id="page-hostLobby" style="display: none;">
         <div class="pageLobby">
-            <button onclick="next()">Weiter</button>
             <h1><span class="var-sessionCode"></span></h1>
             <div class="center" id="playerList"></div>
         </div>
@@ -105,7 +108,7 @@
             </div>
 
             <div class="content">
-                <img src="assets/placeholder.jpg">
+                <span class="var-hostMedia"></span>
             </div>
 
             <div class="cards">
@@ -141,7 +144,7 @@
             </div>
 
             <div class="content">
-                <img src="assets/placeholder.jpg">
+                <span class="var-hostMedia"></span>
             </div>
 
             <div class="cards">
@@ -246,15 +249,12 @@
     </div>
 
     <div class="page" id="page-hostPodium" style="display: none;">
-        <button onclick="next()">Weiter</button>
     </div>
 
     <div class="page" id="page-hostLeaderboard" style="display: none;">
-        <button onclick="next()">Weiter</button>
     </div>
 
     <div class="page" id="page-hostResults" style="display: none;">
-        <button onclick="next()">Weiter</button>
     </div>
 
     <div class="page" id="page-hostQuestion" style="display: none;">
