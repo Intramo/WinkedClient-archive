@@ -137,6 +137,12 @@ body > hr{
     padding: 6px;
 }
 
+#hostQuestionProgressIndicator{
+    float: left;
+    height: 40px;
+    background-color: white;
+}
+
 /**********************************************************************************************************************/
 
 .prePlayerJoin{
@@ -346,6 +352,10 @@ body > hr{
     color: white;
 }
 
+.pageHostAnswers.TrueFalse > .cards > button{
+    height: calc(100% - calc(var(--pagePlayerSelectAnswers-card-gap) * 2));
+}
+
 .pageHostAnswers > .cards > button > .char {
     font-size:calc(calc(calc(50vh - var(--pagePlayerSelectAnswers-headerFooter-size)) - calc(var(--pagePlayerSelectAnswers-card-gap) * 3)) / 4);
     float: left;
@@ -370,6 +380,10 @@ body > hr{
 
     padding: 0px;
     margin: 0px;
+}
+
+.pageHostAnswers.TrueFalse > .cards > button > .text {
+    font-size: 12em;
 }
 
 .pageHostAnswers > .cards > .card-red {
@@ -398,6 +412,16 @@ body > hr{
     right: var(--pagePlayerSelectAnswers-card-gap);
     background-color: var(--color-btn-green);
     border-color: var(--color-btn-green-darker);
+}
+
+.pageHostAnswers.TrueFalse > .cards > .card-red {
+    left: auto;
+    right: var(--pagePlayerSelectAnswers-card-gap);
+}
+
+.pageHostAnswers.TrueFalse > .cards > .card-blue {
+    right: auto;
+    left: var(--pagePlayerSelectAnswers-card-gap);
 }
 
 .pageHostAnswers > .answers{

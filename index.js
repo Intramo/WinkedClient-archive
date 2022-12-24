@@ -12,13 +12,29 @@ var progress = "0 von 0"
 
 var hostAnswers = 0
 var hostCountdown = 0
+var hostQuestionDuration = ""
 var hostQuestionName = ""
 var hostOptionNameRed = ""
 var hostOptionNameBlue = ""
 var hostOptionNameYellow = ""
 var hostOptionNameGreen = ""
 
-var countdownTimer = 
+var countdownStart = 0
+var countdownDuration = 10000 //ms
+
+function startCountDownByWordLength(length){
+    startCountdown(length * 160)
+}
+
+function startCountdown(length){
+    countdownStart = Date.now()
+    countdownDuration = length
+}
+
+function getCountdown(){
+    if(Date.now() - countdownStart > countdownDuration){ return 0 }
+    return (countdownDuration + (countdownStart - Date.now())) / 1000
+}
 
 function onButtonPress(btn){ // A, B, C, D, Y, N
     gameState = "waiting"
@@ -51,7 +67,6 @@ function refreshDisplay(){
     for (const element of document.getElementsByClassName("var-progress")) {element.innerHTML = progress};
 
     for (const element of document.getElementsByClassName("var-hostAnswers")) {element.innerHTML = hostAnswers};
-    for (const element of document.getElementsByClassName("var-hostCountdown")) {element.innerHTML = hostCountdown};
     for (const element of document.getElementsByClassName("var-hostQuestionName")) {element.innerHTML = hostQuestionName};
     for (const element of document.getElementsByClassName("var-hostOptionNameRed")) {element.innerHTML = hostOptionNameRed};
     for (const element of document.getElementsByClassName("var-hostOptionNameBlue")) {element.innerHTML = hostOptionNameBlue};
@@ -60,7 +75,7 @@ function refreshDisplay(){
     for (const element of document.getElementsByClassName("var-sessionCode")) {element.innerHTML = sessionCode};
 }
 
-var connection = new WebSocket("ws://node2.endelon-hosting.de:4348/");
+var connection = new WebSocket("ws://localhost:4348/");
 
 connection.onopen = function(e) {
     console.log("Connection established")
@@ -93,6 +108,37 @@ connection.onmessage = function(event) {
     hostOptionNameBlue = data["hostOptionNameBlue"]
     hostOptionNameYellow = data["hostOptionNameYellow"]
     hostOptionNameGreen = data["hostOptionNameGreen"]
+    hostQuestionDuration = data["hostQuestionDuration"]
+
+    if(gameState === "hostQuestion"){
+        startCountdown(5*1000)
+        function hostQuestionCountdown(){
+            let ct = getCountdown()
+            if(ct <= 0){
+                next()
+                return
+            }
+            let percent = 100 - 100 * (ct / (countdownDuration / 1000))
+            document.getElementById("hostQuestionProgressIndicator").style.width = percent + "%"
+            setTimeout(hostQuestionCountdown, 15)
+        }
+        hostQuestionCountdown()
+    }
+
+    if(gameState.startsWith("hostAnswers")){
+        startCountdown(hostQuestionDuration*1000)
+        function hostQuestionCountdown(){
+            let ct = getCountdown()
+            if(ct <= 0){
+                next()
+                return
+            }
+            for (const element of document.getElementsByClassName("var-hostQuestionCountdown")) {element.innerHTML = Math.floor(ct)};
+            setTimeout(hostQuestionCountdown, 20)
+        }
+        hostQuestionCountdown()
+    }
+
     refreshDisplay();
     return
   }

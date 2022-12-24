@@ -6,7 +6,7 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <div class="page" id="page-playerJoin" style="display: initial;">
+        <div class="page" id="page-playerJoin" style="display: none;">
             <div class="prePlayerJoin">
                 <div class="wrapper">
                     <img src="assets/branding.png">
@@ -94,11 +94,9 @@
             </div>
         </div>
 
-        <div class="page" id="page-hostPodium" style="display: none;"><button onclick="next()">Weiter</button></div>
-        <div class="page" id="page-hostLeaderboard" style="display: none;"><button onclick="next()">Weiter</button></div>
-        <div class="page" id="page-hostResults" style="display: none;"><button onclick="next()">Weiter</button></div>
-        <div class="page" id="page-hostAnswers" style="display: none;">
-            <div class="pageHostAnswers">
+
+        <div class="page" id="page-hostAnswersNormal" style="display: none;">
+            <div class="pageHostAnswers Normal">
                 <div class="topbar">
                     <p class="question"><span class="var-hostQuestionName"></span></p>
                 </div>
@@ -114,14 +112,41 @@
                     <button class="card-green"> <p class="char">D</p> <p class="text"><span class="var-hostOptionNameGreen"></span></p> </button>
                 </div>
         
-                <div class="seconds"><p>14</p></div>
+                <div class="seconds"><p><span class="var-hostQuestionCountdown"></span></p></div>
                 <p class="answers">9 Antworten</p>
             </div>
         </div>
-        <div class="page" id="page-hostQuestion" style="display: none;">
+
+        <div class="page" id="page-hostAnswersTrueFalse" style="display: none;">
+            <div class="pageHostAnswers TrueFalse">
+                <div class="topbar">
+                    <p class="question"><span class="var-hostQuestionName"></span></p>
+                </div>
+        
+                <div class="content">
+                    <img src="assets/placeholder.jpg">
+                </div>
+        
+                <div class="cards">
+                    <button class="card-blue">  <p class="char">A</p> <p class="text">Ja</p> </button>
+                    <button class="card-red">   <p class="char">B</p> <p class="text">Nein</p> </button>
+                </div>
+        
+                <div class="seconds"><p><span class="var-hostQuestionCountdown"></span></p></div>
+                <p class="answers">9 Antworten</p>
+            </div>
+        </div>
+
+
+
+        <div class="page" id="page-hostPodium" style="display: none;"><button onclick="next()">Weiter</button></div>
+        <div class="page" id="page-hostLeaderboard" style="display: none;"><button onclick="next()">Weiter</button></div>
+        <div class="page" id="page-hostResults" style="display: none;"><button onclick="next()">Weiter</button></div>
+        <div class="page" id="page-hostQuestion" style="display: initial;">
             <div class="pageHostQuestion">
                 <div class="center">
                     <h1><span class="var-hostQuestionName"></span></h1>
+                    <div id="hostQuestionProgressIndicator" style="width: 1px;"></div>
                 </div>
             </div>        
         </div>
