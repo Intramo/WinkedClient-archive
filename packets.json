@@ -1,0 +1,121 @@
+[
+    {
+        "packettype": "answer",
+        "button": "A",
+        "text": "Lorem ipsum"
+    },
+
+    {
+        "packettype": "next"
+    },
+
+    {
+        "packettype": "joinRequest",
+        "session": "0001111",
+        "name": "Text"
+    },
+
+    {
+        "packettype": "error",
+        "message": "Fehler"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "waiting"
+    },
+
+    {
+        "packettype": "lobbyJoin",
+        "name": "Name"
+    },
+
+    {
+        "packettype": "addAnswerCount"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "hostLobby",
+        "gameid": "0001111"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "playerAnswerNormal",
+        "buttons":{
+            "A": true,
+            "B": true,
+            "C": true,
+            "D": true
+        },
+        "points": 4200,
+        "progress": "1 von 4"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "playerAnswerTrueFalse",
+        "points": 4200,
+        "progress": "1 von 4"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "playerResultWrong"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "playerResultCorrect",
+        "answerstreak": 69
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "hostQuestion",
+        "question": "Frage hier einfügen"
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "hostAnswers",
+        "question": "Frage hier einfügen",
+        "duration": 10,
+        "answers": {
+            "A": "",
+            "B": "",
+            "C": "",
+            "D": ""
+        }
+    },
+
+    {
+        "packettype": "gameState",
+        "gameState": "hostResults",
+        "question": "Frage hier einfügen",
+        "duration": 10,
+        "answers": {
+            "A": {
+                "text": "",
+                "correct": true,
+                "amount": 0
+            },
+            "B": {
+                "text": "",
+                "correct": true,
+                "amount": 0
+            },
+            "C": {
+                "text": "",
+                "correct": true,
+                "amount": 0
+            },
+            "D": {
+                "text": "",
+                "correct": true,
+                "amount": 0
+            }
+        }
+    }
+]
