@@ -95,7 +95,7 @@
     <div id="page-playerAnswerNormal" class="page" style="width: 100%; height: 100vh; display: block; position: relative;">
         <div class="pagePlayerAnswer Normal">
             <div class="topbar">
-                <p class="progress">1 von 5</p>
+                <p class="progress var-progress">0 von 0</p>
                 <p class="type">Quiz</p>
             </div>
 
@@ -107,8 +107,8 @@
             </div>
 
             <div class="footer">
-                <p class="name">John Doe</p>
-                <p class="points">4200</p>
+                <p class="name var-playerName">John Doe</p>
+                <p class="points var-points">4200</p>
             </div>
         </div>
     </div>
@@ -120,7 +120,7 @@
     <div id="page-playerAnswerTrueFalse" class="page" style="width: 100%; height: 100vh; display: block; position: relative;">
         <div class="pagePlayerAnswer TrueFalse">
             <div class="topbar">
-                <p class="progress">1 von 5</p>
+                <p class="progress var-progress">1 von 5</p>
                 <p class="type">Quiz</p>
             </div>
 
@@ -130,8 +130,8 @@
             </div>
 
             <div class="footer">
-                <p class="name">John Doe</p>
-                <p class="points">4200</p>
+                <p class="name var-playerName">John Doe</p>
+                <p class="points var-points">4200</p>
             </div>
         </div>
     </div>
@@ -158,7 +158,7 @@
             <div class="center">
                 <p class="indicator">Richtig</p>
                 <img src="assets/correct.svg">
-                <p class="answerstreak">Answer Streak 🔥 69</p>
+                <p class="answerstreak">Answer Streak 🔥 <span class="var-answerstreak">69</span></p>
             </div>
         </div>
     </div>
@@ -182,8 +182,8 @@
         </ul>
         <div class="pageHostQuestion">
             <div class="wrapper">
-                <h1>Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</h1>
-                <div class="progress" style="width: 69.42%;"></div>
+                <h1 class="var-question"></h1>
+                <div class="progress" style="width: 69.42%;" id="hostQuestionProgress"></div>
             </div>
         </div>
     </div>

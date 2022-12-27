@@ -3,6 +3,9 @@ console.log("#### ##    ## ######## ########     ###    ##     ##  #######  \n##
 var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
 var playerAmount = 0
 
+var countdownStart = 0
+var countdownDuration = 10000
+
 refreshDisplay();
 
 function startCountDownByWordLength(length) {
@@ -97,6 +100,7 @@ connection.onmessage = function (event) {
 
         /*
         var-gameID
+        var-playerName
         var-playerAmount
         var-points
         var-progress
@@ -111,6 +115,7 @@ connection.onmessage = function (event) {
         var-answerCAmount
         var-answerDAmount
         var-answerCount
+        var-hostQuestionCountdown
         */
         
         if (gameState === "hostLobby"){
@@ -120,6 +125,7 @@ connection.onmessage = function (event) {
         if (gameState === "playerAnswerNormal"){
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
             if(data["buttons"]["A"] === true) {} //TODO: Implement hiding buttons
             if(data["buttons"]["B"] === true) {} //TODO: Implement hiding buttons
             if(data["buttons"]["C"] === true) {} //TODO: Implement hiding buttons
@@ -129,6 +135,7 @@ connection.onmessage = function (event) {
         if (gameState === "playerAnswerTrueFalse"){
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
         }
 
         if (gameState === "playerResultCorrect"){
@@ -137,6 +144,18 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostQuestion"){
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
+            startCountdown(5 * 1000)
+            function hostQuestionCountdown() {
+                let ct = getCountdown()
+                if (ct <= 0) {
+                    next()
+                    return
+                }
+                let percent = 100 - 100 * (ct / (countdownDuration / 1000))
+                document.getElementById("hostQuestionProgress").style.width = percent + "%"
+                setTimeout(hostQuestionCountdown, 15)
+            }
+            hostQuestionCountdown()
         }
 
         if (gameState === "hostAnswers"){
@@ -145,6 +164,17 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"] };
             for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"] };
             for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"] };
+            startCountdown(data["duration"] * 1000)
+            function hostQuestionCountdown() {
+                let ct = getCountdown()
+                if (ct <= 0) {
+                    next()
+                    return
+                }
+                for (const element of document.getElementsByClassName("var-hostQuestionCountdown")) { element.innerHTML = Math.floor(ct) };
+                setTimeout(hostQuestionCountdown, 20)
+            }
+            hostQuestionCountdown()
         }
 
         if (gameState === "hostResults"){

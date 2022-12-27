@@ -43,6 +43,7 @@
     {
         "packettype": "gameState",
         "gameState": "playerAnswerNormal",
+        "name": "Name",
         "buttons":{
             "A": true,
             "B": true,
@@ -56,6 +57,7 @@
     {
         "packettype": "gameState",
         "gameState": "playerAnswerTrueFalse",
+        "name": "Name",
         "points": 4200,
         "progress": "1 von 4"
     },
