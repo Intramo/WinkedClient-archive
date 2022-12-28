@@ -561,3 +561,188 @@ body {
     height: 30px;
     border-radius: 10px;
 }
+
+/*******************************************************
+/*      pageHostAnswers
+/*******************************************************/
+
+.pageHostAnswers {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #ccc;
+}
+
+.pageHostAnswers>.topbar {
+    position: relative;
+
+    width: 100%;
+    height: 60px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.pageHostAnswers>.topbar>p {
+    padding: 0px 10px;
+}
+
+.pageHostAnswers>.content {
+    position: relative;
+    width: 100%;
+    height: calc(50% - 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageHostAnswers>.content>span {
+    height: calc(100% - 120px);
+}
+
+.pageHostAnswers>.content>span>img {
+    height: 100%;
+}
+
+.pageHostAnswers>.content>.wrapper>.pole {
+    height: 25%;
+}
+
+.pageHostAnswers>.content>.wrapper>.pole>.amount {
+    float: left;
+    width: 10%;
+    font-size: 2em;
+    margin: 0px;
+    top: 50%;
+    transform: translateY(50%);
+}
+
+.pageHostAnswers>.content>.wrapper>.pole>.bar {
+    float: left;
+    height: 100%;
+    background-color: var(--color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.pageHostAnswers>.cards {
+    --card-gap: 16px;
+    position: relative;
+    width: 100%;
+    height: calc(50% - 30px);
+}
+
+.pageHostAnswers>.cards>button {
+    position: absolute;
+    width: calc(calc(100% - calc(var(--card-gap) * 3)) / 2);
+    height: calc(calc(100% - calc(var(--card-gap) * 3)) / 2);
+    border: 2px solid;
+    border-bottom: 6px solid;
+    border-radius: 3px;
+    color: white;
+}
+
+.pageHostAnswers.TrueFalse>.cards>button {
+    height: calc(100% - calc(var(--card-gap) * 2));
+}
+
+.pageHostAnswers>.cards>button>.char {
+    font-size: calc(calc(calc(50vh - 60px) - calc(var(--card-gap) * 3)) / 4);
+    float: left;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.pageHostAnswers>.cards>button>.text {
+    font-size: 3em;
+    float: left;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.pageHostAnswers.TrueFalse>.cards>button>.text {
+    font-size: 12em;
+}
+
+.pageHostAnswers>.cards>.card-red {
+    top: var(--card-gap);
+    left: var(--card-gap);
+    background-color: var(--color-btn-red);
+    border-color: var(--color-btn-red-darker);
+}
+
+.pageHostAnswers>.cards>.card-blue {
+    top: var(--card-gap);
+    right: var(--card-gap);
+    background-color: var(--color-btn-blue);
+    border-color: var(--color-btn-blue-darker);
+}
+
+.pageHostAnswers>.cards>.card-yellow {
+    bottom: var(--card-gap);
+    left: var(--card-gap);
+    background-color: var(--color-btn-yellow);
+    border-color: var(--color-btn-yellow-darker);
+}
+
+.pageHostAnswers>.cards>.card-green {
+    bottom: var(--card-gap);
+    right: var(--card-gap);
+    background-color: var(--color-btn-green);
+    border-color: var(--color-btn-green-darker);
+}
+
+.pageHostAnswers.TrueFalse>.cards>.card-red {
+    left: auto;
+    right: var(--card-gap);
+}
+
+.pageHostAnswers.TrueFalse>.cards>.card-blue {
+    right: auto;
+    left: var(--card-gap);
+}
+
+.pageHostAnswers>.answers {
+    position: absolute;
+    right: 16px;
+    top: 32%;
+    transform: translateY(-50%);
+    font-size: 2em;
+}
+
+.pageHostAnswers>.seconds {
+    position: absolute;
+    left: 16px;
+    top: 32%;
+    width: 15vh;
+    height: 15vh;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(10px 10px 4px rgb(148, 148, 148));
+}
+
+.pageHostAnswers>.seconds>p {
+    color: white;
+    font-size: 8vh;
+}

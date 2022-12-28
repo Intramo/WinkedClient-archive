@@ -11,7 +11,6 @@
 <body>
     <noscript>Diese Website braucht JavaScript. Aktiviere es in deinen Einstellungen.</noscript>
 
-
     <div id="page-playerJoin" class="page" style="width: 100%; height: 100vh; display: block; position: relative;">
         <ul class="page-playerJoin-bg">
             <li></li>
@@ -77,7 +76,7 @@
             </div>
             <div class="controlbar">
                 <p class="playercount">Spieler: <span class="var-playerAmount">0</span></p>
-                <button>Start</button>
+                <button onclick="next()">Start</button>
             </div>
             <div class="wrapper">
                 <div class="center" id="pageHostLobbyPlayerList">
@@ -100,10 +99,10 @@
             </div>
 
             <div class="cards">
-                <button class="card-a" onclick="onButtonPress('A')">A</button>
-                <button class="card-b" onclick="onButtonPress('B')">B</button>
-                <button class="card-c" onclick="onButtonPress('C')">C</button>
-                <button class="card-d" onclick="onButtonPress('D')">D</button>
+                <button class="card-a" onclick="onButtonPress('A')" id="page-playerAnswerNormal-card-a">A</button>
+                <button class="card-b" onclick="onButtonPress('B')" id="page-playerAnswerNormal-card-b">B</button>
+                <button class="card-c" onclick="onButtonPress('C')" id="page-playerAnswerNormal-card-c">C</button>
+                <button class="card-d" onclick="onButtonPress('D')" id="page-playerAnswerNormal-card-d">D</button>
             </div>
 
             <div class="footer">
@@ -187,6 +186,219 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="page" id="page-hostAnswersNormal" style="display: none;">
+        <div class="pageHostAnswers Normal">
+            <div class="topbar">
+                <p class="question"><span class="var-question"></span></p>
+            </div>
+
+            <div class="content">
+                <span class="var-media"></span>
+            </div>
+
+            <div class="cards">
+                <button class="card-red" id="page-hostAnswersNormal-card-a">
+                    <p class="char">A</p>
+                    <p class="text"><span class="var-answerA"></span></p>
+                </button>
+                <button class="card-blue" id="page-hostAnswersNormal-card-b">
+                    <p class="char">B</p>
+                    <p class="text"><span class="var-answerB"></span></p>
+                </button>
+                <button class="card-yellow" id="page-hostAnswersNormal-card-c">
+                    <p class="char">C</p>
+                    <p class="text"><span class="var-answerC"></span></p>
+                </button>
+                <button class="card-green" id="page-hostAnswersNormal-card-d">
+                    <p class="char">D</p>
+                    <p class="text"><span class="var-answerD"></span></p>
+                </button>
+            </div>
+
+            <div class="seconds">
+                <p><span class="var-hostQuestionCountdown"></span></p>
+            </div>
+            <p class="answers"><span class="var-answerAmount">9</span> Antworten</p>
+        </div>
+    </div>
+
+    <div class="page" id="page-hostAnswersTrueFalse" style="display: none;">
+        <div class="pageHostAnswers TrueFalse">
+            <div class="topbar">
+                <p class="question"><span class="var-question"></span></p>
+            </div>
+
+            <div class="content">
+                <span class="var-media"></span>
+            </div>
+
+            <div class="cards">
+                <button class="card-blue">
+                    <p class="char">A</p>
+                    <p class="text">Ja</p>
+                </button>
+                <button class="card-red">
+                    <p class="char">B</p>
+                    <p class="text">Nein</p>
+                </button>
+            </div>
+
+            <div class="seconds">
+                <p><span class="var-hostQuestionCountdown"></span></p>
+            </div>
+            <p class="answers"><span class="var-answerAmount">9</span> Antworten</p>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="page" id="page-hostResultsNormal" style="display: none;">
+        <div class="pageHostAnswers Normal">
+            <div class="topbar">
+                <p class="question"><span class="var-hostQuestionName"></span></p>
+            </div>
+
+            <div class="content">
+                <div class="wrapper" style="height: 85%; width: 50%;">
+                    <div class="pole" id="page-hostResultsNormal-pole-a">
+                        <p class="amount"><span class="var-answerAAmount">5</span></p>
+                        <div class="bar bar-answerAAmount" style="--color: var(--color-btn-red); width: 44.5%;"></div>
+                    </div>
+                    <div class="pole" id="page-hostResultsNormal-pole-b">
+                        <p class="amount"><span class="var-answerBAmount">5</span></p>
+                        <div class="bar bar-answerBAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                    </div>
+                    <div class="pole" id="page-hostResultsNormal-pole-c">
+                        <p class="amount"><span class="var-answerCAmount">5</span></p>
+                        <div class="bar bar-answerCAmount" style="--color: var(--color-btn-yellow); width: 0%;">
+                        </div>
+                    </div>
+
+                    <div class="pole" id="page-hostResultsNormal-pole-d">
+                        <p class="amount"><span class="var-answerDAmount">5</span></p>
+                        <div class="bar bar-answerDAmount" style="--color: var(--color-btn-green); width: 44.5%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <button class="card-red">
+                    <p class="char">A</p>
+                    <p class="text"><span class="var-answerA"></span></p>
+                </button>
+                <button class="card-blue">
+                    <p class="char">B</p>
+                    <p class="text"><span class="var-answerB"></span></p>
+                </button>
+                <button class="card-yellow">
+                    <p class="char">C</p>
+                    <p class="text"><span class="var-answerC"></span></p>
+                </button>
+                <button class="card-green">
+                    <p class="char">D</p>
+                    <p class="text"><span class="var-answerD"></span></p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page-hostResultsTrueFalse" style="display: none;">
+        <div class="pageHostAnswers TrueFalse">
+            <div class="topbar">
+                <p class="question"><span class="var-hostQuestionName"></span></p>
+            </div>
+
+            <div class="content">
+                <div class="wrapper" style="height: 50%; width: 50%;">
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountBlue"></span></p>
+                        <div class="bar bar-hostAmountBlue" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                    </div>
+                    <div class="pole">
+                        <p class="amount"><span class="var-hostAmountRed"></span></p>
+                        <div class="bar bar-hostAmountRed" style="--color: var(--color-btn-red); width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <button class="card-blue">
+                    <p class="char"></p>
+                    <p class="text">Ja</p>
+                </button>
+                <button class="card-red">
+                    <p class="char"></p>
+                    <p class="text">Nein</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 

@@ -94,7 +94,7 @@
 
     {
         "packettype": "gameState",
-        "gameState": "hostResults",
+        "gameState": "hostResultsNormal",
         "question": "Frage hier einfügen",
         "duration": 10,
         "answers": {
@@ -118,6 +118,7 @@
                 "correct": true,
                 "amount": 0
             }
-        }
+        },
+        "media": {}
     }
 ]
