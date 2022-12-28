@@ -230,26 +230,42 @@ connection.onmessage = function (event) {
             if(data["answers"].hasOwnProperty("A")){
                 for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["answers"]["A"]["amount"] };
+                document.getElementById("page-hostResultsNormal-card-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "block"
-            }else{document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"}
+            }else{
+                document.getElementById("page-hostResultsNormal-card-a").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+            }
 
             if(data["answers"].hasOwnProperty("B")){
                 for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["answers"]["B"]["amount"] };
+                document.getElementById("page-hostResultsNormal-card-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "block"
-            }else{document.getElementById("page-hostResultsNormal-pole-b").style.display = "none"}
+            }else{
+                document.getElementById("page-hostResultsNormal-card-b").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+            }
 
             if(data["answers"].hasOwnProperty("C")){
                 for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerCAmount")) { element.innerHTML = data["answers"]["C"]["amount"] };
+                document.getElementById("page-hostResultsNormal-card-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "block"
-            }else{document.getElementById("page-hostResultsNormal-pole-c").style.display = "none"}
+            }else{
+                document.getElementById("page-hostResultsNormal-card-c").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+            }
 
             if(data["answers"].hasOwnProperty("D")){
                 for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerDAmount")) { element.innerHTML = data["answers"]["D"]["amount"] };
+                document.getElementById("page-hostResultsNormal-card-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "block"
-            }else{document.getElementById("page-hostResultsNormal-pole-d").style.display = "none"}
+            }else{
+                document.getElementById("page-hostResultsNormal-card-d").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+            }
 
             let amountA = data["answers"].hasOwnProperty("A") ? data["answers"]["A"]["amount"] : 0
             let amountB = data["answers"].hasOwnProperty("B") ? data["answers"]["B"]["amount"] : 0
@@ -265,10 +281,10 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostResultsTrueFalse"){
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["trueAmount"]};
-            for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["falseAmount"]};
-            for (const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };
-            for (const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };            
+            for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"]};
+            for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"]};
+            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };
+            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };            
         }
 
         refreshDisplay();

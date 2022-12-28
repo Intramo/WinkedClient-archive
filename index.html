@@ -124,8 +124,8 @@
             </div>
 
             <div class="cards">
-                <button class="card-a" onclick="onButtonPress('A')">Ja</button>
-                <button class="card-b" onclick="onButtonPress('B')">Nein</button>
+                <button class="card-a" onclick="onButtonPress('Y')">Ja</button>
+                <button class="card-b" onclick="onButtonPress('N')">Nein</button>
             </div>
 
             <div class="footer">
@@ -186,32 +186,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
@@ -277,6 +251,19 @@
             <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
         </div>
     </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -313,25 +300,27 @@
             </div>
 
             <div class="cards">
-                <button class="card-red">
+                <button class="card-red" id="page-hostResultsNormal-card-a">
                     <p class="char">A</p>
                     <p class="text"><span class="var-answerA"></span></p>
                 </button>
-                <button class="card-blue">
+                <button class="card-blue" id="page-hostResultsNormal-card-a">
                     <p class="char">B</p>
                     <p class="text"><span class="var-answerB"></span></p>
                 </button>
-                <button class="card-yellow">
+                <button class="card-yellow" id="page-hostResultsNormal-card-a">
                     <p class="char">C</p>
                     <p class="text"><span class="var-answerC"></span></p>
                 </button>
-                <button class="card-green">
+                <button class="card-green" id="page-hostResultsNormal-card-a">
                     <p class="char">D</p>
                     <p class="text"><span class="var-answerD"></span></p>
                 </button>
             </div>
         </div>
     </div>
+
+
     <div class="page" id="page-hostResultsTrueFalse" style="display: none;">
         <div class="pageHostAnswers TrueFalse">
             <div class="topbar">
@@ -340,13 +329,13 @@
 
             <div class="content">
                 <div class="wrapper" style="height: 50%; width: 50%;">
-                    <div class="pole">
+                    <div class="pole" id="page-hostResultsNormal-pole-y">
                         <p class="amount"><span class="var-hostAmountBlue"></span></p>
-                        <div class="bar bar-hostAmountBlue" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                        <div class="bar bar-answerYAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
                     </div>
-                    <div class="pole">
+                    <div class="pole" id="page-hostResultsNormal-pole-n">
                         <p class="amount"><span class="var-hostAmountRed"></span></p>
-                        <div class="bar bar-hostAmountRed" style="--color: var(--color-btn-red); width: 0%;"></div>
+                        <div class="bar bar-answerNAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
                     </div>
                 </div>
             </div>
