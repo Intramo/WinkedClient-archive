@@ -110,6 +110,8 @@ connection.onmessage = function (event) {
     if (data["packettype"] === "gameState") {
         gameState = data["gameState"]
 
+        console.log(data)
+
         /*
         var-gameID
         var-playerName
@@ -174,6 +176,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersNormal"){
+            for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"] };
@@ -198,6 +201,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersTrueFalse"){
+            for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)

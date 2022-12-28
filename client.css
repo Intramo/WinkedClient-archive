@@ -486,6 +486,25 @@ body {
     border-color: var(--color-btn-green-darker);
 }
 
+
+.pagePlayerAnswer.TrueFalse>.cards>.card-a {
+    background-color: var(--color-btn-blue);
+    border-color: var(--color-btn-blue-darker);
+}
+
+.pagePlayerAnswer.TrueFalse>.cards>.card-a:active {
+    border-color: var(--color-btn-blue-darker);
+}
+
+.pagePlayerAnswer.TrueFalse>.cards>.card-b {
+    background-color: var(--color-btn-red);
+    border-color: var(--color-btn-red-darker);
+}
+
+.pagePlayerAnswer.TrueFalse>.cards>.card-b:active {
+    border-color: var(--color-btn-red-darker);
+}
+
 /*******************************************************
 /*      Player Correct / Wrong
 /*******************************************************/
