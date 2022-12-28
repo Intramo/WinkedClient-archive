@@ -283,8 +283,8 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"]};
             for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"]};
-            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };
-            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["trueAmount"])) * 89 + "%" };            
+            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 89 + "%" };
+            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 89 + "%" };            
         }
 
         refreshDisplay();
