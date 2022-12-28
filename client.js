@@ -1,4 +1,10 @@
-console.log("#### ##    ## ######## ########     ###    ##     ##  #######  \n ##  ###   ##    ##    ##     ##   ## ##   ###   ### ##     ## \n ##  ####  ##    ##    ##     ##  ##   ##  #### #### ##     ## \n ##  ## ## ##    ##    ########  ##     ## ## ### ## ##     ## \n ##  ##  ####    ##    ##   ##   ######### ##     ## ##     ## \n ##  ##   ###    ##    ##    ##  ##     ## ##     ## ##     ## \n#### ##    ##    ##    ##     ## ##     ## ##     ##  #######  ")
+console.log(` __          ___       _    ______    _ 
+ \\ \\        / (_)     | |  |  ____|  | |
+  \\ \\  /\\  / / _ _ __ | | _| |__   __| |
+   \\ \\/  \\/ / | | '_ \\| |/ /  __| / _\` |
+    \\  /\\  /  | | | | |   <| |___| (_| |
+     \\/  \\/   |_|_| |_|_|\\_\\______\\__,_|`)
+
 
 var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
 var playerAmount = 0
@@ -10,7 +16,7 @@ var countdownDuration = 10000
 refreshDisplay();
 
 function startCountDownByWordLength(length) {
-    startCountdown(length * 160)
+    startCountdown(length * (1000 / 22))
 }
 
 function startCountdown(length) {
@@ -70,17 +76,17 @@ connection.onopen = function (e) {
 };
 
 connection.onclose = function (event) {
-    alert('Verbindung abgebrochen');
+    console.error('Verbindung geschlossen')
+    alert('Verbindung geschlossen');
 };
 
 connection.onerror = function (error) {
+    console.error('Verbindungsfehler')
     alert('Verbindungsfehler');
 };
 
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
-
-    console.log(data)
 
     if (data["packettype"] === "error") {
         alert(data["message"])
@@ -153,7 +159,7 @@ connection.onmessage = function (event) {
         if (gameState === "hostQuestion"){
             answerAmount = 0
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            startCountdown(5 * 1000)
+            startCountDownByWordLength(data["question"].length)
             function hostQuestionCountdown() {
                 let ct = getCountdown()
                 if (ct <= 0) {
