@@ -609,7 +609,7 @@ body {
 }
 
 .pageHostAnswers>.content>.wrapper>.pole {
-    height: 25%;
+    width: 100%;
 }
 
 .pageHostAnswers>.content>.wrapper>.pole>.amount {
