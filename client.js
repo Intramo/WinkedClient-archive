@@ -41,7 +41,7 @@ function next() {
 }
 
 function onLogin() {
-    let pin = document.getElementById('page-playerJoin-id').value.trim();
+    let pin = document.getElementById('page-playerJoin-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
     let name = document.getElementById('page-playerJoin-name').value.trim();
 
     if(pin === ""){
@@ -135,7 +135,7 @@ connection.onmessage = function (event) {
         */
         
         if (gameState === "hostLobby"){
-            for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"] };
+            for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"].slice(0, 3) + " " + data["gameid"].slice(3) };
         }
 
         if (gameState === "playerAnswerNormal"){
