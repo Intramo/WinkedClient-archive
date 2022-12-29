@@ -899,3 +899,32 @@ body {
 .pageHostAnswerText>.wrong>p {
     background-color: #f23052;
 }
+
+/*******************************************************
+/*      pageHostAnswers
+/*******************************************************/
+
+.topbar-button {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    padding: 10px 20px;
+    display: block;
+    outline: none;
+    background-color: #444444;
+    border: 1px solid;
+    border-bottom: 5px solid;
+    border-color: #292929;
+    border-radius: 3px;
+    color: white;
+    transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
+}
+
+.topbar-button:active {
+    transform: translateY(calc(-50% + 2px));
+    border-bottom: 3px solid;
+    border-color: #292929;
+    margin-top: 2px;
+}
