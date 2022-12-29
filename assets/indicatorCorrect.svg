@@ -12,7 +12,20 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs10" />
+     id="defs10">
+    <linearGradient
+       id="linearGradient900"
+       inkscape:swatch="gradient">
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1;"
+         offset="0"
+         id="stop896" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:0;"
+         offset="1"
+         id="stop898" />
+    </linearGradient>
+  </defs>
   <sodipodi:namedview
      id="namedview8"
      pagecolor="#000000"
@@ -24,8 +37,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="36.990524"
-     inkscape:cx="6.5557331"
-     inkscape:cy="8.4886606"
+     inkscape:cx="4.365983"
+     inkscape:cy="8.5156945"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -33,7 +46,7 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg6" />
   <ellipse
-     style="fill:#00ff00;stroke-width:0.985993"
+     style="fill:#56ab2f;stroke-width:0.985993;fill-opacity:1"
      id="path297"
      cx="7.9709477"
      cy="7.9033632"
