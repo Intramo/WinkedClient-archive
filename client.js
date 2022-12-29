@@ -35,6 +35,12 @@ function onButtonPress(btn) { // A, B, C, D, Y, N
     connection.send(JSON.stringify({ "packettype": "answer", "button": btn }))
 }
 
+function onTextSend() {
+    gameState = "waiting"
+    refreshDisplay();
+    connection.send(JSON.stringify({ "packettype": "answer", "text": document.getElementById("page-playerAnswerText-text").value }))
+}
+
 function next() {
     countdownStart = 2147483645 * 1000
     connection.send(JSON.stringify({ "packettype": "next" }))
@@ -177,6 +183,13 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
         }
 
+        if (gameState === "playerAnswerText") {
+            document.getElementById("page-playerAnswerText-text").value = "";
+            for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
+            for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
+        }
+
         if (gameState === "playerResultCorrect") {
             for (const element of document.getElementsByClassName("var-answerstreak")) { element.innerHTML = data["answerstreak"] };
         }
@@ -224,6 +237,23 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersTrueFalse") {
+            for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
+            for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
+            for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
+            startCountdown(data["duration"] * 1000)
+            function hostQuestionCountdown() {
+                let ct = getCountdown()
+                if (ct <= 0) {
+                    next()
+                    return
+                }
+                for (const element of document.getElementsByClassName("var-hostQuestionCountdown")) { element.innerHTML = Math.floor(ct) };
+                setTimeout(hostQuestionCountdown, 20)
+            }
+            hostQuestionCountdown()
+        }
+
+        if (gameState === "hostAnswersText") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };

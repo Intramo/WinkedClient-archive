@@ -425,6 +425,12 @@ body {
     --card-height: calc(100% - calc(var(--card-gap) * 2));
 }
 
+.pagePlayerAnswer.Text>.cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .pagePlayerAnswer>.cards>button {
     position: absolute;
     width: var(--card-width);
@@ -503,6 +509,47 @@ body {
 
 .pagePlayerAnswer.TrueFalse>.cards>.card-b:active {
     border-color: var(--color-btn-red-darker);
+}
+
+.pagePlayerAnswer.Text>.cards>.form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pagePlayerAnswer.Text>.cards input {
+    font-size: 7em;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.pagePlayerAnswer.Text>.cards button {
+    font-size: 7em;
+    padding: 10px 20px;
+    outline: none;
+    background-color: #444444;
+    border: 1px solid;
+    border-bottom: 5px solid;
+    border-color: #292929;
+    border-radius: 3px;
+    color: white;
+    transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
+    margin: 0px 10px;
+}
+
+.pagePlayerAnswer.Text>.cards button:active {
+    transform: translateY(2px);
+    border-bottom: 3px solid;
+    border-color: #292929;
+    margin-top: 2px;
 }
 
 /*******************************************************

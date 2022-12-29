@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="client.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 </head>
 
 <body>
@@ -125,12 +125,37 @@
         <div class="pagePlayerAnswer TrueFalse">
             <div class="topbar">
                 <p class="progress var-progress">1 von 5</p>
-                <p class="type">Quiz</p>
+                <p class="type">Wahr / Falsch</p>
             </div>
 
             <div class="cards">
                 <button class="card-a" onclick="onButtonPress('Y')">Ja</button>
                 <button class="card-b" onclick="onButtonPress('N')">Nein</button>
+            </div>
+
+            <div class="footer">
+                <p class="name var-playerName">John Doe</p>
+                <p class="points var-points">4200</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="page-playerAnswerText" class="page"
+        style="width: 100%; height: 100vh; display: block; position: relative;">
+        <div class="pagePlayerAnswer Text">
+            <div class="topbar">
+                <p class="progress var-progress">1 von 5</p>
+                <p class="type">Text</p>
+            </div>
+
+            <div class="cards">
+                <div class="form">
+                    <input type="text" placeholder="Antwort..." required id="page-playerAnswerText-text" onkeydown="if (event.keyCode == 13) onTextSend()"><br>
+                    <button onclick="onTextSend()">Senden</button>
+                </div>
             </div>
 
             <div class="footer">
@@ -250,6 +275,27 @@
                     <p class="char"></p>
                     <p class="text">Nein</p>
                 </button>
+            </div>
+
+            <div class="seconds">
+                <p><span class="var-hostQuestionCountdown"></span></p>
+            </div>
+            <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="page" id="page-hostAnswersText" style="display: none;">
+        <div class="pageHostAnswers Text">
+            <div class="topbar">
+                <p class="question"><span class="var-question"></span></p>
+            </div>
+
+            <div class="content">
+                <span class="var-media-hostAnswersTrueFalse"></span>
             </div>
 
             <div class="seconds">
