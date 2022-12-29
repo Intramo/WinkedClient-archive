@@ -69,10 +69,30 @@ function refreshDisplay() {
     document.getElementById("page-" + gameState).style.display = "block";
 }
 
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+        location.search
+            .substr(1)
+            .split("&")
+            .forEach(function (item) {
+                tmp = item.split("=");
+                if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+            });
+    return result;
+}
+
+let locationParamID = findGetParameter("id")
+let locationParamName = findGetParameter("name")
+
 var connection = new WebSocket("ws://localhost:4348/");
 
 connection.onopen = function (e) {
     console.log("Verbindung zu den Servern hergestellt")
+
+    if(locationParamID != null && locationParamName != null){
+        connection.send(JSON.stringify({ "packettype": "joinRequest", "session": locationParamID, "name": locationParamName }))
+    }
 };
 
 connection.onclose = function (event) {
