@@ -44,17 +44,17 @@ function onLogin() {
     let pin = document.getElementById('page-playerJoin-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
     let name = document.getElementById('page-playerJoin-name').value.trim();
 
-    if(pin === ""){
+    if (pin === "") {
         alert("Das Feld für die Spiel-ID ist leer")
         return
     }
 
-    if(name === ""){
+    if (name === "") {
         alert("Das Feld für deinen Namen ist leer")
         return
     }
 
-    if(name.length < 3){
+    if (name.length < 3) {
         alert("Dein Name muss mindestens 3 Zeichen haben")
         return
     }
@@ -103,7 +103,7 @@ connection.onmessage = function (event) {
     if (data["packettype"] === "addAnswerCount") {
         answerAmount += 1
         for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-        if(answerAmount >= playerAmount) next()
+        if (answerAmount >= playerAmount) next()
         return
     }
 
@@ -133,12 +133,12 @@ connection.onmessage = function (event) {
         var-hostQuestionCountdown
         var-media
         */
-        
-        if (gameState === "hostLobby"){
+
+        if (gameState === "hostLobby") {
             for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"].slice(0, 3) + " " + data["gameid"].slice(3) };
         }
 
-        if (gameState === "playerAnswerNormal"){
+        if (gameState === "playerAnswerNormal") {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
@@ -148,17 +148,17 @@ connection.onmessage = function (event) {
             document.getElementById("page-playerAnswerNormal-card-d").style.display = data["buttons"]["D"] ? "initial" : "none"
         }
 
-        if (gameState === "playerAnswerTrueFalse"){
+        if (gameState === "playerAnswerTrueFalse") {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
         }
 
-        if (gameState === "playerResultCorrect"){
+        if (gameState === "playerResultCorrect") {
             for (const element of document.getElementsByClassName("var-answerstreak")) { element.innerHTML = data["answerstreak"] };
         }
 
-        if (gameState === "hostQuestion"){
+        if (gameState === "hostQuestion") {
             answerAmount = 0
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountDownByWordLength(data["question"].length)
@@ -175,7 +175,7 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState === "hostAnswersNormal"){
+        if (gameState === "hostAnswersNormal") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
@@ -200,7 +200,7 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState === "hostAnswersTrueFalse"){
+        if (gameState === "hostAnswersTrueFalse") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
@@ -217,56 +217,56 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState === "hostResultsNormal"){
+        if (gameState === "hostResultsNormal") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
 
             let amountPoles = (data["answers"].hasOwnProperty("A") ? 1 : 0) + (data["answers"].hasOwnProperty("B") ? 1 : 0) + (data["answers"].hasOwnProperty("C") ? 1 : 0) + (data["answers"].hasOwnProperty("D") ? 1 : 0)
             let height = Math.floor((1 / amountPoles) * 100) + "%"
-            if(data["answers"].hasOwnProperty("A")) document.getElementById("page-hostResultsNormal-pole-a").style.height = height
-            if(data["answers"].hasOwnProperty("B")) document.getElementById("page-hostResultsNormal-pole-b").style.height = height
-            if(data["answers"].hasOwnProperty("C")) document.getElementById("page-hostResultsNormal-pole-c").style.height = height
-            if(data["answers"].hasOwnProperty("D")) document.getElementById("page-hostResultsNormal-pole-d").style.height = height
+            if (data["answers"].hasOwnProperty("A")) document.getElementById("page-hostResultsNormal-pole-a").style.height = height
+            if (data["answers"].hasOwnProperty("B")) document.getElementById("page-hostResultsNormal-pole-b").style.height = height
+            if (data["answers"].hasOwnProperty("C")) document.getElementById("page-hostResultsNormal-pole-c").style.height = height
+            if (data["answers"].hasOwnProperty("D")) document.getElementById("page-hostResultsNormal-pole-d").style.height = height
 
-            if(data["answers"].hasOwnProperty("A")){
+            if (data["answers"].hasOwnProperty("A")) {
                 for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["answers"]["A"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-a").innerHTML = data["answers"]["A"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            }else{
+            } else {
                 document.getElementById("page-hostResultsNormal-card-a").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
             }
 
-            if(data["answers"].hasOwnProperty("B")){
+            if (data["answers"].hasOwnProperty("B")) {
                 for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["answers"]["B"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-b").innerHTML = data["answers"]["B"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            }else{
+            } else {
                 document.getElementById("page-hostResultsNormal-card-b").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "none"
             }
 
-            if(data["answers"].hasOwnProperty("C")){
+            if (data["answers"].hasOwnProperty("C")) {
                 for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerCAmount")) { element.innerHTML = data["answers"]["C"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-c").innerHTML = data["answers"]["C"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            }else{
+            } else {
                 document.getElementById("page-hostResultsNormal-card-c").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "none"
             }
 
-            if(data["answers"].hasOwnProperty("D")){
+            if (data["answers"].hasOwnProperty("D")) {
                 for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerDAmount")) { element.innerHTML = data["answers"]["D"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-d").innerHTML = data["answers"]["D"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            }else{
+            } else {
                 document.getElementById("page-hostResultsNormal-card-d").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "none"
             }
@@ -276,21 +276,21 @@ connection.onmessage = function (event) {
             let amountC = data["answers"].hasOwnProperty("C") ? data["answers"]["C"]["amount"] : 0
             let amountD = data["answers"].hasOwnProperty("D") ? data["answers"]["D"]["amount"] : 0
 
-            if(data["answers"].hasOwnProperty("A")) { for(const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (amountA / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
-            if(data["answers"].hasOwnProperty("B")) { for(const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (amountB / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
-            if(data["answers"].hasOwnProperty("C")) { for(const element of document.getElementsByClassName("bar-answerCAmount")) { element.style.width = (amountC / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
-            if(data["answers"].hasOwnProperty("D")) { for(const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
+            if (data["answers"].hasOwnProperty("A")) { for (const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (amountA / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
+            if (data["answers"].hasOwnProperty("B")) { for (const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (amountB / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
+            if (data["answers"].hasOwnProperty("C")) { for (const element of document.getElementsByClassName("bar-answerCAmount")) { element.style.width = (amountC / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
+            if (data["answers"].hasOwnProperty("D")) { for (const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
         }
 
 
-        if (gameState === "hostResultsTrueFalse"){
+        if (gameState === "hostResultsTrueFalse") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"]};
-            for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"]};
+            for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"] };
+            for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"] };
             for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
-            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };     
+            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
             document.getElementById("page-hostResultsTrueFalse-status-y").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            document.getElementById("page-hostResultsTrueFalse-status-n").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"       
+            document.getElementById("page-hostResultsTrueFalse-status-n").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
         }
 
         refreshDisplay();
