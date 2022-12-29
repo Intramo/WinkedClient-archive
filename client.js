@@ -232,6 +232,7 @@ connection.onmessage = function (event) {
                 for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["answers"]["A"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "block"
+                document.getElementById("page-hostResultsNormal-status-a").innerHTML = data["answers"]["A"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             }else{
                 document.getElementById("page-hostResultsNormal-card-a").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
@@ -242,9 +243,10 @@ connection.onmessage = function (event) {
                 for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["answers"]["B"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "block"
+                document.getElementById("page-hostResultsNormal-status-b").innerHTML = data["answers"]["B"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             }else{
                 document.getElementById("page-hostResultsNormal-card-b").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-b").style.display = "none"
             }
 
             if(data["answers"].hasOwnProperty("C")){
@@ -252,9 +254,10 @@ connection.onmessage = function (event) {
                 for (const element of document.getElementsByClassName("var-answerCAmount")) { element.innerHTML = data["answers"]["C"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "block"
+                document.getElementById("page-hostResultsNormal-status-c").innerHTML = data["answers"]["C"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             }else{
                 document.getElementById("page-hostResultsNormal-card-c").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-c").style.display = "none"
             }
 
             if(data["answers"].hasOwnProperty("D")){
@@ -262,9 +265,10 @@ connection.onmessage = function (event) {
                 for (const element of document.getElementsByClassName("var-answerDAmount")) { element.innerHTML = data["answers"]["D"]["amount"] };
                 document.getElementById("page-hostResultsNormal-card-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "block"
+                document.getElementById("page-hostResultsNormal-status-d").innerHTML = data["answers"]["D"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             }else{
                 document.getElementById("page-hostResultsNormal-card-d").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+                document.getElementById("page-hostResultsNormal-pole-d").style.display = "none"
             }
 
             let amountA = data["answers"].hasOwnProperty("A") ? data["answers"]["A"]["amount"] : 0
