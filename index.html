@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="client.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="client.jss" defer></script>
+    <script src="client.js" defer></script>
 </head>
 
 <body>
@@ -331,11 +331,11 @@
             <div class="content">
                 <div class="wrapper" style="height: 50%; width: 50%;">
                     <div class="pole" id="page-hostResultsNormal-pole-y" style="height: 50%;">
-                        <p class="amount"><span class="var-answerYAmount"></span></p>
+                        <p class="amount" style="--color: var(--color-btn-blue-darker)"><span class="var-answerYAmount"></span></p>
                         <div class="bar bar-answerYAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
                     </div>
                     <div class="pole" id="page-hostResultsNormal-pole-n" style="height: 50%;">
-                        <p class="amount"><span class="var-answerNAmount"></span></p>
+                        <p class="amount" style="--color: var(--color-btn-red-darker)"><span class="var-answerNAmount"></span></p>
                         <div class="bar bar-answerNAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
                     </div>
                 </div>
@@ -345,10 +345,12 @@
                 <button class="card-blue">
                     <p class="char"></p>
                     <p class="text">Ja</p>
+                    <div class="statusIndicator" id="page-hostResultsTrueFalse-status-y"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
                 <button class="card-red">
                     <p class="char"></p>
                     <p class="text">Nein</p>
+                    <div class="statusIndicator" id="page-hostResultsTrueFalse-status-n"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
             </div>
         </div>

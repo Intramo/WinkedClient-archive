@@ -276,10 +276,10 @@ connection.onmessage = function (event) {
             let amountC = data["answers"].hasOwnProperty("C") ? data["answers"]["C"]["amount"] : 0
             let amountD = data["answers"].hasOwnProperty("D") ? data["answers"]["D"]["amount"] : 0
 
-            if(data["answers"].hasOwnProperty("A")) { for(const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (amountA / (amountA+amountB+amountC+amountD)) * 89 + "%" } }
-            if(data["answers"].hasOwnProperty("B")) { for(const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (amountB / (amountA+amountB+amountC+amountD)) * 89 + "%" } }
-            if(data["answers"].hasOwnProperty("C")) { for(const element of document.getElementsByClassName("bar-answerCAmount")) { element.style.width = (amountC / (amountA+amountB+amountC+amountD)) * 89 + "%" } }
-            if(data["answers"].hasOwnProperty("D")) { for(const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA+amountB+amountC+amountD)) * 89 + "%" } }
+            if(data["answers"].hasOwnProperty("A")) { for(const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (amountA / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
+            if(data["answers"].hasOwnProperty("B")) { for(const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (amountB / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
+            if(data["answers"].hasOwnProperty("C")) { for(const element of document.getElementsByClassName("bar-answerCAmount")) { element.style.width = (amountC / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
+            if(data["answers"].hasOwnProperty("D")) { for(const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA+amountB+amountC+amountD)) * 90 + "%" } }
         }
 
 
@@ -287,8 +287,10 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"]};
             for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"]};
-            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 89 + "%" };
-            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 89 + "%" };            
+            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
+            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };     
+            document.getElementById("page-hostResultsTrueFalse-status-y").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+            document.getElementById("page-hostResultsTrueFalse-status-n").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"       
         }
 
         refreshDisplay();
