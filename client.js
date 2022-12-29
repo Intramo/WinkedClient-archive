@@ -78,13 +78,13 @@ function refreshDisplay() {
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
-        location.search
-            .substr(1)
-            .split("&")
-            .forEach(function (item) {
-                tmp = item.split("=");
-                if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-            });
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
     return result;
 }
 
@@ -96,7 +96,7 @@ var connection = new WebSocket("ws://localhost:4348/");
 connection.onopen = function (e) {
     console.log("Verbindung zu den Servern hergestellt")
 
-    if(locationParamID != null && locationParamName != null){
+    if (locationParamID != null && locationParamName != null) {
         connection.send(JSON.stringify({ "packettype": "joinRequest", "session": locationParamID, "name": locationParamName }))
     }
 };
@@ -349,7 +349,7 @@ connection.onmessage = function (event) {
         if (gameState === "hostResultsText") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of data["correct"]) { document.getElementById("page-hostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
-            document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none": "block"
+            document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none" : "block"
             for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
         }
 

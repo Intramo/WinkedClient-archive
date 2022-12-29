@@ -884,7 +884,7 @@ body {
     padding: 0px 10px;
 }
 
-.pageHostAnswerText>div>p{
+.pageHostAnswerText>div>p {
     padding: 10px;
     margin: 10px;
     display: inline-block;
@@ -892,12 +892,10 @@ body {
     border-radius: 5px;
 }
 
-.pageHostAnswerText>.correct>p{
+.pageHostAnswerText>.correct>p {
     background-color: #56ab2f;
 }
 
-.pageHostAnswerText>.wrong>p{
+.pageHostAnswerText>.wrong>p {
     background-color: #f23052;
 }
-
-
