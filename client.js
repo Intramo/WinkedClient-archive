@@ -132,6 +132,9 @@ connection.onmessage = function (event) {
 
         console.log(data)
 
+        for (const element of document.getElementsByClassName("var-media-hostAnswersNormal")) { element.innerHTML = "" };
+        for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = "" };
+
         /*
         var-gameID
         var-playerName
@@ -197,7 +200,7 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostAnswersNormal") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
+            for (const element of document.getElementsByClassName("var-media-hostAnswersNormal")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"] };
             for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"] };
@@ -222,7 +225,7 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostAnswersTrueFalse") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media")) { element.innerHTML = data["media"] };
+            for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
