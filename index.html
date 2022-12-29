@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="client.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 </head>
 
 <body>
@@ -277,24 +277,21 @@
 
             <div class="content">
                 <div class="wrapper" style="height: 85%; width: 50%;">
-                    <div class="pole" id="page-hostResultsNormal-pole-a">
-                        <p class="amount"><span class="var-answerAAmount">5</span></p>
+                    <div class="pole" id="page-hostResultsNormal-pole-a" style="height: 25%;">
+                        <p class="amount" style="--color: var(--color-btn-red-darker)"><span class="var-answerAAmount">5</span></p>
                         <div class="bar bar-answerAAmount" style="--color: var(--color-btn-red); width: 44.5%;"></div>
                     </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-b">
-                        <p class="amount"><span class="var-answerBAmount">5</span></p>
+                    <div class="pole" id="page-hostResultsNormal-pole-b" style="height: 25%;">
+                        <p class="amount" style="--color: var(--color-btn-blue-darker)"><span class="var-answerBAmount">5</span></p>
                         <div class="bar bar-answerBAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
                     </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-c">
-                        <p class="amount"><span class="var-answerCAmount">5</span></p>
-                        <div class="bar bar-answerCAmount" style="--color: var(--color-btn-yellow); width: 0%;">
-                        </div>
+                    <div class="pole" id="page-hostResultsNormal-pole-c" style="height: 25%;">
+                        <p class="amount" style="--color: var(--color-btn-yellow-darker)"><span class="var-answerCAmount">5</span></p>
+                        <div class="bar bar-answerCAmount" style="--color: var(--color-btn-yellow); width: 0%;"></div>
                     </div>
-
-                    <div class="pole" id="page-hostResultsNormal-pole-d">
-                        <p class="amount"><span class="var-answerDAmount">5</span></p>
-                        <div class="bar bar-answerDAmount" style="--color: var(--color-btn-green); width: 44.5%;">
-                        </div>
+                    <div class="pole" id="page-hostResultsNormal-pole-d" style="height: 25%;">
+                        <p class="amount" style="--color: var(--color-btn-green-darker)"><span class="var-answerDAmount">5</span></p>
+                        <div class="bar bar-answerDAmount" style="--color: var(--color-btn-green); width: 44.5%;"></div>
                     </div>
                 </div>
             </div>
@@ -303,18 +300,22 @@
                 <button class="card-red" id="page-hostResultsNormal-card-a">
                     <p class="char">A</p>
                     <p class="text"><span class="var-answerA"></span></p>
+                    <div class="statusIndicator" id="page-hostResultsNormal-status-a"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
                 <button class="card-blue" id="page-hostResultsNormal-card-b">
                     <p class="char">B</p>
                     <p class="text"><span class="var-answerB"></span></p>
+                    <div class="statusIndicator" id="page-hostResultsNormal-status-b"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
                 <button class="card-yellow" id="page-hostResultsNormal-card-c">
                     <p class="char">C</p>
                     <p class="text"><span class="var-answerC"></span></p>
+                    <div class="statusIndicator" id="page-hostResultsNormal-status-c"><img src="assets/indicatorWrong.svg"></div>
                 </button>
                 <button class="card-green" id="page-hostResultsNormal-card-d">
                     <p class="char">D</p>
                     <p class="text"><span class="var-answerD"></span></p>
+                    <div class="statusIndicator" id="page-hostResultsNormal-status-d"><img src="assets/indicatorWrong.svg"></div>
                 </button>
             </div>
         </div>

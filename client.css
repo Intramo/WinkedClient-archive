@@ -631,15 +631,25 @@ body {
 
 .pageHostAnswers>.content>.wrapper>.pole {
     width: 100%;
+    background-color: rgb(170, 170, 170);
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .pageHostAnswers>.content>.wrapper>.pole>.amount {
     float: left;
     width: 10%;
     font-size: 2em;
+    height: 100%;
     margin: 0px;
-    top: 50%;
-    transform: translateY(50%);
+    background-color: var(--color);
+    color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 8px 0px 5px rgba(0, 0, 0, 0.144);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pageHostAnswers>.content>.wrapper>.pole>.bar {
@@ -700,6 +710,14 @@ body {
 
 .pageHostAnswers.TrueFalse>.cards>button>.text {
     font-size: 12em;
+}
+
+.pageHostAnswers>.cards>button>.statusIndicator{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: calc(var(--card-gap) * 3);
+    transform: translate(33%, -33%);
 }
 
 .pageHostAnswers>.cards>.card-red {
