@@ -255,7 +255,7 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostAnswersText") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
+            for (const element of document.getElementsByClassName("var-media-hostAnswersText")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
@@ -344,6 +344,13 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
             document.getElementById("page-hostResultsTrueFalse-status-y").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             document.getElementById("page-hostResultsTrueFalse-status-n").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+        }
+
+        if (gameState === "hostResultsText") {
+            for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
+            for (const element of data["correct"]) { document.getElementById("page-hostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
+            document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none": "block"
+            for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
         }
 
         refreshDisplay();
