@@ -16,8 +16,8 @@ https://codepen.io/samdbeckham/pen/eJpxYR
     --color-btn-yellow-darker: #6d6d01;
     --color-btn-green-darker: #016b21;
 
-    --color-wrong: #f23052;
-    --color-right: #61b536;
+    --gradient: linear-gradient(to right, #FFD200, #F7971E);
+    /*--gradient: linear-gradient(to right, #f9b660, #ffdf4c);*/
 }
 
 * {
@@ -36,7 +36,7 @@ body {
 
 .page-playerJoin-bg {
     background: #F7971E;
-    background: linear-gradient(to right, #FFD200, #F7971E);
+    background: var(--gradient);
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -162,6 +162,7 @@ body {
 .page-playerJoin>.center {
     width: 90%;
     max-width: calc(600px + 10%);
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.479));
 }
 
 .page-playerJoin>.center>img {
@@ -174,7 +175,6 @@ body {
     width: 100%;
     padding: 20px;
     border-radius: 5px;
-    filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, 0.479));
 }
 
 .page-playerJoin>.center>.form-container>input {
