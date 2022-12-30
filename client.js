@@ -13,6 +13,15 @@ var answerAmount = 0
 var countdownStart = 0
 var countdownDuration = 10000
 
+/*
+Song: Sam Day & wes mills - Running Away [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download/Stream: http://NCS.io/RunningAway
+Watch: http://youtu.be/
+*/
+var audioTrack1 = new Audio("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
+var audioTrack1Positions = [47, 73, 98, 128, 140]
+
 refreshDisplay();
 
 function startCountDownByWordLength(length) {
@@ -91,7 +100,7 @@ function findGetParameter(parameterName) {
 let locationParamID = findGetParameter("id")
 let locationParamName = findGetParameter("name")
 
-var connection = new WebSocket("ws://localhost:4348/");
+var connection = new WebSocket("wss://server.winked.app:4348/");
 
 connection.onopen = function (e) {
     console.log("Verbindung zu den Servern hergestellt")
@@ -211,6 +220,11 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
+        if (gameState.startsWith("hostAnswers")){
+            audioTrack1.play()
+            audioTrack1.currentTime = audioTrack1Positions[Math.floor(Math.random()*audioTrack1Positions.length)]
+        }
+
         if (gameState === "hostAnswersNormal") {
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
             for (const element of document.getElementsByClassName("var-media-hostAnswersNormal")) { element.innerHTML = data["media"] };
@@ -268,6 +282,10 @@ connection.onmessage = function (event) {
                 setTimeout(hostQuestionCountdown, 20)
             }
             hostQuestionCountdown()
+        }
+
+        if (gameState.startsWith("hostResults")){
+            audioTrack1.pause()
         }
 
         if (gameState === "hostResultsNormal") {
