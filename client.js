@@ -220,7 +220,7 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState.startsWith("hostAnswers")){
+        if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")){
             audioTrack1.play()
             audioTrack1.currentTime = audioTrack1Positions[Math.floor(Math.random()*audioTrack1Positions.length)]
         }
