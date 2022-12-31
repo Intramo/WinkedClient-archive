@@ -28,7 +28,7 @@ Watch: http://youtu.be/
 refreshDisplay();
 
 Array.prototype.random = function () {
-    return this[Math.floor((Math.random()*this.length))];
+    return this[Math.floor((Math.random() * this.length))];
 }
 
 function startCountDownByWordLength(length) {
@@ -127,12 +127,12 @@ connection.onerror = function (error) {
     alert('Verbindungsfehler');
 };
 
-function addSound(path){
+function addSound(path) {
     let audio = new Audio(path)
     audio.addEventListener('canplaythrough', () => {
-        audioDownloadProgress+=1
-        console.log("+ Loaded audio "+audioDownloadProgress+"/7")
-    }, false); 
+        audioDownloadProgress += 1
+        console.log("+ Loaded audio " + audioDownloadProgress + "/7")
+    }, false);
     return audio
 }
 
@@ -268,7 +268,7 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")){
+        if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")) {
             audioTrack1.currentTime = audioTrack1Positions.random()
             audioTrack1.play()
         }
@@ -332,7 +332,7 @@ connection.onmessage = function (event) {
             hostQuestionCountdown()
         }
 
-        if (gameState.startsWith("hostResults")){
+        if (gameState.startsWith("hostResults")) {
             audioTrack1.pause()
             soundEffects["nextQuestion"].random().play()
         }
@@ -430,18 +430,18 @@ connection.onmessage = function (event) {
 
             setTimeout(() => {
                 document.getElementById("page-hostPodium-wrapper").style.right = "0vw"
-                setTimeout(() => { document.getElementById("medalContainer3").classList.add("shown") }, 1 * 1000)
+                setTimeout(() => { document.getElementById("medalContainer3").classList.add("shown"); soundEffects["podium"]["3"].play() }, 1 * 1000)
             }, 0)
 
             setTimeout(() => {
                 document.getElementById("page-hostPodium-wrapper").style.right = "-100vw"
-                setTimeout(() => { document.getElementById("medalContainer2").classList.add("shown") }, 1 * 1000)
+                setTimeout(() => { document.getElementById("medalContainer2").classList.add("shown"); soundEffects["podium"]["2"].play() }, 1 * 1000)
             }, 6 * 1000)
 
             setTimeout(() => {
                 document.getElementById("page-hostPodium-wrapper").style.right = "-200vw"
-                setTimeout(() => { document.getElementById("medalContainer1").classList.add("shown") }, 1 * 1000)
-            }, 6 * 1000)
+                setTimeout(() => { document.getElementById("medalContainer1").classList.add("shown"); soundEffects["podium"]["1"].play() }, 1 * 1000)
+            }, 12 * 1000)
         }
 
         refreshDisplay();
