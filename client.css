@@ -941,6 +941,7 @@ body {
     background: var(--gradient);
     background-size: cover;
     overflow-y: hidden;
+    transition: right 1s ease-in-out;
 }
 
 .pageHostPodium>.podiumContainer{

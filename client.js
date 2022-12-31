@@ -420,6 +420,30 @@ connection.onmessage = function (event) {
             for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
         }
 
+        if (gameState === "hostPodium") {
+            for (const element of document.getElementsByClassName("var-p1name")) { element.innerHTML = data["p1name"] };
+            for (const element of document.getElementsByClassName("var-p1points")) { element.innerHTML = data["p1points"] };
+            for (const element of document.getElementsByClassName("var-p2name")) { element.innerHTML = data["p2name"] };
+            for (const element of document.getElementsByClassName("var-p2points")) { element.innerHTML = data["p2points"] };
+            for (const element of document.getElementsByClassName("var-p3name")) { element.innerHTML = data["p3name"] };
+            for (const element of document.getElementsByClassName("var-p3points")) { element.innerHTML = data["p3points"] };
+
+            setTimeout(() => {
+                document.getElementById("page-hostPodium-wrapper").style.right = "0vw"
+                setTimeout(() => { document.getElementById("medalContainer3").classList.add("shown") }, 1 * 1000)
+            }, 0)
+
+            setTimeout(() => {
+                document.getElementById("page-hostPodium-wrapper").style.right = "-100vw"
+                setTimeout(() => { document.getElementById("medalContainer2").classList.add("shown") }, 1 * 1000)
+            }, 6 * 1000)
+
+            setTimeout(() => {
+                document.getElementById("page-hostPodium-wrapper").style.right = "-200vw"
+                setTimeout(() => { document.getElementById("medalContainer1").classList.add("shown") }, 1 * 1000)
+            }, 6 * 1000)
+        }
+
         refreshDisplay();
     }
 }
