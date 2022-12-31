@@ -13,16 +13,23 @@ var answerAmount = 0
 var countdownStart = 0
 var countdownDuration = 10000
 
+var audioDownloadProgress = 0
+var audioTrack1 = null
+var audioTrack1Positions = [47, 73, 98, 128, 140]
+var soundEffects = null
+
 /*
 Song: Sam Day & wes mills - Running Away [NCS Release]
 Music provided by NoCopyrightSounds
 Free Download/Stream: http://NCS.io/RunningAway
 Watch: http://youtu.be/
 */
-var audioTrack1 = new Audio("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
-var audioTrack1Positions = [47, 73, 98, 128, 140]
 
 refreshDisplay();
+
+Array.prototype.random = function () {
+    return this[Math.floor((Math.random()*this.length))];
+}
 
 function startCountDownByWordLength(length) {
     startCountdown(length * (1000 / 22))
@@ -120,6 +127,15 @@ connection.onerror = function (error) {
     alert('Verbindungsfehler');
 };
 
+function addSound(path){
+    let audio = new Audio(path)
+    audio.addEventListener('canplaythrough', () => {
+        audioDownloadProgress+=1
+        console.log("+ Loaded audio "+audioDownloadProgress+"/7")
+    }, false); 
+    return audio
+}
+
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
 
@@ -174,6 +190,38 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostLobby") {
             for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"].slice(0, 3) + " " + data["gameid"].slice(3) };
+
+            audioTrack1 = addSound("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
+
+            soundEffects = {
+                "podium": {
+                    "3": addSound([
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494897553944616/tmp_7901-951678082.mp3", // Fortnite death sound
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494897256157294/spongebob-fail.mp3", // Spongebob Fail
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896937381989/kann-es-sein-das-du-dumm-bist-oder-so-was.mp3", // Kann es sein das du dumm bist oder sowas
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896597651496/hello-hello-do-you-speak-germany-monte-lustiger-clip.mp3", // Do you speak germany?
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896236933201/emotional-damage-meme.mp3", // Emotional damage
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494895947534398/das-gibt-ne-6.mp3" // Das gibt eine 6
+                    ].random()),
+                    "2": addSound([
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494859448688751/anime-wow-sound-effect.mp3", // Wow
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494859171856515/tf_nemesis.mp3", // Sad
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858874069102/suiiiiiiiiiii.mp3", // Suiiii
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858546905200/paulaner.mp3", // Paulaner Garten
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858202992719/meme-de-creditos-finales.mp3" // Directed by Robert D.
+                    ].random()),
+                    "1": addSound([
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767958335570/titanic-parody-mp3cut.mp3", // Flute Titanic
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767643766794/outro-song_oqu8zAg.mp3", // Outro song
+                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767333384302/my-movie-6_0RlWMvM.mp3" // Wide
+                    ].random())
+                },
+                "nextQuestion": [
+                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803296452758/expedientes-secretos-x-musica22.mp3"), // Mysterious
+                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803552313456/preview_4.mp3"), // Windows XP Shutdown
+                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803812343898/erro.mp3") // Windows XP Error
+                ]
+            }
         }
 
         if (gameState === "playerAnswerNormal") {
@@ -221,8 +269,8 @@ connection.onmessage = function (event) {
         }
 
         if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")){
+            audioTrack1.currentTime = audioTrack1Positions.random()
             audioTrack1.play()
-            audioTrack1.currentTime = audioTrack1Positions[Math.floor(Math.random()*audioTrack1Positions.length)]
         }
 
         if (gameState === "hostAnswersNormal") {
@@ -286,6 +334,7 @@ connection.onmessage = function (event) {
 
         if (gameState.startsWith("hostResults")){
             audioTrack1.pause()
+            soundEffects["nextQuestion"].random().play()
         }
 
         if (gameState === "hostResultsNormal") {
