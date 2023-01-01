@@ -136,6 +136,14 @@ function addSound(path) {
     return audio
 }
 
+var preloadedImages = [];
+function preloadImage(list) {
+    for (var i = 0; i < list.length; i++) {
+        preloadedImages[i] = new Image();
+        preloadedImages[i].src = list[i];
+    }
+}
+
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
 
@@ -196,32 +204,28 @@ connection.onmessage = function (event) {
             soundEffects = {
                 "podium": {
                     "3": addSound([
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494897553944616/tmp_7901-951678082.mp3", // Fortnite death sound
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494897256157294/spongebob-fail.mp3", // Spongebob Fail
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896937381989/kann-es-sein-das-du-dumm-bist-oder-so-was.mp3", // Kann es sein das du dumm bist oder sowas
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896597651496/hello-hello-do-you-speak-germany-monte-lustiger-clip.mp3", // Do you speak germany?
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494896236933201/emotional-damage-meme.mp3", // Emotional damage
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494895947534398/das-gibt-ne-6.mp3" // Das gibt eine 6
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126951100447/fail.mp3", // Spongebob Fail
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126074474516/doyouspeakgermany.mp3", // Do you speak germany?
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126619742208/emotionaldamage.mp3" // Emotional damage
                     ].random()),
                     "2": addSound([
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494859448688751/anime-wow-sound-effect.mp3", // Wow
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494859171856515/tf_nemesis.mp3", // Sad
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858874069102/suiiiiiiiiiii.mp3", // Suiiii
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858546905200/paulaner.mp3", // Paulaner Garten
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494858202992719/meme-de-creditos-finales.mp3" // Directed by Robert D.
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076102108229702/wow.mp3", // Wow
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076101776887898/sad.mp3", // Sad
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076101462302770/credits.mp3" // Directed by Robert D.
                     ].random()),
                     "1": addSound([
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767958335570/titanic-parody-mp3cut.mp3", // Flute Titanic
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767643766794/outro-song_oqu8zAg.mp3", // Outro song
-                        "https://cdn.discordapp.com/attachments/954786798767312946/1058494767333384302/my-movie-6_0RlWMvM.mp3" // Wide
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076055723409408/outro.mp3", // Outro song
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076055991857222/walking.mp3" // Wide
                     ].random())
                 },
                 "nextQuestion": [
-                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803296452758/expedientes-secretos-x-musica22.mp3"), // Mysterious
-                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803552313456/preview_4.mp3"), // Windows XP Shutdown
-                    addSound("https://cdn.discordapp.com/attachments/954786798767312946/1058497803812343898/erro.mp3") // Windows XP Error
+                    addSound("https://cdn.discordapp.com/attachments/1059075995535163403/1059077748913623040/aktex.mp3"), // Mysterious
+                    addSound("https://cdn.discordapp.com/attachments/1059075995535163403/1059077748569681960/windowsshutdown.mp3"), // Windows XP Shutdown
+                    addSound("https://cdn.discordapp.com/attachments/1059075995535163403/1059077748255113256/windowsxperror.mp3") // Windows XP Error
                 ]
             }
+
+            preloadImage(data["preload"]["images"])
         }
 
         if (gameState === "playerAnswerNormal") {
