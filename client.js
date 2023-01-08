@@ -87,8 +87,8 @@ document.getElementById("page-host-file").addEventListener('change', (event) => 
     reader.readAsText(event.target.files[0])
 }, false);
 
-function onHost(){
-    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent}))
+function onHost() {
+    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent }))
 }
 
 function refreshDisplay() {

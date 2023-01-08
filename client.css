@@ -25,7 +25,8 @@ https://codepen.io/samdbeckham/pen/eJpxYR
     font-family: 'Montserrat', sans-serif;
 }
 
-body, html{
+body,
+html {
     margin: 0px;
     padding: 0px;
     width: 100%;
@@ -1064,7 +1065,8 @@ body, html{
     margin-top: 2px;
 }
 
-#page-playerJoin > button, #page-host > button{
+#page-playerJoin>button,
+#page-host>button {
     position: absolute;
     right: 10px;
     top: 10px;
