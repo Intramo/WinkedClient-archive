@@ -4,4 +4,4 @@
 
 # WinkedClient
 
-![image](https://user-images.githubusercontent.com/78906517/209948772-339cf09e-9240-4e1b-83ff-6ba6c4c31f0d.png)
+![image](https://user-images.githubusercontent.com/78906517/210170319-e2fa2fcc-e4ba-4320-bf29-b247c90ebf3f.png)
