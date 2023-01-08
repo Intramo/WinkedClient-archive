@@ -6,7 +6,7 @@ console.log(` __          ___       _    ______    _
      \\/  \\/   |_|_| |_|_|\\_\\______\\__,_|`)
 
 
-var gameState = "playerJoin" // playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
+var gameState = "playerJoin" // host, playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
 var playerAmount = 0
 var answerAmount = 0
 
@@ -18,12 +18,7 @@ var audioTrack1 = null
 var audioTrack1Positions = [47, 73, 98, 128, 140]
 var soundEffects = null
 
-/*
-Song: Sam Day & wes mills - Running Away [NCS Release]
-Music provided by NoCopyrightSounds
-Free Download/Stream: http://NCS.io/RunningAway
-Watch: http://youtu.be/
-*/
+var hostFileContent = ""
 
 refreshDisplay();
 
@@ -82,6 +77,18 @@ function onLogin() {
     }
 
     connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
+}
+
+document.getElementById("page-host-file").addEventListener('change', (event) => {
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+        hostFileContent = ev.target.result
+    };
+    reader.readAsText(event.target.files[0])
+}, false);
+
+function onHost(){
+    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent}))
 }
 
 function refreshDisplay() {
