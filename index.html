@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="client.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 
     <title>Winked.App</title>
 
@@ -20,6 +20,42 @@
 
 <body>
     <noscript>Diese Website braucht JavaScript. Aktiviere es in deinen Einstellungen.</noscript>
+
+
+
+
+
+    <div id="page-host" class="page" style="width: 100%; height: 100vh; display: block; position: relative;">
+        <ul class="page-playerJoin-bg">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="page-host">
+            <div class="center">
+                <div class="form-container">
+                    <input id="page-host-file" type="file" accept=".json,.winked,.quiz">
+                    <button onclick="onHost()" id="page-host-btn">Erstellen</button>
+                </div>
+            </div>
+        </div>
+        <div class="credits" style="position: absolute; left: 10px; bottom: 10px;">
+            Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
+            Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
+        </div>
+        <button onclick="gameState = 'playerJoin';refreshDisplay()">Spiel erstellen</button>
+    </div>
+
+
+
+
 
     <div id="page-playerJoin" class="page" style="width: 100%; height: 100vh; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
@@ -50,6 +86,7 @@
             Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
             Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
         </div>
+        <button onclick="gameState = 'host';refreshDisplay()">Spiel erstellen</button>
     </div>
 
 
