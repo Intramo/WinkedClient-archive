@@ -1061,3 +1061,9 @@ body {
     border-color: #292929;
     margin-top: 2px;
 }
+
+#page-playerJoin > button, #page-host > button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
