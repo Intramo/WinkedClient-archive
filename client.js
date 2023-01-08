@@ -252,6 +252,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "playerResultCorrect") {
+            for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-answerstreak")) { element.innerHTML = data["answerstreak"] };
         }
 
