@@ -87,8 +87,8 @@ document.getElementById("page-host-file").addEventListener('change', (event) => 
     reader.readAsText(event.target.files[0])
 }, false);
 
-function onHost(){
-    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent}))
+function onHost() {
+    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent }))
 }
 
 function refreshDisplay() {
@@ -413,7 +413,6 @@ connection.onmessage = function (event) {
             if (data["answers"].hasOwnProperty("C")) { for (const element of document.getElementsByClassName("bar-answerCAmount")) { element.style.width = (amountC / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
             if (data["answers"].hasOwnProperty("D")) { for (const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
         }
-
 
         if (gameState === "hostResultsTrueFalse") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
