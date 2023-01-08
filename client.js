@@ -414,7 +414,6 @@ connection.onmessage = function (event) {
             if (data["answers"].hasOwnProperty("D")) { for (const element of document.getElementsByClassName("bar-answerDAmount")) { element.style.width = (amountD / (amountA + amountB + amountC + amountD)) * 90 + "%" } }
         }
 
-
         if (gameState === "hostResultsTrueFalse") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"] };

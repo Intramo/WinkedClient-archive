@@ -151,7 +151,8 @@ html {
     }
 }
 
-.page-playerJoin {
+.page-playerJoin,
+.page-host {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -162,18 +163,21 @@ html {
     justify-content: center;
 }
 
-.page-playerJoin>.center {
+.page-playerJoin>.center,
+.page-host>.center {
     width: 90%;
     max-width: calc(600px + 10%);
     filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.479));
 }
 
-.page-playerJoin>.center>img {
+.page-playerJoin>.center>img,
+.page-host>.center>img {
     width: 100%;
     margin-bottom: 10px;
 }
 
-.page-playerJoin>.center>.form-container {
+.page-playerJoin>.center>.form-container,
+.page-host>.center>.form-container {
     background: white;
     width: 100%;
     padding: 20px;
@@ -190,7 +194,8 @@ html {
     outline: none;
 }
 
-.page-playerJoin>.center>.form-container>button {
+.page-playerJoin>.center>.form-container>button,
+.page-host>.center>.form-container>button {
     font-size: 1.4em;
     padding: 10px;
     display: block;
@@ -205,7 +210,8 @@ html {
     transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
 }
 
-.page-playerJoin>.center>.form-container>button:active {
+.page-playerJoin>.center>.form-container>button:active,
+.page-host>.center>.form-container>button:active {
     transform: translateY(2px);
     border-bottom: 3px solid;
     border-color: #292929;
@@ -1009,45 +1015,14 @@ html {
 /*      host
 /*******************************************************/
 
-.page-host {
+#page-playerJoin>button,
+#page-host>button {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.page-host>.center {
-    width: 90%;
-    max-width: calc(600px + 10%);
-    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.479));
-}
-
-.page-host>.center>.form-container {
-    background: white;
-    width: 100%;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.page-host>.center>.form-container>input {
+    right: 10px;
+    top: 10px;
     font-size: 1.4em;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 20px;
     display: block;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #757575;
-    outline: none;
-}
-
-.page-host>.center>.form-container>button {
-    font-size: 1.4em;
-    padding: 10px;
-    display: block;
-    width: 100%;
     outline: none;
     background-color: #444444;
     border: 1px solid;
@@ -1058,16 +1033,19 @@ html {
     transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
 }
 
-.page-host>.center>.form-container>button:active {
+#page-playerJoin>button,
+#page-host>button {
     transform: translateY(2px);
     border-bottom: 3px solid;
     border-color: #292929;
     margin-top: 2px;
 }
 
-#page-playerJoin>button,
-#page-host>button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
+.page-host input[type="file"] {
+    font-size: 1.5em;
+    margin: 1em 0em;
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
 }
