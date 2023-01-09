@@ -561,6 +561,36 @@ html {
     margin-top: 2px;
 }
 
+.pagePlayerAnswer.Select>.cards {
+    height: calc(75% - 60px);
+}
+
+.pagePlayerAnswer.Select>.submit {
+    position: relative;
+    height: calc(25% - 60px);
+    width: 100%;
+}
+
+.pagePlayerAnswer.Select>.submit>button{
+    --card-gap: 16px;
+    position: relative;
+    width: calc(100% - calc(var(--card-gap) * 2));
+    height: calc(100% - var(--card-gap));
+    left: var(--card-gap);
+    border: 2px solid;
+    border-bottom: 10px solid;
+    border-radius: 5px;
+    transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
+    font-size: calc(25vh - 120px);
+    color: white;
+    background-color: #444444;
+    border-color: #292929;
+}
+
+.pagePlayerAnswer.Select>.cards button.unselected{
+    opacity: 25%;
+}
+
 /*******************************************************
 /*      Player Correct / Wrong
 /*******************************************************/
