@@ -6,7 +6,7 @@
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="client.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 
     <title>Winked.App</title>
 
@@ -28,7 +28,7 @@
 
 
 
-    <div id="page-host" class="page" style="width: 100%; height: 100%; display: block; position: relative;">
+    <div id="page-host" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
             <li></li>
             <li></li>
@@ -164,6 +164,35 @@
                 <button class="card-b" onclick="onButtonPress('B')" id="page-playerAnswerNormal-card-b">B</button>
                 <button class="card-c" onclick="onButtonPress('C')" id="page-playerAnswerNormal-card-c">C</button>
                 <button class="card-d" onclick="onButtonPress('D')" id="page-playerAnswerNormal-card-d">D</button>
+            </div>
+
+            <div class="footer">
+                <p class="name var-playerName">John Doe</p>
+                <p class="points var-points">4200</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="page-playerAnswerSelect" class="page" style="width: 100%; height: 100%; display: block; position: relative;">
+        <div class="pagePlayerAnswer Select">
+            <div class="topbar">
+                <p class="progress var-progress">0 von 0</p>
+                <p class="type">Quiz</p>
+            </div>
+
+            <div class="cards">
+                <button class="card-a unselected" onclick="onSelect('A')" id="page-playerAnswerNormal-card-a">A</button>
+                <button class="card-b unselected" onclick="onSelect('B')" id="page-playerAnswerNormal-card-b">B</button>
+                <button class="card-c" onclick="onSelect('C')" id="page-playerAnswerNormal-card-c">C</button>
+                <button class="card-d" onclick="onSelect('D')" id="page-playerAnswerNormal-card-d">D</button>
+            </div>
+
+            <div class="submit">
+                <button>Senden</button>
             </div>
 
             <div class="footer">
