@@ -1049,3 +1049,13 @@ html {
     border: none;
     outline: none;
 }
+
+.page-host label{
+    font-size: 1.5em;
+    margin: 1em 0.2em;
+    display: inline-block;
+}
+
+.page-host input[type="checkbox"]{
+    height: 100%;
+}

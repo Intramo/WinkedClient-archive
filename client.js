@@ -88,7 +88,12 @@ document.getElementById("page-host-file").addEventListener('change', (event) => 
 }, false);
 
 function onHost() {
-    connection.send(JSON.stringify({ "packettype": "hostRequest", "quiz": hostFileContent }))
+    connection.send(JSON.stringify({
+        "packettype": "hostRequest",
+        "quiz": hostFileContent,
+        "randomizeAnswers": document.getElementById("page-host-randomizeAnswers").checked,
+        "randomizeQuestions": document.getElementById("page-host-randomizeQuestions").checked
+    }))
 }
 
 function refreshDisplay() {
