@@ -27,50 +27,52 @@ var selectedD = false;
 
 refreshDisplay();
 
-function onSelect(btn){
-    if(btn === "A"){
+function onSelect(btn) {
+    if (btn === "A") {
         selectedA = !selectedA
-        if(selectedA){
+        if (selectedA) {
             document.getElementById("page-playerAnswerSelect-card-a").classList.remove("unselected")
-        }else{
+        } else {
             document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected")
         }
     }
-    if(btn === "B"){
+    if (btn === "B") {
         selectedB = !selectedB
-        if(selectedB){
+        if (selectedB) {
             document.getElementById("page-playerAnswerSelect-card-b").classList.remove("unselected")
-        }else{
+        } else {
             document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected")
         }
     }
-    if(btn === "C"){
+    if (btn === "C") {
         selectedC = !selectedC
-        if(selectedC){
+        if (selectedC) {
             document.getElementById("page-playerAnswerSelect-card-c").classList.remove("unselected")
-        }else{
+        } else {
             document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected")
         }
     }
-    if(btn === "D"){
+    if (btn === "D") {
         selectedD = !selectedD
-        if(selectedD){
+        if (selectedD) {
             document.getElementById("page-playerAnswerSelect-card-d").classList.remove("unselected")
-        }else{
+        } else {
             document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected")
         }
     }
 }
 
-function onSubmitSend(){
+function onSubmitSend() {
     gameState = "waiting"
     refreshDisplay();
-    connection.send(JSON.stringify({ "packettype": "answer", "buttons": {
-        "A": selectedA,
-        "B": selectedB,
-        "C": selectedC,
-        "D": selectedD
-    }}))
+    connection.send(JSON.stringify({
+        "packettype": "answer", "buttons": {
+            "A": selectedA,
+            "B": selectedB,
+            "C": selectedC,
+            "D": selectedD
+        }
+    }))
 }
 
 Array.prototype.random = function () {

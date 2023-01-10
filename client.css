@@ -571,7 +571,7 @@ html {
     width: 100%;
 }
 
-.pagePlayerAnswer.Select>.submit>button{
+.pagePlayerAnswer.Select>.submit>button {
     --card-gap: 16px;
     position: relative;
     width: calc(100% - calc(var(--card-gap) * 2));
@@ -587,7 +587,7 @@ html {
     border-color: #292929;
 }
 
-.pagePlayerAnswer.Select>.cards button.unselected{
+.pagePlayerAnswer.Select>.cards button.unselected {
     opacity: 25%;
 }
 
@@ -1080,12 +1080,12 @@ html {
     outline: none;
 }
 
-.page-host label{
+.page-host label {
     font-size: 1.5em;
     margin: 1em 0.2em;
     display: inline-block;
 }
 
-.page-host input[type="checkbox"]{
+.page-host input[type="checkbox"] {
     height: 100%;
 }
