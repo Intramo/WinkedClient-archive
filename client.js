@@ -20,7 +20,58 @@ var soundEffects = null
 
 var hostFileContent = ""
 
+var selectedA = false;
+var selectedB = false;
+var selectedC = false;
+var selectedD = false;
+
 refreshDisplay();
+
+function onSelect(btn){
+    if(btn === "A"){
+        selectedA = !selectedA
+        if(selectedA){
+            document.getElementById("page-playerAnswerSelect-card-a").classList.remove("unselected")
+        }else{
+            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected")
+        }
+    }
+    if(btn === "B"){
+        selectedB = !selectedB
+        if(selectedB){
+            document.getElementById("page-playerAnswerSelect-card-b").classList.remove("unselected")
+        }else{
+            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected")
+        }
+    }
+    if(btn === "C"){
+        selectedC = !selectedC
+        if(selectedC){
+            document.getElementById("page-playerAnswerSelect-card-c").classList.remove("unselected")
+        }else{
+            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected")
+        }
+    }
+    if(btn === "D"){
+        selectedD = !selectedD
+        if(selectedD){
+            document.getElementById("page-playerAnswerSelect-card-d").classList.remove("unselected")
+        }else{
+            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected")
+        }
+    }
+}
+
+function onSubmitSend(){
+    gameState = "waiting"
+    refreshDisplay();
+    connection.send(JSON.stringify({ "packettype": "answer", "buttons": {
+        "A": selectedA,
+        "B": selectedB,
+        "C": selectedC,
+        "D": selectedD
+    }}))
+}
 
 Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
@@ -248,6 +299,24 @@ connection.onmessage = function (event) {
             document.getElementById("page-playerAnswerNormal-card-b").style.display = data["buttons"]["B"] ? "initial" : "none"
             document.getElementById("page-playerAnswerNormal-card-c").style.display = data["buttons"]["C"] ? "initial" : "none"
             document.getElementById("page-playerAnswerNormal-card-d").style.display = data["buttons"]["D"] ? "initial" : "none"
+        }
+
+        if (gameState === "playerAnswerSelect") {
+            for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
+            for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
+            document.getElementById("page-playerAnswerSelect-card-a").style.display = data["buttons"]["A"] ? "initial" : "none"
+            document.getElementById("page-playerAnswerSelect-card-b").style.display = data["buttons"]["B"] ? "initial" : "none"
+            document.getElementById("page-playerAnswerSelect-card-c").style.display = data["buttons"]["C"] ? "initial" : "none"
+            document.getElementById("page-playerAnswerSelect-card-d").style.display = data["buttons"]["D"] ? "initial" : "none"
+            selectedA = false;
+            selectedB = false;
+            selectedC = false;
+            selectedD = false;
+            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected")
         }
 
         if (gameState === "playerAnswerTrueFalse") {
