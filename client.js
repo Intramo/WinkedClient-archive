@@ -339,6 +339,12 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-answerstreak")) { element.innerHTML = data["answerstreak"] };
         }
 
+        if (gameState === "playerResultCorrectSelect") {
+            for (const element of document.getElementsByClassName("var-correctamount")) { element.innerHTML = data["correctamount"] };
+            for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
+            for (const element of document.getElementsByClassName("var-answerstreak")) { element.innerHTML = data["answerstreak"] };
+        }
+
         if (gameState === "hostQuestion") {
             answerAmount = 0
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
