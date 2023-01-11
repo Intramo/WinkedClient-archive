@@ -20,13 +20,7 @@
 </head>
 
 <body>
-    <noscript
-        style="width: 100%; height: 100%; display: block; position: relative; background-color: white; color: black; font-size: 6em;">Diese
-        Website braucht JavaScript. Aktiviere es in deinen Einstellungen.</noscript>
-
-
-
-
+    <noscript>Diese Website braucht JavaScript</noscript>
 
     <div id="page-host" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
@@ -61,10 +55,6 @@
         <button onclick="gameState = 'playerJoin';refreshDisplay()">Spiel beitreten</button>
     </div>
 
-
-
-
-
     <div id="page-playerJoin" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
             <li></li>
@@ -97,10 +87,6 @@
         <button onclick="gameState = 'host';refreshDisplay()">Spiel erstellen</button>
     </div>
 
-
-
-
-
     <div id="page-waiting" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="page-waiting">
             <marquee behavior="alternate" direction="down" width="100%" height="100%">
@@ -113,10 +99,6 @@
             </marquee>
         </div>
     </div>
-
-
-
-
 
     <div id="page-hostLobby" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
@@ -149,10 +131,6 @@
         </div>
     </div>
 
-
-
-
-
     <div id="page-playerAnswerNormal" class="page"
         style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerAnswer Normal">
@@ -174,10 +152,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div id="page-playerAnswerSelect" class="page"
         style="width: 100%; height: 100%; display: none; position: relative;">
@@ -205,10 +179,6 @@
         </div>
     </div>
 
-
-
-
-
     <div id="page-playerAnswerTrueFalse" class="page"
         style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerAnswer TrueFalse">
@@ -228,9 +198,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <div id="page-playerAnswerText" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerAnswer Text">
@@ -254,10 +221,6 @@
         </div>
     </div>
 
-
-
-
-
     <div id="page-playerResultWrong" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerResultWrong">
             <div class="center">
@@ -266,10 +229,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div id="page-playerResultCorrectSelect" class="page"
         style="width: 100%; height: 100%; display: none; position: relative;">
@@ -284,10 +243,6 @@
         </div>
     </div>
 
-
-
-
-
     <div id="page-playerResultCorrect" class="page"
         style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerResultCorrect">
@@ -299,10 +254,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div id="page-hostQuestion" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
@@ -324,10 +275,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
         <div class="pageHostAnswers Normal">
@@ -366,10 +313,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="page" id="page-hostAnswersTrueFalse" style="display: none;">
         <div class="pageHostAnswers TrueFalse">
             <div class="topbar">
@@ -399,10 +342,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="page" id="page-hostAnswersText" style="display: none;">
         <div class="pageHostAnswers Text">
             <div class="topbar">
@@ -420,10 +359,6 @@
             <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
         </div>
     </div>
-
-
-
-
 
     <div class="page" id="page-hostResultsNormal" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pageHostAnswers Normal">
@@ -456,7 +391,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="cards">
                 <button class="card-red" id="page-hostResultsNormal-card-a">
                     <p class="char">A</p>
@@ -486,17 +420,12 @@
         </div>
     </div>
 
-
-
-
-
     <div class="page" id="page-hostResultsTrueFalse" style="display: none;">
         <div class="pageHostAnswers TrueFalse">
             <div class="topbar">
                 <p class="question"><span class="var-question"></span></p>
                 <button onclick="next()" class="topbar-button">Weiter</button>
             </div>
-
             <div class="content">
                 <div class="wrapper" style="height: 50%; width: 50%;">
                     <div class="pole" id="page-hostResultsNormal-pole-y" style="height: 50%;">
@@ -511,7 +440,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="cards">
                 <button class="card-blue">
                     <p class="char"></p>
@@ -529,50 +457,36 @@
         </div>
     </div>
 
-
-
-
-
     <div class="page" id="page-hostResultsText" style="display: none;">
         <div class="pageHostAnswerText">
             <div class="topbar">
                 <p class="question"><span class="var-question">Frage?</span></p>
                 <button onclick="next()" class="topbar-button">Weiter</button>
             </div>
-
             <h1 id="page-hostResultsText-correctHeading">Richtige Antworten:</h1><br>
             <div class="correct" id="page-hostResultsText-correct">
             </div><br>
-
             <h1 id="page-hostResultsText-wrongHeading">Falsche Antworten:</h1><br>
             <div class="wrong" id="page-hostResultsText-wrong">
             </div><br>
         </div>
     </div>
 
-
-
-
-
     <div class="page" id="page-hostPodium" style="display: none; width: 100%;">
         <div class="pageHostPodium" style="right: 0px" id="page-hostPodium-wrapper">
             <div class="podiumContainer">
-
                 <div class="medalContainer" id="medalContainer1">
                     <img src="assets/medals/gold.svg">
                     <p class="name var-p1name">Melon King</p>
                     <p class="points var-p1points">4520</p>
                 </div>
-
             </div>
             <div class="podiumContainer">
-
                 <div class="medalContainer" id="medalContainer2">
                     <img src="assets/medals/silver.svg">
                     <p class="name var-p2name">Melon King</p>
                     <p class="points var-p2points">4520</p>
                 </div>
-
             </div>
             <div class="podiumContainer">
 
@@ -581,11 +495,9 @@
                     <p class="name var-p3name">Melon King</p>
                     <p class="points var-p3points">4520</p>
                 </div>
-
             </div>
         </div>
     </div>
 
 </body>
-
 </html>
