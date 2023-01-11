@@ -1,78 +1,74 @@
-console.log(` __          ___       _    ______    _ 
- \\ \\        / (_)     | |  |  ____|  | |
-  \\ \\  /\\  / / _ _ __ | | _| |__   __| |
-   \\ \\/  \\/ / | | '_ \\| |/ /  __| / _\` |
-    \\  /\\  /  | | | | |   <| |___| (_| |
-     \\/  \\/   |_|_| |_|_|\\_\\______\\__,_|`)
+console.log(` __          ___       _    ______    _ \n \\ \\        / (_)     | |  |  ____|  | |\n  \\ \\  /\\  / / _ _ __ | | _| |__   __| |\n   \\ \\/  \\/ / | | '_ \\| |/ /  __| / _\` |\n    \\  /\\  /  | | | | |   <| |___| (_| |\n     \\/  \\/   |_|_| |_|_|\\_\\______\\__,_|`)
 
+var gameState = "playerJoin"; refreshDisplay();
+var playerAmount = 0;
+var answerAmount = 0;
 
-var gameState = "playerJoin" // host, playerJoin, waiting, answerNormal, answerTrueFalse, playerCorrect, playerWrong, hostLobby, hostPodium, hostLeaderboard, hostResultsNormal, hostResultsTrueFalse, hostAnswers, hostQuestion
-var playerAmount = 0
-var answerAmount = 0
+var countdownStart = 0;
+var countdownDuration = 10000;
 
-var countdownStart = 0
-var countdownDuration = 10000
+var audioTrack1 = null;
+var audioTrack1Positions = [47, 73, 98, 128, 140];
+var audioDownloadProgress = 0;
+var soundEffects = null;
 
-var audioDownloadProgress = 0
-var audioTrack1 = null
-var audioTrack1Positions = [47, 73, 98, 128, 140]
-var soundEffects = null
-
-var hostFileContent = ""
+var hostFileContent = "";
 
 var selectedA = false;
 var selectedB = false;
 var selectedC = false;
 var selectedD = false;
 
-refreshDisplay();
+var locationParamID = findGetParameter("id");
+var locationParamName = findGetParameter("name");
 
 function onSelect(btn) {
     if (btn === "A") {
-        selectedA = !selectedA
+        selectedA = !selectedA;
         if (selectedA) {
-            document.getElementById("page-playerAnswerSelect-card-a").classList.remove("unselected")
+            document.getElementById("page-playerAnswerSelect-card-a").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected");
         }
     }
     if (btn === "B") {
-        selectedB = !selectedB
+        selectedB = !selectedB;
         if (selectedB) {
-            document.getElementById("page-playerAnswerSelect-card-b").classList.remove("unselected")
+            document.getElementById("page-playerAnswerSelect-card-b").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected");
         }
     }
     if (btn === "C") {
-        selectedC = !selectedC
+        selectedC = !selectedC;
         if (selectedC) {
-            document.getElementById("page-playerAnswerSelect-card-c").classList.remove("unselected")
+            document.getElementById("page-playerAnswerSelect-card-c").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected");
         }
     }
     if (btn === "D") {
-        selectedD = !selectedD
+        selectedD = !selectedD;
         if (selectedD) {
-            document.getElementById("page-playerAnswerSelect-card-d").classList.remove("unselected")
+            document.getElementById("page-playerAnswerSelect-card-d").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected")
+            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected");
         }
     }
 }
 
 function onSubmitSend() {
-    gameState = "waiting"
+    gameState = "waiting";
     refreshDisplay();
     connection.send(JSON.stringify({
-        "packettype": "answer", "buttons": {
+        "packettype": "answer",
+        "buttons": {
             "A": selectedA,
             "B": selectedB,
             "C": selectedC,
             "D": selectedD
         }
-    }))
+    }));
 }
 
 Array.prototype.random = function () {
@@ -80,34 +76,34 @@ Array.prototype.random = function () {
 }
 
 function startCountDownByWordLength(length) {
-    startCountdown(length * (1000 / 22))
+    startCountdown(length * (1000 / 22));
 }
 
 function startCountdown(length) {
-    countdownStart = Date.now()
-    countdownDuration = length
+    countdownStart = Date.now();
+    countdownDuration = length;
 }
 
 function getCountdown() {
-    if (Date.now() - countdownStart > countdownDuration) { return 0 }
-    return (countdownDuration + (countdownStart - Date.now())) / 1000
+    if (Date.now() - countdownStart > countdownDuration) { return 0; }
+    return (countdownDuration + (countdownStart - Date.now())) / 1000;
 }
 
 function onButtonPress(btn) { // A, B, C, D, Y, N
-    gameState = "waiting"
+    gameState = "waiting";
     refreshDisplay();
-    connection.send(JSON.stringify({ "packettype": "answer", "button": btn }))
+    connection.send(JSON.stringify({ "packettype": "answer", "button": btn }));
 }
 
 function onTextSend() {
-    gameState = "waiting"
+    gameState = "waiting";
     refreshDisplay();
-    connection.send(JSON.stringify({ "packettype": "answer", "text": document.getElementById("page-playerAnswerText-text").value }))
+    connection.send(JSON.stringify({ "packettype": "answer", "text": document.getElementById("page-playerAnswerText-text").value }));
 }
 
 function next() {
-    countdownStart = 2147483645 * 1000
-    connection.send(JSON.stringify({ "packettype": "next" }))
+    countdownStart = 2147483645 * 1000;
+    connection.send(JSON.stringify({ "packettype": "next" }));
 }
 
 function onLogin() {
@@ -115,29 +111,29 @@ function onLogin() {
     let name = document.getElementById('page-playerJoin-name').value.trim();
 
     if (pin === "") {
-        alert("Das Feld für die Spiel-ID ist leer")
-        return
+        alert("Das Feld für die Spiel-ID ist leer");
+        return;
     }
 
     if (name === "") {
-        alert("Das Feld für deinen Namen ist leer")
-        return
+        alert("Das Feld für deinen Namen ist leer");
+        return;
     }
 
     if (name.length < 3) {
-        alert("Dein Name muss mindestens 3 Zeichen haben")
-        return
+        alert("Dein Name muss mindestens 3 Zeichen haben");
+        return;
     }
 
     connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
 document.getElementById("page-host-file").addEventListener('change', (event) => {
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = (ev) => {
-        hostFileContent = ev.target.result
+        hostFileContent = ev.target.result;
     };
-    reader.readAsText(event.target.files[0])
+    reader.readAsText(event.target.files[0]);
 }, false);
 
 function onHost() {
@@ -146,7 +142,7 @@ function onHost() {
         "quiz": hostFileContent,
         "randomizeAnswers": document.getElementById("page-host-randomizeAnswers").checked,
         "randomizeQuestions": document.getElementById("page-host-randomizeQuestions").checked
-    }))
+    }));
 }
 
 function refreshDisplay() {
@@ -168,9 +164,6 @@ function findGetParameter(parameterName) {
         });
     return result;
 }
-
-let locationParamID = findGetParameter("id")
-let locationParamName = findGetParameter("name")
 
 var connection = new WebSocket("wss://server.winked.app:4348/");
 
