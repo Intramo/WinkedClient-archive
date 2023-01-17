@@ -235,9 +235,9 @@ connection.onmessage = function (event) {
             soundEffects = {
                 "podium": {
                     "3": addSound([
-                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126951100447/fail.mp3", // Spongebob Fail
-                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126074474516/doyouspeakgermany.mp3", // Do you speak germany?
-                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126619742208/emotionaldamage.mp3" // Emotional damage
+                        "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126951100447/fail.mp3"//, // Spongebob Fail
+                        //"https://cdn.discordapp.com/attachments/1059075995535163403/1059076126074474516/doyouspeakgermany.mp3", // Do you speak germany?
+                        //"https://cdn.discordapp.com/attachments/1059075995535163403/1059076126619742208/emotionaldamage.mp3" // Emotional damage
                     ].random()),
                     "2": addSound([
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076102108229702/wow.mp3", // Wow
