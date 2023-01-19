@@ -1,0 +1,236 @@
+:root {
+    --gradient: linear-gradient(to right, #FFD200, #F7971E);
+    --gap: 16px;
+    --subtle-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
+
+    --color-btn: rgb(51, 51, 51);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
+button.button {
+    background-color: var(--color-btn);
+    margin: 0;
+    border: 0;
+    font-size: 1.5em;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #292929;
+    border: 1px solid;
+    border-bottom: 5px solid;
+    border-color: #000000;
+    padding: var(--gap);
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+button.button:hover {
+    transform: translateY(2px);
+
+}
+
+button.button:active {
+    transform: translateY(5px);
+}
+
+errors{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    z-index: 9999999999998;
+}
+
+errors>div{
+    width: calc(100% - 8px);
+    padding: var(--gap);
+    background-color: rgb(206, 0, 0);
+    border-radius: 5px;
+    margin: 4px;
+    color: white;
+    font-size: 2em;
+    z-index: 9999999999999;
+    transition: opacity 0.75s,;
+    margin-top: auto;
+    box-shadow: var(--subtle-shadow);
+}
+
+/***************************************************/
+
+/* width */
+::-webkit-scrollbar {
+    width: var(--gap);
+}
+
+/* Track */
+::-webkit-scrollbar-track {}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+/***************************************************/
+
+.bgAnimatedShapes {
+    background: #F7971E;
+    background: var(--gradient);
+    background-size: cover;
+    position: absolute;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.bgAnimatedShapes li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: shapeAnimation 25s linear infinite;
+    bottom: -150px;
+}
+
+.bgAnimatedShapes li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.bgAnimatedShapes li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.bgAnimatedShapes li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.bgAnimatedShapes li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.bgAnimatedShapes li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.bgAnimatedShapes li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.bgAnimatedShapes li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.bgAnimatedShapes li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.bgAnimatedShapes li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.bgAnimatedShapes li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes shapeAnimation {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+/***************************************************/
+
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.page>.content,
+.page>.bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}

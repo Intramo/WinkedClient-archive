@@ -2,11 +2,22 @@
 <html>
 
 <head>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="client.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/pagePlayerJoin.css">
+    <link rel="stylesheet" href="css/pageHostLobby.css">
+
+    <script src="libs/qrcode.min.js"></script>
+    <script src="translations.js" defer></script>
+    <script src="ui.js" defer></script>
+    <script src="index.js" defer></script>
+
     <script src="client.js" defer></script>
+   
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/99501a977a.js" crossorigin="anonymous"></script>
 
     <title>Winked.App</title>
 
@@ -21,6 +32,62 @@
 
 <body>
     <noscript>Diese Website braucht JavaScript</noscript>
+
+    <errors></errors>
+
+    <div class="page" id="pagePlayerJoin" style="display: block;">
+        <div class="bg bgAnimatedShapes"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></div>
+        <div class="content">
+            <div class="language-container">
+                <div class="language" id="pagePlayerJoin-language"><img src="https://assets-cdn.kahoot.it/controller/v2/assets/language-picker-black-cca293f9.svg"><span data-key="language.short"></span></div>
+                <div class="language-select" id="pagePlayerJoin-language-select" style="display: none;">
+                    <div class="language-selection">
+                        <div class="pagePlayerJoin-language-selection-btn" data-language="English">English</div>
+                        <div class="pagePlayerJoin-language-selection-btn" data-language="German">Deutsch</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="line1"><span data-key="pagePlayerJoin.footer.line1"></span></div>
+                <div class="line2"><span data-key="pagePlayerJoin.footer.line2"></span></div>
+            </div>
+            <div class="login">
+                <img src="assets/logo.svg">
+                <div class="form-container">
+                    <input id="pagePlayerJoin-join-id" class="" type="text" data-key="pagePlayerJoin.gameid" required inputmode="numeric" autocomplete="off" onkeydown="if (event.keyCode == 13) onLogin()">
+                    <input id="pagePlayerJoin-join-name" class="" type="text" data-key="pagePlayerJoin.name" required autocomplete="off" onkeydown="if (event.keyCode == 13) onLogin()">
+                    <button id="pagePlayerJoin-join-btn" class="button" style="width: 100%;" onclick="onLogin()"><span data-key="pagePlayerJoin.join"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-playerJoin" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
+        <div class="page-playerJoin">
+            <div class="center">
+                <img src="assets/logo.svg">
+                <div class="form-container">
+                    <input type="text" required placeholder="Spiel-ID" id="page-playerJoin-id"
+                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
+                    <input type="text" required placeholder="Name" id="page-playerJoin-name"
+                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
+                    <button onclick="onLogin()" id="page-playerJoin-btn">Beitreten</button>
+                </div>
+            </div>
+        </div>
+        <div class="credits" style="position: absolute; left: 10px; bottom: 10px;">
+            Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
+            Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
+        </div>
+        <button onclick="gameState = 'host';refreshDisplay()">Spiel erstellen</button>
+    </div>
+
+
+
+
+
+
+
 
     <div id="page-host" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
@@ -55,37 +122,6 @@
         <button onclick="gameState = 'playerJoin';refreshDisplay()">Spiel beitreten</button>
     </div>
 
-    <div id="page-playerJoin" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
-        <ul class="page-playerJoin-bg">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="page-playerJoin">
-            <div class="center">
-                <img src="assets/logo.svg">
-                <div class="form-container">
-                    <input type="text" required placeholder="Spiel-ID" id="page-playerJoin-id"
-                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
-                    <input type="text" required placeholder="Name" id="page-playerJoin-name"
-                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
-                    <button onclick="onLogin()" id="page-playerJoin-btn">Beitreten</button>
-                </div>
-            </div>
-        </div>
-        <div class="credits" style="position: absolute; left: 10px; bottom: 10px;">
-            Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
-            Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
-        </div>
-        <button onclick="gameState = 'host';refreshDisplay()">Spiel erstellen</button>
-    </div>
 
     <div id="page-waiting" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="page-waiting">

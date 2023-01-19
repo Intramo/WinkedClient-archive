@@ -1,0 +1,117 @@
+#pagePlayerJoin .content>.footer {
+    position: absolute;
+    bottom: var(--gap);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#pagePlayerJoin .content>.footer>div {
+    text-align: center;
+    color: black;
+}
+
+#pagePlayerJoin .content>.footer>.line2 {
+    margin-top: 8px;
+    font-size: 0.75em
+}
+
+#pagePlayerJoin .content>.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    max-width: 540px;
+}
+
+#pagePlayerJoin .content>.login>img {
+    width: 100%;
+    margin-bottom: var(--gap);
+}
+
+#pagePlayerJoin .content>.login>.form-container {
+    background: white;
+    width: 100%;
+    padding: var(--gap);
+    border-radius: 5px;
+    box-shadow: var(--subtle-shadow);
+}
+
+#pagePlayerJoin .content>.login>.form-container>input {
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: var(--gap);
+    outline: 0;
+    font-size: 1.5em;
+    border: 1px #757575 solid;
+    color: black;
+    padding: var(--gap);
+}
+
+#pagePlayerJoin .content>.login>.form-container>input.wrong {
+    border-color: #ff004D;
+    background: url('https://assets-cdn.kahoot.it/controller/v2/assets/icn_field_error-dfdd7c8c.svg') right center / calc(var(--gap) * 2) calc(var(--gap) * 2) no-repeat scroll rgb(255, 242, 244);
+    animation: 0.5s ease 0s 1 normal none running pagePlayerJoinInputShake;
+}
+
+@keyframes pagePlayerJoinInputShake {
+
+    20%,
+    60% {
+        transform: translate(-0.8rem, 0px);
+    }
+
+    40%,
+    80% {
+        transform: translate(0.8rem, 0px);
+    }
+}
+
+#pagePlayerJoin .content>.language-container {
+    position: absolute;
+    top: var(--gap);
+    right: var(--gap);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#pagePlayerJoin .content>.language-container>.language {
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: var(--subtle-shadow);
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 6px 0px 1px;
+    border-radius: var(--gap);
+    width: fit-content;
+}
+
+#pagePlayerJoin .content>.language-container>.language-select {
+    background-color: #fff;
+    margin-top: 5px;
+    padding: 5px;
+    box-shadow: var(--subtle-shadow);
+    border-radius: 5px;
+}
+
+#pagePlayerJoin .content>.language-container>.language-select>.language-selection {
+    padding: 5px 0px;
+    overflow-y: scroll;
+    max-height: 15rem;
+}
+
+#pagePlayerJoin .content>.language-container>.language-select>.language-selection>div {
+    padding: 10px;
+    padding-right: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#pagePlayerJoin .content>.language-container>.language-select>.language-selection>div:hover {
+    background-color: #75757546;
+}

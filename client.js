@@ -22,6 +22,17 @@ var selectedD = false;
 var locationParamID = findGetParameter("id");
 var locationParamName = findGetParameter("name");
 
+function pushErrorMessage(text){
+    let element =  document.createElement("div");
+    element.classList.add("error")
+    element.appendChild(document.createTextNode(text));
+    document.querySelector("errors").insertAdjacentElement("afterbegin", element)
+    setTimeout(() => {
+        element.style.opacity = "0%";
+        setTimeout(() => {element.remove();}, 750)
+    }, 5000);
+}
+
 function onSelect(btn) {
     if (btn === "A") {
         selectedA = !selectedA;
@@ -107,25 +118,44 @@ function next() {
 }
 
 function onLogin() {
-    let pin = document.getElementById('page-playerJoin-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
-    let name = document.getElementById('page-playerJoin-name').value.trim();
+    let pin = document.getElementById('pagePlayerJoin-join-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
+    let name = document.getElementById('pagePlayerJoin-join-name').value.trim();
 
-    if (pin === "") {
-        alert("Das Feld für die Spiel-ID ist leer");
-        return;
-    }
+    let wrong = false
 
+    document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
+    document.getElementById("pagePlayerJoin-join-name").offsetHeight
     if (name === "") {
-        alert("Das Feld für deinen Namen ist leer");
-        return;
+        pushErrorMessage(getText("error.name.none"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
+    }else if (name.length < 3) {
+        pushErrorMessage(getText("error.name.tooshort"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
+    }else if (name.length > 16) {
+        pushErrorMessage(getText("error.name.toolong"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
     }
 
-    if (name.length < 3) {
-        alert("Dein Name muss mindestens 3 Zeichen haben");
-        return;
+    document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
+    document.getElementById("pagePlayerJoin-join-id").offsetHeight
+    if (pin === "") {
+        pushErrorMessage(getText("error.id.none"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
+    }else if (pin.length < 5) {
+        pushErrorMessage(getText("error.id.tooshort"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
+    }else if (pin.length > 5) {
+        pushErrorMessage(getText("error.id.toolong"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
     }
 
-    connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
+    //connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
 document.getElementById("page-host-file").addEventListener('change', (event) => {
@@ -149,7 +179,7 @@ function refreshDisplay() {
     for (const element of document.getElementsByClassName("page")) {
         element.style.display = "none";
     }
-    document.getElementById("page-" + gameState).style.display = "block";
+    document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)).style.display = "block";
 }
 
 function findGetParameter(parameterName) {
