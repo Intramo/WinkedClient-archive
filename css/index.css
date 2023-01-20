@@ -71,15 +71,13 @@ errors{
 }
 
 errors>div{
-    width: calc(100% - 8px);
+    width: 100%;
     padding: var(--gap);
-    background-color: rgb(206, 0, 0);
-    border-radius: 5px;
-    margin: 4px;
+    background-color: #ff0015;
     color: white;
     font-size: 2em;
     z-index: 9999999999999;
-    transition: opacity 0.75s,;
+    /*transition: opacity 0.75s,;*/
     margin-top: auto;
     box-shadow: var(--subtle-shadow);
 }

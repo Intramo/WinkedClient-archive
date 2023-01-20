@@ -28,8 +28,7 @@ function pushErrorMessage(text){
     element.appendChild(document.createTextNode(text));
     document.querySelector("errors").insertAdjacentElement("afterbegin", element)
     setTimeout(() => {
-        element.style.opacity = "0%";
-        setTimeout(() => {element.remove();}, 750)
+        element.remove()
     }, 5000);
 }
 
@@ -118,6 +117,8 @@ function next() {
 }
 
 function onLogin() {
+    document.querySelector("errors").innerHTML = ''
+
     let pin = document.getElementById('pagePlayerJoin-join-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
     let name = document.getElementById('pagePlayerJoin-join-name').value.trim();
 
@@ -236,6 +237,22 @@ connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
 
     if (data["packettype"] === "error") {
+        document.querySelector("errors").innerHTML = ''
+        
+        if(data["error"].startsWith("error.name")){
+            document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
+            document.getElementById("pagePlayerJoin-join-name").offsetHeight
+            document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+            pushErrorMessage(getText(data["key"]));
+        }
+
+        if(data["error"].startsWith("error.name")){
+            document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
+            document.getElementById("pagePlayerJoin-join-id").offsetHeight
+            document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+            pushErrorMessage(getText(data["key"]));
+        }
+
         alert(data["message"])
         return
     }

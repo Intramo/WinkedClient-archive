@@ -15,6 +15,7 @@ function getText(key){
         'German': {
             "language.short": "DE",
 
+            "error.id.exist": "Ungültiger Sitzungscode",
             "error.id.none": "Das Feld für die Spiel-ID ist leer",
             "error.id.toolong": "Die Spiel-ID ist zu lang",
             "error.id.tooshort": "Die Spiel-ID ist zu kurz",
@@ -22,6 +23,7 @@ function getText(key){
             "error.name.none": "Das Feld für den Namen ist leer",
             "error.name.toolong": "Der Name ist zu lang",
             "error.name.tooshort": "Der Name ist zu kurz",
+            "error.name.exist": "Der Name wird bereits genutzt",
 
             "pagePlayerJoin.join": "Beitreten",
             "pagePlayerJoin.gameid": "Spiel-ID",
