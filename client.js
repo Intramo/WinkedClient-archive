@@ -146,17 +146,17 @@ function onLogin() {
         pushErrorMessage(getText("error.id.none"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
-    }else if (pin.length < 5) {
+    }else if (pin.length < 7) {
         pushErrorMessage(getText("error.id.tooshort"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
-    }else if (pin.length > 5) {
+    }else if (pin.length > 7) {
         pushErrorMessage(getText("error.id.toolong"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
     }
 
-    //connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
+    if(!wrong) connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
 document.getElementById("page-host-file").addEventListener('change', (event) => {
@@ -236,24 +236,24 @@ function preloadImage(list) {
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
 
+    console.log(data)
+
     if (data["packettype"] === "error") {
         document.querySelector("errors").innerHTML = ''
-        
-        if(data["error"].startsWith("error.name")){
+
+        if(data["key"].startsWith("error.name")){
             document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
             document.getElementById("pagePlayerJoin-join-name").offsetHeight
             document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
             pushErrorMessage(getText(data["key"]));
         }
 
-        if(data["error"].startsWith("error.name")){
+        if(data["key"].startsWith("error.id")){
             document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
             document.getElementById("pagePlayerJoin-join-id").offsetHeight
             document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
             pushErrorMessage(getText(data["key"]));
         }
-
-        alert(data["message"])
         return
     }
 
