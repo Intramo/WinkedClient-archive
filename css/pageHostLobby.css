@@ -13,7 +13,6 @@
     background-color: white;
     clip-path: polygon(calc(100% - 2.5vmin) 0px, 100% 50%, calc(100% - 2.5vmin) 100%, 0px 100%, 0px 0px);
     border-radius: 5px 0px 0px 5px;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +29,6 @@
     background-color: white;
     clip-path: polygon(0px 0%, 100% 0px, 100% 100%, 0px 100%, 2.5vmin 50%);
     border-radius: 0px 5px 5px 0px;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +51,7 @@
 }
 
 #pageHostLobby .content>.header>.qrcode>img {
-    height: calc(15vmin - var(--gap) - 2vmin);
+    height: calc(14vmin - var(--gap));
     aspect-ratio: 1;
     object-fit: contain;
 }
@@ -144,7 +142,6 @@
     #pageHostLobby .content>.header {
         display: block;
         padding-top: 0;
-        margin-bottom: 15vmin;
     }
 
     #pageHostLobby .content>.header>.pin::before {
