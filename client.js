@@ -260,7 +260,7 @@ connection.onmessage = function (event) {
     if (data["packettype"] === "lobbyJoin") {
         playerAmount += 1
         for (const element of document.getElementsByClassName("var-playerAmount")) { element.innerHTML = playerAmount };
-        document.getElementById("pageHostLobbyPlayerList").innerHTML = document.getElementById("pageHostLobbyPlayerList").innerHTML + "<p>" + data["name"] + "</p>"
+        document.getElementById("pageHostLobby-lobby").innerHTML = document.getElementById("pageHostLobby-lobby").innerHTML + "<div class=\"pageHostLobby-lobby-div\"><div class=\"name\">" + data["name"] + "</div></div>"
         return
     }
 
@@ -278,6 +278,16 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostLobby") {
             for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"].slice(0, 3) + " " + data["gameid"].slice(3) };
+
+            var qrcode = new QRCode("pageHostLobby-qrcode", {
+                text: "http://play.winked.app?id=" + data["gameid"],
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
             audioTrack1 = addSound("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
             soundEffects = {
                 "podium": {
