@@ -21,12 +21,3 @@ for(let i=0; i < elements.length; i++){
         applyLanguage();
     });
 }
-
-var qrcode = new QRCode("pageHostLobby-qrcode", {
-    text: "http://play.winked.app",
-    width: 256,
-    height: 256,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-});
