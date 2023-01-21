@@ -62,32 +62,81 @@
         </div>
     </div>
 
-    <div id="page-playerJoin" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="page-playerJoin">
-            <div class="center">
-                <img src="assets/logo.svg">
-                <div class="form-container">
-                    <input type="text" required placeholder="Spiel-ID" id="page-playerJoin-id"
-                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
-                    <input type="text" required placeholder="Name" id="page-playerJoin-name"
-                        onkeydown="if (event.keyCode == 13) document.getElementById('page-playerJoin-btn').click()"><br>
-                    <button onclick="onLogin()" id="page-playerJoin-btn">Beitreten</button>
-                </div>
+    <div class="page" id="pageHostLobby" style="display: block;">
+        <div class="bg bgAnimatedShapes"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></div>
+        <div class="content">
+            <div class="header">
+                <div class="url"><span data-key="pageHostLobby.header.url"></span></div>
+                <div class="pin">909 8080</div>
+                <div class="qrcode" id="pageHostLobby-qrcode"></div>
+            </div>
+
+            <div class="start">
+                <button class="button start"><span data-key="pageHostLobby.start.start"></span></button>
+                <button class="button lock" onclick="onSessionLockButton()" id="pageHostLobby-start-lock"><i class="fa-solid fa-lock-open"></i></button>
+            </div>
+
+            <div class="lobby">
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+                <div class="pageHostLobby-lobby-div"><div class="name">TestAccountTestAccount</div></div>
+            </div>
+
+            <div class="footer">
+                <div class="members"><i class="fa-solid fa-user"></i> 0</div>
+                <!--<div class="settings"><i class="fa-solid fa-expand"></i></div>-->
             </div>
         </div>
-        <div class="credits" style="position: absolute; left: 10px; bottom: 10px;">
-            Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
-            Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
-        </div>
-        <button onclick="gameState = 'host';refreshDisplay()">Spiel erstellen</button>
     </div>
-
-
-
-
-
-
-
 
     <div id="page-host" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <ul class="page-playerJoin-bg">
