@@ -86,9 +86,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: nowrap;
     padding: 0px 6px 0px 1px;
     border-radius: var(--gap);
-    width: fit-content;
+    outline: none;
+    border: none;
 }
 
 #pagePlayerJoin .content>.language-container>.language-select {
