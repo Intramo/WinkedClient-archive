@@ -1,0 +1,86 @@
+.pagePlayerAnswer .bg{
+    background-color: #ccc;
+}
+
+.pagePlayerAnswer .content>.topbar, #pagePlayerAnswerNormal .content>.footer{
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    height: var(--topbar);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 6px;
+    box-shadow: var(--subtle-shadow);
+    justify-content: space-between;
+}
+
+.pagePlayerAnswer .content>.topbar{
+    justify-content: flex-start;
+}
+
+.pagePlayerAnswer .content>.topbar>.progress{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.pagePlayerAnswer .content>.topbar>.type{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ccc;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.pagePlayerAnswer .content>.footer>.name, #pagePlayerAnswerNormal .content>.footer>.points{
+    background-color: var(--color-btn);
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#pagePlayerAnswerNormal .content>.cards{
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--topbar) - var(--topbar));
+    --gap: 8px
+}
+
+#pagePlayerAnswerNormal .content>.cards>button{
+    width: calc(50% - var(--gap) - var(--gap));
+    height: calc(50% - var(--gap) - var(--gap));
+    position: absolute;
+    font-size: calc(30vh - var(--topbar) - var(--gap) - var(--gap));
+}
+
+#pagePlayerAnswerNormal .content>.cards>button.a{
+    top: var(--gap);
+    left: var(--gap);
+    background-color: var(--color-btn-red);
+    border-color: var(--color-btn-red-darker);
+}
+
+#pagePlayerAnswerNormal .content>.cards>button.b{
+    top: var(--gap);
+    right: var(--gap);
+    background-color: var(--color-btn-blue);
+    border-color: var(--color-btn-blue-darker);
+}
+
+#pagePlayerAnswerNormal .content>.cards>button.c{
+    bottom: var(--gap);
+    left: var(--gap);
+    background-color: var(--color-btn-yellow);
+    border-color: var(--color-btn-yellow-darker);
+}
+
+#pagePlayerAnswerNormal .content>.cards>button.d{
+    bottom: var(--gap);
+    right: var(--gap);
+    background-color: var(--color-btn-green);
+    border-color: var(--color-btn-green-darker);
+}
