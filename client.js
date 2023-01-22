@@ -531,8 +531,10 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostResultsText") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
+            document.getElementById("page-hostResultsText-correct").innerHTML = ''
             for (const element of data["correct"]) { document.getElementById("page-hostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
             document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none" : "block"
+            document.getElementById("page-hostResultsText-wrong").innerHTML = ''
             for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
         }
 
