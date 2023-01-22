@@ -108,7 +108,7 @@ function onButtonPress(btn) { // A, B, C, D, Y, N
 function onTextSend() {
     gameState = "waiting";
     refreshDisplay();
-    connection.send(JSON.stringify({ "packettype": "answer", "text": document.getElementById("page-playerAnswerText-text").value }));
+    connection.send(JSON.stringify({ "packettype": "answer", "text": document.getElementById("pagePlayerAnswerText-text").value }));
 }
 
 function next() {
@@ -355,11 +355,12 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "playerAnswerText") {
-            document.getElementById("page-playerAnswerText-text").value = "";
+            document.getElementById("pagePlayerAnswerText-text").value = "";
             for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.text") };
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
+            document.getElementById("pagePlayerAnswerText-text").focus()
         }
 
         if (gameState === "playerResultCorrect") {

@@ -4,4 +4,6 @@
 
 # WinkedClient
 
+Winked is an open source project for live multiplayer quiz games. 
+
 ![image](https://user-images.githubusercontent.com/78906517/210170319-e2fa2fcc-e4ba-4320-bf29-b247c90ebf3f.png)
