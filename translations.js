@@ -28,14 +28,11 @@ function getText(key){
             "pagePlayerJoin.join": "Beitreten",
             "pagePlayerJoin.gameid": "Spiel-ID",
             "pagePlayerJoin.name": "Name",
-            "pagePlayerJoin.footer.line1": "Erstelle ein Quiz auf <a href=\"#\"><b>create.winked.app</b></a>",
-            "pagePlayerJoin.footer.line2": "<a href=\"#\">GitHub</a> | <a href=\"#\" target=\"_blank\">Datenschutz</a>",
+            "pagePlayerJoin.footer.line1": "Erstelle <a href=\"javascript:void(0);\" onclick=\"document.getElementById('hostPopup').style.display = 'flex'\"><b>hier</b></a> ein Quiz",
+            "pagePlayerJoin.footer.line2": "<a href=\"https://github.com/Intramo/WinkedClient\">GitHub</a> | <a href=\"#\" target=\"_blank\">Datenschutz</a>",
 
             "pageHostLobby.header.url": "Tritt dem Spiel unter<br><b>play.winked.app</b> bei",
             "pageHostLobby.start.start": "Starten",
-            "pageHostLobby.": "",
-            "pageHostLobby.": "",
-            "pageHostLobby.": "",
 
             "questionType.text": "<i class=\"fa-regular fa-keyboard\"></i> Texteingabe",
             "questionType.normal": "Quiz",
@@ -43,7 +40,15 @@ function getText(key){
             "questionType.truefalse": "Wahr oder falsch",
             
             "pagePlayerAnswerTrueFalse.yes": "Ja",
-            "pagePlayerAnswerTrueFalse.no": "Nein"
+            "pagePlayerAnswerTrueFalse.no": "Nein",
+
+            "hostPopup.randomizeAnswers": "Antworten zufällig anordnen",
+            "hostPopup.randomizeQuestions": "Fragen zufällig anordnen",
+            "hostPopup.upload": "Eigene Datei hochladen",
+
+            "": "",
+            "": "",
+            "": ""
         },
         'English': {
 

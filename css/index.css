@@ -78,7 +78,7 @@ errors {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    z-index: 9999999999998;
+    z-index: 9999999998;
 }
 
 errors>div {

@@ -159,16 +159,25 @@ function onLogin() {
     if(!wrong) connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
+document.getElementById("hostPopup-file").addEventListener('change', (event) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+        hostFileContent = ev.target.result;
+    };
+    reader.readAsText(event.target.files[0]);
+}, false);
+
 function onHost() {
     connection.send(JSON.stringify({
         "packettype": "hostRequest",
         "quiz": hostFileContent,
-        "randomizeAnswers": document.getElementById("page-host-randomizeAnswers").checked,
-        "randomizeQuestions": document.getElementById("page-host-randomizeQuestions").checked
+        "randomizeAnswers": document.getElementById("hostPopup-randomizeAnswers").checked,
+        "randomizeQuestions": document.getElementById("hostPopup-randomizeQuestions").checked
     }));
 }
 
 function refreshDisplay() {
+    document.getElementById("hostPopup").style.display = "none"
     for (const element of document.getElementsByClassName("page")) {
         element.style.display = "none";
     }
