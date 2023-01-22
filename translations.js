@@ -36,7 +36,8 @@ function getText(key){
             "pageHostLobby.": "",
             "pageHostLobby.": "",
             "pageHostLobby.": "",
-            "": "",
+
+            "questionType.text": "Text",
             "": "",
             "": "",
             "": "",
