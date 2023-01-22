@@ -44,14 +44,10 @@ function getText(key) {
 
             "hostPopup.randomizeAnswers": "Antworten zufällig anordnen",
             "hostPopup.randomizeQuestions": "Fragen zufällig anordnen",
-            "hostPopup.upload": "Eigene Datei hochladen",
-
-            "": "",
-            "": "",
-            "": ""
+            "hostPopup.upload": "Eigene Datei hochladen"
         },
         'English': {
-
+            "language.short": "EN"
         }
     }[currentLanguage][key]
 }

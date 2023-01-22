@@ -1,8 +1,9 @@
-.pagePlayerAnswer .bg{
+.pagePlayerAnswer .bg {
     background-color: #ccc;
 }
 
-.pagePlayerAnswer .content>.topbar, .pagePlayerAnswer .content>.footer{
+.pagePlayerAnswer .content>.topbar,
+.pagePlayerAnswer .content>.footer {
     position: relative;
     width: 100%;
     background-color: #fff;
@@ -15,16 +16,16 @@
     justify-content: space-between;
 }
 
-.pagePlayerAnswer .content>.topbar{
+.pagePlayerAnswer .content>.topbar {
     justify-content: flex-start;
 }
 
-.pagePlayerAnswer .content>.topbar>.progress{
+.pagePlayerAnswer .content>.topbar>.progress {
     font-size: 18px;
     font-weight: bold;
 }
 
-.pagePlayerAnswer .content>.topbar>.type{
+.pagePlayerAnswer .content>.topbar>.type {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -35,7 +36,8 @@
     border-radius: 5px;
 }
 
-.pagePlayerAnswer .content>.footer>.name, #pagePlayerAnswerNormal .content>.footer>.points{
+.pagePlayerAnswer .content>.footer>.name,
+#pagePlayerAnswerNormal .content>.footer>.points {
     background-color: var(--color-btn);
     color: white;
     padding: 10px 20px;
@@ -43,7 +45,7 @@
     border-radius: 5px;
 }
 
-.pagePlayerAnswer .content>.wrapper{
+.pagePlayerAnswer .content>.wrapper {
     position: relative;
     width: 100%;
     height: calc(100% - var(--topbar) - var(--topbar));
@@ -52,35 +54,35 @@
 
 /******************************************************************************************************************/
 
-#pagePlayerAnswerNormal .content>.wrapper>button{
+#pagePlayerAnswerNormal .content>.wrapper>button {
     width: calc(50% - var(--gap) - var(--gap));
     height: calc(50% - var(--gap) - var(--gap));
     position: absolute;
     font-size: calc(30vh - var(--topbar) - var(--gap) - var(--gap));
 }
 
-#pagePlayerAnswerNormal .content>.wrapper>button.a{
+#pagePlayerAnswerNormal .content>.wrapper>button.a {
     top: var(--gap);
     left: var(--gap);
     background-color: var(--color-btn-red);
     border-color: var(--color-btn-red-darker);
 }
 
-#pagePlayerAnswerNormal .content>.wrapper>button.b{
+#pagePlayerAnswerNormal .content>.wrapper>button.b {
     top: var(--gap);
     right: var(--gap);
     background-color: var(--color-btn-blue);
     border-color: var(--color-btn-blue-darker);
 }
 
-#pagePlayerAnswerNormal .content>.wrapper>button.c{
+#pagePlayerAnswerNormal .content>.wrapper>button.c {
     bottom: var(--gap);
     left: var(--gap);
     background-color: var(--color-btn-yellow);
     border-color: var(--color-btn-yellow-darker);
 }
 
-#pagePlayerAnswerNormal .content>.wrapper>button.d{
+#pagePlayerAnswerNormal .content>.wrapper>button.d {
     bottom: var(--gap);
     right: var(--gap);
     background-color: var(--color-btn-green);
@@ -89,21 +91,21 @@
 
 /******************************************************************************************************************/
 
-#pagePlayerAnswerTrueFalse .content>.wrapper>button{
+#pagePlayerAnswerTrueFalse .content>.wrapper>button {
     width: calc(50% - var(--gap) - var(--gap));
     height: calc(100% - var(--gap) - var(--gap));
     position: absolute;
     font-size: calc(30vh - var(--topbar) - var(--gap) - var(--gap));
 }
 
-#pagePlayerAnswerTrueFalse .content>.wrapper>button.a{
+#pagePlayerAnswerTrueFalse .content>.wrapper>button.a {
     top: var(--gap);
     right: var(--gap);
     background-color: var(--color-btn-blue);
     border-color: var(--color-btn-blue-darker);
 }
 
-#pagePlayerAnswerTrueFalse .content>.wrapper>button.b{
+#pagePlayerAnswerTrueFalse .content>.wrapper>button.b {
     top: var(--gap);
     left: var(--gap);
     background-color: var(--color-btn-red);
@@ -112,59 +114,79 @@
 
 /******************************************************************************************************************/
 
-#pagePlayerAnswerSelect .content>.wrapper{
+#pagePlayerAnswerSelect .content>.wrapper {
     height: calc(85% - var(--topbar) - var(--topbar));
 }
 
-#pagePlayerAnswerSelect .content>.submit{
+#pagePlayerAnswerSelect .content>.submit {
     height: 15%;
     padding: 8px;
 }
 
-#pagePlayerAnswerSelect .content>.submit>button{
+#pagePlayerAnswerSelect .content>.submit>button {
     width: 100%;
     height: 100%;
     font-size: 7vh;
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button{
+#pagePlayerAnswerSelect .content>.wrapper>button {
     width: calc(50% - var(--gap) - var(--gap));
     height: calc(50% - var(--gap) - var(--gap));
     position: absolute;
     font-size: calc(30vh - var(--topbar) - var(--gap) - var(--gap));
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.unselected{
+#pagePlayerAnswerSelect .content>.wrapper>button.unselected {
     opacity: 25%;
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.a{
+#pagePlayerAnswerSelect .content>.wrapper>button.a {
     top: var(--gap);
     left: var(--gap);
     background-color: var(--color-btn-red);
     border-color: var(--color-btn-red-darker);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.b{
+#pagePlayerAnswerSelect .content>.wrapper>button.b {
     top: var(--gap);
     right: var(--gap);
     background-color: var(--color-btn-blue);
     border-color: var(--color-btn-blue-darker);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.c{
+#pagePlayerAnswerSelect .content>.wrapper>button.c {
     bottom: var(--gap);
     left: var(--gap);
     background-color: var(--color-btn-yellow);
     border-color: var(--color-btn-yellow-darker);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.d{
+#pagePlayerAnswerSelect .content>.wrapper>button.d {
     bottom: var(--gap);
     right: var(--gap);
     background-color: var(--color-btn-green);
     border-color: var(--color-btn-green-darker);
 }
 
+/******************************************************************************************************************/
 
+#pagePlayerAnswerText .content>.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--gap);
+}
 
+#pagePlayerAnswerText .content>.wrapper>input {
+    font-size: 10vmin;
+    width: 100%;
+    height: 20vmin;
+    margin-bottom: var(--gap);
+}
+
+#pagePlayerAnswerText .content>.wrapper>button {
+    width: 100%;
+    height: 20vmin;
+    font-size: 10vmin;
+}
