@@ -100,9 +100,6 @@ errors>div {
     width: var(--gap);
 }
 
-/* Track */
-::-webkit-scrollbar-track {}
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #444;

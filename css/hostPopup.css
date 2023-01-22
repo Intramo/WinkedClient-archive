@@ -20,7 +20,7 @@
     box-shadow: var(--subtle-shadow);
 }
 
-#hostPopup>.form>button.button{
+#hostPopup>.form>button.button {
     width: 100%;
 }
 
@@ -99,7 +99,7 @@
     transform: rotate(45deg);
 }
 
-#hostPopup>.form>button.close{
+#hostPopup>.form>button.close {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -109,6 +109,6 @@
     border: none;
 }
 
-#hostPopup>.form>button.close>i{
+#hostPopup>.form>button.close>i {
     color: black;
 }

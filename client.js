@@ -22,8 +22,8 @@ var selectedD = false;
 var locationParamID = findGetParameter("id");
 var locationParamName = findGetParameter("name");
 
-function pushErrorMessage(text){
-    let element =  document.createElement("div");
+function pushErrorMessage(text) {
+    let element = document.createElement("div");
     element.classList.add("error")
     element.appendChild(document.createTextNode(text));
     document.querySelector("errors").insertAdjacentElement("afterbegin", element)
@@ -130,11 +130,11 @@ function onLogin() {
         pushErrorMessage(getText("error.name.none"));
         document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
         wrong = true
-    }else if (name.length < 3) {
+    } else if (name.length < 3) {
         pushErrorMessage(getText("error.name.tooshort"));
         document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
         wrong = true
-    }else if (name.length > 16) {
+    } else if (name.length > 16) {
         pushErrorMessage(getText("error.name.toolong"));
         document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
         wrong = true
@@ -146,17 +146,17 @@ function onLogin() {
         pushErrorMessage(getText("error.id.none"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
-    }else if (pin.length < 7) {
+    } else if (pin.length < 7) {
         pushErrorMessage(getText("error.id.tooshort"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
-    }else if (pin.length > 7) {
+    } else if (pin.length > 7) {
         pushErrorMessage(getText("error.id.toolong"));
         document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
         wrong = true
     }
 
-    if(!wrong) connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
+    if (!wrong) connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
 document.getElementById("hostPopup-file").addEventListener('change', (event) => {
@@ -181,8 +181,8 @@ function refreshDisplay() {
     for (const element of document.getElementsByClassName("page")) {
         element.style.display = "none";
     }
-    if(document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)) != null) document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)).style.display = "block";
-    if( document.getElementById("page-" + gameState) != null) document.getElementById("page-" + gameState).style.display = "block";
+    if (document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)) != null) document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)).style.display = "block";
+    if (document.getElementById("page-" + gameState) != null) document.getElementById("page-" + gameState).style.display = "block";
 }
 
 function findGetParameter(parameterName) {
@@ -243,14 +243,14 @@ connection.onmessage = function (event) {
     if (data["packettype"] === "error") {
         document.querySelector("errors").innerHTML = ''
 
-        if(data["key"].startsWith("error.name")){
+        if (data["key"].startsWith("error.name")) {
             document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
             document.getElementById("pagePlayerJoin-join-name").offsetHeight
             document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
             pushErrorMessage(getText(data["key"]));
         }
 
-        if(data["key"].startsWith("error.id")){
+        if (data["key"].startsWith("error.id")) {
             document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
             document.getElementById("pagePlayerJoin-join-id").offsetHeight
             document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
@@ -285,9 +285,9 @@ connection.onmessage = function (event) {
                 text: "http://play.winked.app?id=" + data["gameid"],
                 width: 256,
                 height: 256,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
             });
 
             audioTrack1 = addSound("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
