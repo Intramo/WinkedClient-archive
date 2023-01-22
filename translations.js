@@ -6,11 +6,11 @@ const Language = {
 var currentLanguage = Language.German;
 applyLanguage();
 
-function setLanguage(l){
+function setLanguage(l) {
     currentLanguage = l;
 }
 
-function getText(key){
+function getText(key) {
     return {
         'German': {
             "language.short": "DE",
@@ -38,7 +38,7 @@ function getText(key){
             "questionType.normal": "Quiz",
             "questionType.select": "<i class=\"fa-regular fa-square-check\"> Antworten auswählen</i>",
             "questionType.truefalse": "Wahr oder falsch",
-            
+
             "pagePlayerAnswerTrueFalse.yes": "Ja",
             "pagePlayerAnswerTrueFalse.no": "Nein",
 
@@ -56,16 +56,16 @@ function getText(key){
     }[currentLanguage][key]
 }
 
-function applyLanguage(){
+function applyLanguage() {
     let elements = document.querySelectorAll("span");
-    for(let i=0; i < elements.length; i++){
-        if(!elements[i].hasAttribute("data-key")) continue;
+    for (let i = 0; i < elements.length; i++) {
+        if (!elements[i].hasAttribute("data-key")) continue;
         elements[i].innerHTML = getText(elements[i].dataset.key);
     }
 
     elements = document.querySelectorAll("input[type=\"text\"]");
-    for(let i=0; i < elements.length; i++){
-        if(!elements[i].hasAttribute("data-key")) continue;
+    for (let i = 0; i < elements.length; i++) {
+        if (!elements[i].hasAttribute("data-key")) continue;
         elements[i].placeholder = getText(elements[i].dataset.key);
     }
 }
