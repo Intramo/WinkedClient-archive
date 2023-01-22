@@ -1,0 +1,114 @@
+#hostPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffffa4;
+    z-index: 99999999998;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hostPopup>.form {
+    position: relative;
+    background-color: white;
+    padding: 3vmin;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: var(--subtle-shadow);
+}
+
+#hostPopup>.form>button.button{
+    width: 100%;
+}
+
+#hostPopup>.form>input[type="file"] {
+    display: none;
+    margin-bottom: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+#hostPopup>.form>.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+#hostPopup>.form>.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+#hostPopup>.form>.container>.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+#hostPopup>.form>.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+#hostPopup>.form>.container input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+#hostPopup>.form>.container>.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+#hostPopup>.form>.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+#hostPopup>.form>.container>.checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#hostPopup>.form>button.close{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: translate(50%, -50%);
+    font-size: 2em;
+    background-color: transparent;
+    border: none;
+}
+
+#hostPopup>.form>button.close>i{
+    color: black;
+}

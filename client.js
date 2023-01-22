@@ -22,37 +22,47 @@ var selectedD = false;
 var locationParamID = findGetParameter("id");
 var locationParamName = findGetParameter("name");
 
+function pushErrorMessage(text){
+    let element =  document.createElement("div");
+    element.classList.add("error")
+    element.appendChild(document.createTextNode(text));
+    document.querySelector("errors").insertAdjacentElement("afterbegin", element)
+    setTimeout(() => {
+        element.remove()
+    }, 5000);
+}
+
 function onSelect(btn) {
     if (btn === "A") {
         selectedA = !selectedA;
         if (selectedA) {
-            document.getElementById("page-playerAnswerSelect-card-a").classList.remove("unselected");
+            document.getElementById("pagePlayerAnswerSelect-a").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected");
+            document.getElementById("pagePlayerAnswerSelect-a").classList.add("unselected");
         }
     }
     if (btn === "B") {
         selectedB = !selectedB;
         if (selectedB) {
-            document.getElementById("page-playerAnswerSelect-card-b").classList.remove("unselected");
+            document.getElementById("pagePlayerAnswerSelect-b").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected");
+            document.getElementById("pagePlayerAnswerSelect-b").classList.add("unselected");
         }
     }
     if (btn === "C") {
         selectedC = !selectedC;
         if (selectedC) {
-            document.getElementById("page-playerAnswerSelect-card-c").classList.remove("unselected");
+            document.getElementById("pagePlayerAnswerSelect-c").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected");
+            document.getElementById("pagePlayerAnswerSelect-c").classList.add("unselected");
         }
     }
     if (btn === "D") {
         selectedD = !selectedD;
         if (selectedD) {
-            document.getElementById("page-playerAnswerSelect-card-d").classList.remove("unselected");
+            document.getElementById("pagePlayerAnswerSelect-d").classList.remove("unselected");
         } else {
-            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected");
+            document.getElementById("pagePlayerAnswerSelect-d").classList.add("unselected");
         }
     }
 }
@@ -107,28 +117,49 @@ function next() {
 }
 
 function onLogin() {
-    let pin = document.getElementById('page-playerJoin-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
-    let name = document.getElementById('page-playerJoin-name').value.trim();
+    document.querySelector("errors").innerHTML = ''
 
-    if (pin === "") {
-        alert("Das Feld für die Spiel-ID ist leer");
-        return;
-    }
+    let pin = document.getElementById('pagePlayerJoin-join-id').value.trim().replaceAll(" ", "").replaceAll("-", "");
+    let name = document.getElementById('pagePlayerJoin-join-name').value.trim();
 
+    let wrong = false
+
+    document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
+    document.getElementById("pagePlayerJoin-join-name").offsetHeight
     if (name === "") {
-        alert("Das Feld für deinen Namen ist leer");
-        return;
+        pushErrorMessage(getText("error.name.none"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
+    }else if (name.length < 3) {
+        pushErrorMessage(getText("error.name.tooshort"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
+    }else if (name.length > 16) {
+        pushErrorMessage(getText("error.name.toolong"));
+        document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+        wrong = true
     }
 
-    if (name.length < 3) {
-        alert("Dein Name muss mindestens 3 Zeichen haben");
-        return;
+    document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
+    document.getElementById("pagePlayerJoin-join-id").offsetHeight
+    if (pin === "") {
+        pushErrorMessage(getText("error.id.none"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
+    }else if (pin.length < 7) {
+        pushErrorMessage(getText("error.id.tooshort"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
+    }else if (pin.length > 7) {
+        pushErrorMessage(getText("error.id.toolong"));
+        document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+        wrong = true
     }
 
-    connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
+    if(!wrong) connection.send(JSON.stringify({ "packettype": "joinRequest", "session": pin, "name": name }))
 }
 
-document.getElementById("page-host-file").addEventListener('change', (event) => {
+document.getElementById("hostPopup-file").addEventListener('change', (event) => {
     const reader = new FileReader();
     reader.onload = (ev) => {
         hostFileContent = ev.target.result;
@@ -140,16 +171,18 @@ function onHost() {
     connection.send(JSON.stringify({
         "packettype": "hostRequest",
         "quiz": hostFileContent,
-        "randomizeAnswers": document.getElementById("page-host-randomizeAnswers").checked,
-        "randomizeQuestions": document.getElementById("page-host-randomizeQuestions").checked
+        "randomizeAnswers": document.getElementById("hostPopup-randomizeAnswers").checked,
+        "randomizeQuestions": document.getElementById("hostPopup-randomizeQuestions").checked
     }));
 }
 
 function refreshDisplay() {
+    document.getElementById("hostPopup").style.display = "none"
     for (const element of document.getElementsByClassName("page")) {
         element.style.display = "none";
     }
-    document.getElementById("page-" + gameState).style.display = "block";
+    if(document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)) != null) document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)).style.display = "block";
+    if( document.getElementById("page-" + gameState) != null) document.getElementById("page-" + gameState).style.display = "block";
 }
 
 function findGetParameter(parameterName) {
@@ -205,15 +238,31 @@ function preloadImage(list) {
 connection.onmessage = function (event) {
     let data = JSON.parse(event.data)
 
+    console.log(data)
+
     if (data["packettype"] === "error") {
-        alert(data["message"])
+        document.querySelector("errors").innerHTML = ''
+
+        if(data["key"].startsWith("error.name")){
+            document.getElementById("pagePlayerJoin-join-name").classList.remove("wrong")
+            document.getElementById("pagePlayerJoin-join-name").offsetHeight
+            document.getElementById("pagePlayerJoin-join-name").classList.add("wrong")
+            pushErrorMessage(getText(data["key"]));
+        }
+
+        if(data["key"].startsWith("error.id")){
+            document.getElementById("pagePlayerJoin-join-id").classList.remove("wrong")
+            document.getElementById("pagePlayerJoin-join-id").offsetHeight
+            document.getElementById("pagePlayerJoin-join-id").classList.add("wrong")
+            pushErrorMessage(getText(data["key"]));
+        }
         return
     }
 
     if (data["packettype"] === "lobbyJoin") {
         playerAmount += 1
         for (const element of document.getElementsByClassName("var-playerAmount")) { element.innerHTML = playerAmount };
-        document.getElementById("pageHostLobbyPlayerList").innerHTML = document.getElementById("pageHostLobbyPlayerList").innerHTML + "<p>" + data["name"] + "</p>"
+        document.getElementById("pageHostLobby-lobby").innerHTML = document.getElementById("pageHostLobby-lobby").innerHTML + "<div class=\"pageHostLobby-lobby-div\"><div class=\"name\">" + data["name"] + "</div></div>"
         return
     }
 
@@ -231,6 +280,16 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostLobby") {
             for (const element of document.getElementsByClassName("var-gameID")) { element.innerHTML = data["gameid"].slice(0, 3) + " " + data["gameid"].slice(3) };
+
+            var qrcode = new QRCode("pageHostLobby-qrcode", {
+                text: "http://play.winked.app?id=" + data["gameid"],
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
             audioTrack1 = addSound("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
             soundEffects = {
                 "podium": {
@@ -262,38 +321,42 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
-            document.getElementById("page-playerAnswerNormal-card-a").style.display = data["buttons"]["A"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerNormal-card-b").style.display = data["buttons"]["B"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerNormal-card-c").style.display = data["buttons"]["C"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerNormal-card-d").style.display = data["buttons"]["D"] ? "initial" : "none"
+            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.normal") };
+            document.getElementById("pagePlayerAnswerNormal-a").style.display = data["buttons"]["A"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerNormal-b").style.display = data["buttons"]["B"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerNormal-c").style.display = data["buttons"]["C"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerNormal-d").style.display = data["buttons"]["D"] ? "initial" : "none"
         }
 
         if (gameState === "playerAnswerSelect") {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
-            document.getElementById("page-playerAnswerSelect-card-a").style.display = data["buttons"]["A"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerSelect-card-b").style.display = data["buttons"]["B"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerSelect-card-c").style.display = data["buttons"]["C"] ? "initial" : "none"
-            document.getElementById("page-playerAnswerSelect-card-d").style.display = data["buttons"]["D"] ? "initial" : "none"
+            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.select") };
+            document.getElementById("pagePlayerAnswerSelect-a").style.display = data["buttons"]["A"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerSelect-b").style.display = data["buttons"]["B"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerSelect-c").style.display = data["buttons"]["C"] ? "initial" : "none"
+            document.getElementById("pagePlayerAnswerSelect-d").style.display = data["buttons"]["D"] ? "initial" : "none"
             selectedA = false;
             selectedB = false;
             selectedC = false;
             selectedD = false;
-            document.getElementById("page-playerAnswerSelect-card-a").classList.add("unselected")
-            document.getElementById("page-playerAnswerSelect-card-b").classList.add("unselected")
-            document.getElementById("page-playerAnswerSelect-card-c").classList.add("unselected")
-            document.getElementById("page-playerAnswerSelect-card-d").classList.add("unselected")
+            document.getElementById("pagePlayerAnswerSelect-a").classList.add("unselected")
+            document.getElementById("pagePlayerAnswerSelect-b").classList.add("unselected")
+            document.getElementById("pagePlayerAnswerSelect-c").classList.add("unselected")
+            document.getElementById("pagePlayerAnswerSelect-d").classList.add("unselected")
         }
 
         if (gameState === "playerAnswerTrueFalse") {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
+            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.truefalse") };
         }
 
         if (gameState === "playerAnswerText") {
             document.getElementById("page-playerAnswerText-text").value = "";
+            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.text") };
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
@@ -311,20 +374,31 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostQuestion") {
+            document.querySelector("#pageHostQuestion .content").classList.remove("animation")
+            document.querySelector("#pageHostQuestion .content").offsetHeight
+            document.querySelector("#pageHostQuestion .content").classList.add("animation")
+
             answerAmount = 0
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            startCountDownByWordLength(data["question"].length)
-            function hostQuestionCountdown() {
-                let ct = getCountdown()
-                if (ct <= 0) {
-                    next()
-                    return
+            for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            document.getElementById("pageHostQuestion-progress").style.width = "0%"
+            for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType." + data["type"]) };
+            console.log("questionType." + data["type"])
+
+            setTimeout(() => {
+                startCountDownByWordLength(data["question"].length)
+                function hostQuestionCountdown() {
+                    let ct = getCountdown()
+                    if (ct <= 0) {
+                        next()
+                        return
+                    }
+                    let percent = 100 - 100 * (ct / (countdownDuration / 1000))
+                    document.getElementById("pageHostQuestion-progress").style.width = percent + "%"
+                    setTimeout(hostQuestionCountdown, 15)
                 }
-                let percent = 100 - 100 * (ct / (countdownDuration / 1000))
-                document.getElementById("hostQuestionProgress").style.width = percent + "%"
-                setTimeout(hostQuestionCountdown, 15)
-            }
-            hostQuestionCountdown()
+                hostQuestionCountdown()
+            }, 2000);
         }
 
         if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")) {
@@ -340,10 +414,10 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"] };
             for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"] };
             for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"] };
-            document.getElementById("page-hostAnswersNormal-card-a").style.display = data["answers"]["A"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-card-b").style.display = data["answers"]["B"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-card-c").style.display = data["answers"]["C"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-card-d").style.display = data["answers"]["D"] !== "" ? "initial" : "none"
+            document.getElementById("page-hostAnswersNormal-a").style.display = data["answers"]["A"] !== "" ? "initial" : "none"
+            document.getElementById("page-hostAnswersNormal-b").style.display = data["answers"]["B"] !== "" ? "initial" : "none"
+            document.getElementById("page-hostAnswersNormal-c").style.display = data["answers"]["C"] !== "" ? "initial" : "none"
+            document.getElementById("page-hostAnswersNormal-d").style.display = data["answers"]["D"] !== "" ? "initial" : "none"
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
                 let ct = getCountdown()
@@ -407,41 +481,41 @@ connection.onmessage = function (event) {
             if (data["answers"].hasOwnProperty("A")) {
                 for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["answers"]["A"]["amount"] };
-                document.getElementById("page-hostResultsNormal-card-a").style.display = "block"
+                document.getElementById("page-hostResultsNormal-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-a").innerHTML = data["answers"]["A"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             } else {
-                document.getElementById("page-hostResultsNormal-card-a").style.display = "none"
+                document.getElementById("page-hostResultsNormal-a").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("B")) {
                 for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["answers"]["B"]["amount"] };
-                document.getElementById("page-hostResultsNormal-card-b").style.display = "block"
+                document.getElementById("page-hostResultsNormal-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-b").innerHTML = data["answers"]["B"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             } else {
-                document.getElementById("page-hostResultsNormal-card-b").style.display = "none"
+                document.getElementById("page-hostResultsNormal-b").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-b").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("C")) {
                 for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerCAmount")) { element.innerHTML = data["answers"]["C"]["amount"] };
-                document.getElementById("page-hostResultsNormal-card-c").style.display = "block"
+                document.getElementById("page-hostResultsNormal-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-c").innerHTML = data["answers"]["C"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             } else {
-                document.getElementById("page-hostResultsNormal-card-c").style.display = "none"
+                document.getElementById("page-hostResultsNormal-c").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-c").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("D")) {
                 for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerDAmount")) { element.innerHTML = data["answers"]["D"]["amount"] };
-                document.getElementById("page-hostResultsNormal-card-d").style.display = "block"
+                document.getElementById("page-hostResultsNormal-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "block"
                 document.getElementById("page-hostResultsNormal-status-d").innerHTML = data["answers"]["D"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             } else {
-                document.getElementById("page-hostResultsNormal-card-d").style.display = "none"
+                document.getElementById("page-hostResultsNormal-d").style.display = "none"
                 document.getElementById("page-hostResultsNormal-pole-d").style.display = "none"
             }
             let amountA = data["answers"].hasOwnProperty("A") ? data["answers"]["A"]["amount"] : 0
@@ -466,8 +540,10 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostResultsText") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
+            document.getElementById("page-hostResultsText-correct").innerHTML = ''
             for (const element of data["correct"]) { document.getElementById("page-hostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
             document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none" : "block"
+            document.getElementById("page-hostResultsText-wrong").innerHTML = ''
             for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
         }
 

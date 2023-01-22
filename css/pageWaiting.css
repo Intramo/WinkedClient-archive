@@ -1,0 +1,67 @@
+#pageWaiting .bg {
+    background: radial-gradient(ellipse at center, #45484d 0%, #000000 100%);
+}
+
+#pageWaiting .content {
+    --speed: 4;
+    overflow: hidden;
+}
+
+#pageWaiting .content>div {
+    height: 100%;
+    width: fit-content;
+    animation: pageWaiting-marquee-x calc(2s * var(--speed)) infinite linear alternate;
+}
+
+#pageWaiting .content>div>svg {
+    width: 40vmin;
+    animation: pageWaiting-marquee-y calc(3.4s * var(--speed)) infinite linear alternate, pageWaiting-rainbow 6s steps(1, end) infinite;
+}
+
+@keyframes pageWaiting-marquee-x {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(calc(100vw - 100%));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes pageWaiting-marquee-y {
+    0% {
+        transform: translateY(0) translateX(inherit);
+    }
+
+    50% {
+        transform: translateY(calc(100vh - 100%));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageWaiting-rainbow {
+
+    0%,
+    100% {
+        fill: var(--color-btn-red);
+    }
+
+    25% {
+        fill: var(--color-btn-blue);
+    }
+
+    50% {
+        fill: var(--color-btn-yellow);
+    }
+
+    75% {
+        fill: var(--color-btn-green);
+    }
+}
