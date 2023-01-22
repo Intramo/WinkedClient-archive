@@ -355,7 +355,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "playerAnswerText") {
-            document.getElementById("page-playerAnswerText-text").value = "";
+            document.getElementById("pagePlayerAnswerText-text").value = "";
             for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.text") };
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
