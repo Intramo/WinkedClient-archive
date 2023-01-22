@@ -4,6 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="css/old.css">
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/pagePlayerJoin.css">
     <link rel="stylesheet" href="css/pageHostLobby.css">
@@ -16,7 +18,7 @@
     <script src="ui.js" defer></script>
     <script src="index.js" defer></script>
 
-    <script src="client.jss" defer></script>
+    <script src="client.js" defer></script>
    
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -104,7 +106,7 @@
         <div class="bg bgAnimatedShapes"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></div>
         <div class="content animation">
             <div class="progress"><span class="var-progress"></span></div>
-            <div class="type"></div>
+            <div class="type"><span class="var-type"></span></div>
             <div class="wrapper">
                 <h1 class="var-question"></h1>
                 <div class="progress" style="width: 0%;" id="pageHostQuestion-progress"></div>
@@ -112,131 +114,76 @@
         </div>
     </div>
 
-    <div class="page pagePlayerAnswer" id="pagePlayerAnswerNormal" style="display: block;">
+    <div class="page pagePlayerAnswer" id="pagePlayerAnswerNormal" style="display: none;">
         <div class="bg"></div>
         <div class="content">
             <div class="topbar">
-                <div class="progress var-progress">0 von 0</div>
-                <div class="type">Quiz</div>
+                <div class="progress var-progress"></div>
+                <div class="type var-type"></div>
             </div>
 
-            <div class="cards">
-                <button class="button a" onclick="onButtonPress('A')" id="page-playerAnswerNormal-card-a">A</button>
-                <button class="button b" onclick="onButtonPress('B')" id="page-playerAnswerNormal-card-b">B</button>
-                <button class="button c" onclick="onButtonPress('C')" id="page-playerAnswerNormal-card-c">C</button>
-                <button class="button d" onclick="onButtonPress('D')" id="page-playerAnswerNormal-card-d">D</button>
-            </div>
-
-            <div class="footer">
-                <div class="name var-playerName">John Doe</div>
-                <div class="points var-points">4200</div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div id="page-host" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
-        <ul class="page-playerJoin-bg">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="page-host">
-            <div class="center">
-                <img src="assets/logo.svg">
-                <div class="form-container">
-                    <input id="page-host-file" type="file" accept=".json,.winked,.quiz"><br>
-                    <input id="page-host-randomizeAnswers" name="randomizeAnswers" type="checkbox" checked><label
-                        for="randomizeAnswers">Antworten zufällig anordnen</label><br>
-                    <input id="page-host-randomizeQuestions" name="randomizeQuestions" type="checkbox"><label
-                        for="randomizeQuestions">Fragen zufällig anordnen</label>
-                    <button onclick="onHost()" id="page-host-btn">Erstellen</button>
-                </div>
-            </div>
-        </div>
-        <div class="credits" style="position: absolute; left: 10px; bottom: 10px;">
-            Contribute on GitHub: <a href="https://github.com/Intramo/WinkedClient">WinkedClient</a><br>
-            Made by <a href="https://github.com/FabulousCodingFox">FabulousFox</a>
-        </div>
-        <button onclick="gameState = 'playerJoin';refreshDisplay()">Spiel beitreten</button>
-    </div>
-
-    <div id="page-playerAnswerNormal" class="page"
-        style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerAnswer Normal">
-            <div class="topbar">
-                <p class="progress var-progress">0 von 0</p>
-                <p class="type">Quiz</p>
-            </div>
-
-            <div class="cards">
-                <button class="card-a" onclick="onButtonPress('A')" id="page-playerAnswerNormal-card-a">A</button>
-                <button class="card-b" onclick="onButtonPress('B')" id="page-playerAnswerNormal-card-b">B</button>
-                <button class="card-c" onclick="onButtonPress('C')" id="page-playerAnswerNormal-card-c">C</button>
-                <button class="card-d" onclick="onButtonPress('D')" id="page-playerAnswerNormal-card-d">D</button>
+            <div class="wrapper">
+                <button class="button a" onclick="onButtonPress('A')" id="pagePlayerAnswerNormal-a">A</button>
+                <button class="button b" onclick="onButtonPress('B')" id="pagePlayerAnswerNormal-b">B</button>
+                <button class="button c" onclick="onButtonPress('C')" id="pagePlayerAnswerNormal-c">C</button>
+                <button class="button d" onclick="onButtonPress('D')" id="pagePlayerAnswerNormal-d">D</button>
             </div>
 
             <div class="footer">
-                <p class="name var-playerName">John Doe</p>
-                <p class="points var-points">4200</p>
+                <div class="name var-playerName"></div>
+                <div class="points var-points"></div>
             </div>
         </div>
     </div>
 
-    <div id="page-playerAnswerSelect" class="page"
-        style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerAnswer Select">
+    <div class="page pagePlayerAnswer" id="pagePlayerAnswerTrueFalse" style="display: none;">
+        <div class="bg"></div>
+        <div class="content">
             <div class="topbar">
-                <p class="progress var-progress">0 von 0</p>
-                <p class="type">Quiz</p>
+                <div class="progress var-progress"></div>
+                <div class="type var-type"></div>
             </div>
 
-            <div class="cards">
-                <button class="card-a unselected" onclick="onSelect('A')" id="page-playerAnswerSelect-card-a">A</button>
-                <button class="card-b unselected" onclick="onSelect('B')" id="page-playerAnswerSelect-card-b">B</button>
-                <button class="card-c unselected" onclick="onSelect('C')" id="page-playerAnswerSelect-card-c">C</button>
-                <button class="card-d unselected" onclick="onSelect('D')" id="page-playerAnswerSelect-card-d">D</button>
+            <div class="wrapper">
+                <button class="button a" onclick="onButtonPress('Y')"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></button>
+                <button class="button b" onclick="onButtonPress('N')"><span data-key="pagePlayerAnswerTrueFalse.no"></span></button>
+            </div>
+
+            <div class="footer">
+                <div class="name var-playerName"></div>
+                <div class="points var-points"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page pagePlayerAnswer" id="pagePlayerAnswerSelect" style="display: block;">
+        <div class="bg"></div>
+        <div class="content">
+            <div class="topbar">
+                <div class="progress var-progress"></div>
+                <div class="type var-type"></div>
+            </div>
+
+            <div class="wrapper">
+                <button class="button a unselected" onclick="onSelect('A')" id="pagePlayerAnswerSelect-a">A</button>
+                <button class="button b unselected" onclick="onSelect('B')" id="pagePlayerAnswerSelect-b">B</button>
+                <button class="button c unselected" onclick="onSelect('C')" id="pagePlayerAnswerSelect-c">C</button>
+                <button class="button d unselected" onclick="onSelect('D')" id="pagePlayerAnswerSelect-d">D</button>
             </div>
 
             <div class="submit">
-                <button onclick="onSubmitSend()">Senden</button>
+                <button class="button" onclick="onSubmitSend()">Senden</button>
             </div>
 
             <div class="footer">
-                <p class="name var-playerName">John Doe</p>
-                <p class="points var-points">4200</p>
+                <div class="name var-playerName"></div>
+                <div class="points var-points"></div>
             </div>
         </div>
     </div>
 
-    <div id="page-playerAnswerTrueFalse" class="page"
-        style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerAnswer TrueFalse">
-            <div class="topbar">
-                <p class="progress var-progress">1 von 5</p>
-                <p class="type">Wahr / Falsch</p>
-            </div>
 
-            <div class="cards">
-                <button class="card-a" onclick="onButtonPress('Y')">Ja</button>
-                <button class="card-b" onclick="onButtonPress('N')">Nein</button>
-            </div>
 
-            <div class="footer">
-                <p class="name var-playerName">John Doe</p>
-                <p class="points var-points">4200</p>
-            </div>
-        </div>
-    </div>
 
     <div id="page-playerAnswerText" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pagePlayerAnswer Text">
@@ -294,27 +241,6 @@
         </div>
     </div>
 
-    <div id="page-hostQuestion" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
-        <ul class="page-playerJoin-bg">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="pageHostQuestion">
-            <div class="wrapper">
-                <h1 class="var-question"></h1>
-                <div class="progress" style="width: 69.42%;" id="hostQuestionProgress"></div>
-            </div>
-        </div>
-    </div>
-
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
         <div class="pageHostAnswers Normal">
             <div class="topbar">
@@ -327,19 +253,19 @@
             </div>
 
             <div class="cards">
-                <button class="card-red" id="page-hostAnswersNormal-card-a">
+                <button class="card-red" id="page-hostAnswersNormal-a">
                     <p class="char">A</p>
                     <p class="text"><span class="var-answerA"></span></p>
                 </button>
-                <button class="card-blue" id="page-hostAnswersNormal-card-b">
+                <button class="card-blue" id="page-hostAnswersNormal-b">
                     <p class="char">B</p>
                     <p class="text"><span class="var-answerB"></span></p>
                 </button>
-                <button class="card-yellow" id="page-hostAnswersNormal-card-c">
+                <button class="card-yellow" id="page-hostAnswersNormal-c">
                     <p class="char">C</p>
                     <p class="text"><span class="var-answerC"></span></p>
                 </button>
-                <button class="card-green" id="page-hostAnswersNormal-card-d">
+                <button class="card-green" id="page-hostAnswersNormal-d">
                     <p class="char">D</p>
                     <p class="text"><span class="var-answerD"></span></p>
                 </button>
@@ -431,25 +357,25 @@
                 </div>
             </div>
             <div class="cards">
-                <button class="card-red" id="page-hostResultsNormal-card-a">
+                <button class="card-red" id="page-hostResultsNormal-a">
                     <p class="char">A</p>
                     <p class="text"><span class="var-answerA"></span></p>
                     <div class="statusIndicator" id="page-hostResultsNormal-status-a"><img
                             src="assets/indicatorCorrect.svg"></div>
                 </button>
-                <button class="card-blue" id="page-hostResultsNormal-card-b">
+                <button class="card-blue" id="page-hostResultsNormal-b">
                     <p class="char">B</p>
                     <p class="text"><span class="var-answerB"></span></p>
                     <div class="statusIndicator" id="page-hostResultsNormal-status-b"><img
                             src="assets/indicatorCorrect.svg"></div>
                 </button>
-                <button class="card-yellow" id="page-hostResultsNormal-card-c">
+                <button class="card-yellow" id="page-hostResultsNormal-c">
                     <p class="char">C</p>
                     <p class="text"><span class="var-answerC"></span></p>
                     <div class="statusIndicator" id="page-hostResultsNormal-status-c"><img
                             src="assets/indicatorWrong.svg"></div>
                 </button>
-                <button class="card-green" id="page-hostResultsNormal-card-d">
+                <button class="card-green" id="page-hostResultsNormal-d">
                     <p class="char">D</p>
                     <p class="text"><span class="var-answerD"></span></p>
                     <div class="statusIndicator" id="page-hostResultsNormal-status-d"><img

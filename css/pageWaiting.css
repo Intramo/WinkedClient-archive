@@ -15,7 +15,7 @@
 
 #pageWaiting .content>div>svg {
     width: 40vmin;
-    animation: pageWaiting-marquee-y calc(3.4s * var(--speed)) infinite linear alternate, pageWaiting-rainbow 30s linear infinite;
+    animation: pageWaiting-marquee-y calc(3.4s * var(--speed)) infinite linear alternate, pageWaiting-rainbow 6s steps(1, end) infinite;
 }
 
 @keyframes pageWaiting-marquee-x {
@@ -50,14 +50,18 @@
 
     0%,
     100% {
-        fill: red;
+        fill: var(--color-btn-red);
     }
 
-    33% {
-        fill: blue;
+    25% {
+        fill: var(--color-btn-blue);
     }
 
-    66% {
-        fill: green;
+    50% {
+        fill: var(--color-btn-yellow);
+    }
+
+    75% {
+        fill: var(--color-btn-green);
     }
 }

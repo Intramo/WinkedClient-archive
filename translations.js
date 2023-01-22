@@ -41,11 +41,9 @@ function getText(key){
             "questionType.normal": "Quiz",
             "questionType.select": "<i class=\"fa-regular fa-square-check\"> Antworten auswählen</i>",
             "questionType.truefalse": "Wahr oder falsch",
-            "": "",
-            "": "",
-            "": "",
-            "": "",
-            "": "",
+            
+            "pagePlayerAnswerTrueFalse.yes": "Ja",
+            "pagePlayerAnswerTrueFalse.no": "Nein"
         },
         'English': {
 
