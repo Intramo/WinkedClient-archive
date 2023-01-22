@@ -321,7 +321,7 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
-            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.normal") };
+            for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.normal") };
             document.getElementById("pagePlayerAnswerNormal-a").style.display = data["buttons"]["A"] ? "initial" : "none"
             document.getElementById("pagePlayerAnswerNormal-b").style.display = data["buttons"]["B"] ? "initial" : "none"
             document.getElementById("pagePlayerAnswerNormal-c").style.display = data["buttons"]["C"] ? "initial" : "none"
@@ -332,7 +332,7 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
-            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.select") };
+            for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.select") };
             document.getElementById("pagePlayerAnswerSelect-a").style.display = data["buttons"]["A"] ? "initial" : "none"
             document.getElementById("pagePlayerAnswerSelect-b").style.display = data["buttons"]["B"] ? "initial" : "none"
             document.getElementById("pagePlayerAnswerSelect-c").style.display = data["buttons"]["C"] ? "initial" : "none"
@@ -351,12 +351,12 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
-            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.truefalse") };
+            for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.truefalse") };
         }
 
         if (gameState === "playerAnswerText") {
             document.getElementById("page-playerAnswerText-text").value = "";
-            for (const element of document.getElementsByClassName("var-type")) { getText("questionType.text") };
+            for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType.text") };
             for (const element of document.getElementsByClassName("var-points")) { element.innerHTML = data["points"] };
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             for (const element of document.getElementsByClassName("var-playerName")) { element.innerHTML = data["name"] };
