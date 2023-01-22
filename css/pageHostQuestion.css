@@ -1,0 +1,23 @@
+#pageHostQuestion .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pageHostQuestion .content>.wrapper {
+    margin: var(--gap);
+}
+
+#pageHostQuestion .content>.wrapper>h1 {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: var(--gap);
+    font-size: 4em;
+}
+
+#pageHostQuestion .content>.wrapper>.progress {
+    background-color: white;
+    height: 30px;
+    border-radius: 15px;
+}
