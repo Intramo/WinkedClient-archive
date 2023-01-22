@@ -368,20 +368,29 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostQuestion") {
+            document.querySelector("#pageHostQuestion .content").classList.remove("animation")
+            document.querySelector("#pageHostQuestion .content").offsetHeight
+            document.querySelector("#pageHostQuestion .content").classList.add("animation")
+
             answerAmount = 0
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            startCountDownByWordLength(data["question"].length)
-            function hostQuestionCountdown() {
-                let ct = getCountdown()
-                if (ct <= 0) {
-                    next()
-                    return
+            for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
+            document.getElementById("pageHostQuestion-progress").style.width = "0%"
+            document.querySelector("#pageHostQuestion .content>.type").innerHTML = getText("questionType." + data["type"])
+            setTimeout(() => {
+                startCountDownByWordLength(data["question"].length)
+                function hostQuestionCountdown() {
+                    let ct = getCountdown()
+                    if (ct <= 0) {
+                        next()
+                        return
+                    }
+                    let percent = 100 - 100 * (ct / (countdownDuration / 1000))
+                    document.getElementById("pageHostQuestion-progress").style.width = percent + "%"
+                    setTimeout(hostQuestionCountdown, 15)
                 }
-                let percent = 100 - 100 * (ct / (countdownDuration / 1000))
-                document.getElementById("hostQuestionProgress").style.width = percent + "%"
-                setTimeout(hostQuestionCountdown, 15)
-            }
-            hostQuestionCountdown()
+                hostQuestionCountdown()
+            }, 2000);
         }
 
         if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")) {

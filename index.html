@@ -15,7 +15,7 @@
     <script src="ui.js" defer></script>
     <script src="index.js" defer></script>
 
-    <script src="client.jss" defer></script>
+    <script src="client.js" defer></script>
    
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -101,10 +101,12 @@
 
     <div id="pageHostQuestion" class="page" style="display: block;">
         <div class="bg bgAnimatedShapes"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></div>
-        <div class="content">
+        <div class="content animation">
+            <div class="progress"><span class="var-progress"></span></div>
+            <div class="type"></div>
             <div class="wrapper">
-                <h1 class="var-question">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</h1>
-                <div class="progress" style="width: 69.42%;" id="hostQuestionProgress"></div>
+                <h1 class="var-question"></h1>
+                <div class="progress" style="width: 0%;" id="pageHostQuestion-progress"></div>
             </div>
         </div>
     </div>
