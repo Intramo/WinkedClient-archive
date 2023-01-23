@@ -44,7 +44,11 @@ function getText(key) {
 
             "hostPopup.randomizeAnswers": "Antworten zufällig anordnen",
             "hostPopup.randomizeQuestions": "Fragen zufällig anordnen",
-            "hostPopup.upload": "Eigene Datei hochladen"
+            "hostPopup.upload": "Eigene Datei hochladen",
+
+            "pagePlayerResultWrong.wrong": "Falsch",
+            "pagePlayerResultCorrect.right": "Richtig",
+            "pagePlayerResultCorrect.answerstreak": "Antwortserie"
         },
         'English': {
             "language.short": "EN"

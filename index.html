@@ -12,14 +12,15 @@
     <link rel="stylesheet" href="css/pageHostLobby.css">
     <link rel="stylesheet" href="css/pageWaiting.css">
     <link rel="stylesheet" href="css/pageHostQuestion.css">
-    <link rel="stylesheet" href="css/pagePlayerAnswerNormal.css">
+    <link rel="stylesheet" href="css/pagePlayerAnswer.css">
     <link rel="stylesheet" href="css/hostPopup.css">
+    <link rel="stylesheet" href="css/pagePlayerResult.css">
 
     <script src="libs/qrcode.min.js"></script>
     <script src="translations.js" defer></script>
     <script src="ui.js" defer></script>
 
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -76,7 +77,7 @@
         </div>
     </div>
 
-    <div class="page" id="pagePlayerJoin" style="display: block;">
+    <div class="page" id="pagePlayerJoin" style="display: none;">
         <div class="bg bgAnimatedShapes">
             <li></li>
             <li></li>
@@ -118,6 +119,8 @@
             </div>
         </div>
     </div>
+
+    <!--################################################################################################################################-->
 
     <div class="page" id="pageHostLobby" style="display: none;">
         <div class="bg bgAnimatedShapes">
@@ -177,6 +180,8 @@
             </div>
         </div>
     </div>
+
+    <!--################################################################################################################################-->
 
     <div class="page pagePlayerAnswer" id="pagePlayerAnswerNormal" style="display: none;">
         <div class="bg"></div>
@@ -269,43 +274,40 @@
         </div>
     </div>
 
+    <!--################################################################################################################################-->
 
-
-
-
-    <div id="page-playerResultWrong" class="page" style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerResultWrong">
-            <div class="center">
-                <p class="indicator">Falsch</p>
-                <img src="assets/wrong.svg">
-            </div>
+    <div class="page pagePlayerResult" id="pagePlayerResultWrong" style="display: none;">
+        <div class="bg"></div>
+        <div class="content">
+            <p class="indicator"><span data-key="pagePlayerResultWrong.wrong"></span></p>
+            <img src="assets/wrong.svg">
         </div>
     </div>
 
-    <div id="page-playerResultCorrectSelect" class="page"
-        style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerResultCorrect">
-            <div class="center">
-                <p class="indicator">Richtig</p>
-                <img src="assets/correct.svg">
-                <p class="answerstreak var-correctamount">1 / 1</span></p>
-                <p class="answerstreak">Answer Streak 🔥 <span class="var-answerstreak">69</span></p>
-                <p class="answerstreak">+<span class="var-points">0</span></p>
-            </div>
+    <div class="page pagePlayerResult" id="pagePlayerResultCorrectSelect" style="display: none;">
+        <div class="bg"></div>
+        <div class="content">
+            <p class="indicator"><span data-key="pagePlayerResultCorrect.right"></span></p>
+            <img src="assets/correct.svg">
+            <p class="answerstreak var-correctamount"></span></p>
+            <p class="answerstreak"><span data-key="pagePlayerResultCorrect.answerstreak"></span> 🔥 <span
+                    class="var-answerstreak"></span></p>
+            <p class="answerstreak">+<span class="var-points"></span></p>
         </div>
     </div>
 
-    <div id="page-playerResultCorrect" class="page"
-        style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pagePlayerResultCorrect">
-            <div class="center">
-                <p class="indicator">Richtig</p>
-                <img src="assets/correct.svg">
-                <p class="answerstreak">Answer Streak 🔥 <span class="var-answerstreak">69</span></p>
-                <p class="answerstreak">+<span class="var-points">0</span></p>
-            </div>
+    <div class="page pagePlayerResult" id="pagePlayerResultCorrect" style="display: none;">
+        <div class="bg"></div>
+        <div class="content">
+            <p class="indicator"><span data-key="pagePlayerResultCorrect.right"></span></p>
+            <img src="assets/correct.svg">
+            <p class="answerstreak"><span data-key="pagePlayerResultCorrect.answerstreak"></span> 🔥 <span
+                    class="var-answerstreak"></span></p>
+            <p class="answerstreak">+<span class="var-points"></span></p>
         </div>
     </div>
+
+    <!--################################################################################################################################-->
 
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
         <div class="pageHostAnswers Normal">
@@ -390,6 +392,8 @@
             <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
         </div>
     </div>
+
+    <!--################################################################################################################################-->
 
     <div class="page" id="page-hostResultsNormal" style="width: 100%; height: 100%; display: none; position: relative;">
         <div class="pageHostAnswers Normal">
@@ -502,6 +506,8 @@
             </div><br>
         </div>
     </div>
+
+    <!--################################################################################################################################-->
 
     <div class="page" id="page-hostPodium" style="display: none; width: 100%;">
         <div class="pageHostPodium" style="right: 0px" id="page-hostPodium-wrapper">
