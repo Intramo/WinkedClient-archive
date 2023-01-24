@@ -39,7 +39,11 @@
     justify-content: center;
 }
 
-.pageHostAnswers .content>.media>img{
+.pageHostAnswers .content>.media>span{
+    height: 100%;
+}
+
+.pageHostAnswers .content>.media img{
     height: 100%;
     box-shadow: var(--subtle-shadow);
     border-radius: 5px;
@@ -49,37 +53,6 @@
     position: relative;
     margin: var(--gap);
     height: calc(100% - var(--gap) - var(--gap));
-}
-
-.pageHostAnswers .content>.buttons>button{
-    position: absolute;
-    width: calc(50% - calc(var(--gap) / 2));
-    height: calc(50% - calc(var(--gap) / 2));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.pageHostAnswers .content>.buttons>.btn-a {
-    top: 0px;
-    left: 0px;
-}
-
-.pageHostAnswers .content>.buttons>.btn-b {
-    top: 0px;
-    right: 0px;
-}
-
-.pageHostAnswers .content>.buttons>.btn-c {
-    bottom: 0px;
-    left: 0px;
-}
-
-.pageHostAnswers .content>.buttons>.btn-d {
-    bottom: 0px;
-    right: 0px;
 }
 
 .pageHostAnswers .content>.buttons>button>.char {
@@ -102,4 +75,98 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.pageHostAnswers .content>.answers{
+    position: absolute;
+    right: 16px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 4vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 2vmin;
+    padding: 10px;
+    box-shadow: var(--subtle-shadow);
+}
+
+.pageHostAnswers .content>.seconds {
+    position: absolute;
+    left: 16px;
+    top: 40%;
+    width: 15vmin;
+    height: 15vmin;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--subtle-shadow);
+    color: white;
+    font-size: 8vmin;
+}
+
+/*********************************************************************/
+
+.pageHostAnswers .content>.buttons>button{
+    position: absolute;
+    width: calc(50% - calc(var(--gap) / 2));
+    height: calc(50% - calc(var(--gap) / 2));
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.pageHostAnswers.normal .content>.buttons>.btn-a {
+    top: 0px;
+    left: 0px;
+}
+
+.pageHostAnswers.normal .content>.buttons>.btn-b {
+    top: 0px;
+    right: 0px;
+}
+
+.pageHostAnswers.normal .content>.buttons>.btn-c {
+    bottom: 0px;
+    left: 0px;
+}
+
+.pageHostAnswers.normal .content>.buttons>.btn-d {
+    bottom: 0px;
+    right: 0px;
+}
+
+/*************************************************************************/
+
+.pageHostAnswers.truefalse .content>.buttons>button{
+    height: 100%;
+}
+
+.pageHostAnswers.truefalse .content>.buttons>.btn-a {
+    top: 0px;
+    left: 0px;
+}
+
+.pageHostAnswers.truefalse .content>.buttons>.btn-b {
+    top: 0px;
+    right: 0px;
+}
+
+.pageHostAnswers.truefalse .content>.buttons>button>.text{
+    font-size: 15vmin;
+}
+
+/*************************************************************************/
+
+.pageHostAnswers.text .content>.media{
+    height: 100%;
 }

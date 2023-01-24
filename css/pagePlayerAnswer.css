@@ -136,22 +136,22 @@
     opacity: 25%;
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.a {
+#pagePlayerAnswerSelect .content>.wrapper>button.btn-a {
     top: var(--gap);
     left: var(--gap);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.b {
+#pagePlayerAnswerSelect .content>.wrapper>button.btn-b {
     top: var(--gap);
     right: var(--gap);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.c {
+#pagePlayerAnswerSelect .content>.wrapper>button.btn-c {
     bottom: var(--gap);
     left: var(--gap);
 }
 
-#pagePlayerAnswerSelect .content>.wrapper>button.d {
+#pagePlayerAnswerSelect .content>.wrapper>button.btn-d {
     bottom: var(--gap);
     right: var(--gap);
 }

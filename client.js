@@ -408,17 +408,22 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersNormal") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersNormal"
+            }else{
+                gameState = "HostAnswersNormalMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersNormalMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersNormal")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"] };
             for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"] };
             for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"] };
             for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"] };
-            document.getElementById("page-hostAnswersNormal-a").style.display = data["answers"]["A"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-b").style.display = data["answers"]["B"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-c").style.display = data["answers"]["C"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-d").style.display = data["answers"]["D"] !== "" ? "initial" : "none"
+            document.getElementById("page"+gameState+"-a").style.display = data["answers"]["A"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-b").style.display = data["answers"]["B"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-c").style.display = data["answers"]["C"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-d").style.display = data["answers"]["D"] !== "" ? "flex" : "none"
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
                 let ct = getCountdown()
@@ -433,8 +438,13 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersTrueFalse") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersTrueFalse"
+            }else{
+                gameState = "HostAnswersTrueFalseMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersTrueFalseMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
@@ -450,8 +460,13 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersText") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersText"
+            }else{
+                gameState = "HostAnswersTextMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersTextMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersText")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {

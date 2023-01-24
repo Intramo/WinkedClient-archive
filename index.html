@@ -21,7 +21,7 @@
     <script src="translations.js" defer></script>
     <script src="ui.js" defer></script>
 
-    <script src="client.jss" defer></script>
+    <script src="client.js" defer></script>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -238,9 +238,9 @@
 
             <div class="wrapper">
                 <button class="button btn-a unselected" onclick="onSelect('A')" id="pagePlayerAnswerSelect-a">A</button>
-                <button class="button b unselected" onclick="onSelect('B')" id="pagePlayerAnswerSelect-b">B</button>
-                <button class="button c unselected" onclick="onSelect('C')" id="pagePlayerAnswerSelect-c">C</button>
-                <button class="button d unselected" onclick="onSelect('D')" id="pagePlayerAnswerSelect-d">D</button>
+                <button class="button btn-b unselected" onclick="onSelect('B')" id="pagePlayerAnswerSelect-b">B</button>
+                <button class="button btn-c unselected" onclick="onSelect('C')" id="pagePlayerAnswerSelect-c">C</button>
+                <button class="button btn-d unselected" onclick="onSelect('D')" id="pagePlayerAnswerSelect-d">D</button>
             </div>
 
             <div class="submit">
@@ -310,8 +310,15 @@
 
     <!--################################################################################################################################-->
 
-    <div class="page pageHostAnswers" id="pageHostAnswersNormalMedia" style="display: block;">
-        <div class="bg bgAnimatedShapes">
+    <!--
+        <div class="seconds">
+            <p><span class="var-hostQuestionCountdown"></span></p>
+        </div>
+        <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
+    -->
+
+    <div class="page pageHostAnswers normal media" id="pageHostAnswersNormalMedia" style="display: none;">
+        <div class="bg bgHostBG">
             <li></li>
             <li></li>
             <li></li>
@@ -326,118 +333,233 @@
         <div class="content">
             <div class="topbar">
                 <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
-                <button onclick="next()" class="button">Weiter</button>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
             <div class="media">
-                <img src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp">
+                <span class="var-media-pageHostAnswersNormalMedia"><img src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
             </div>
 
             <div class="buttons">
-                <button class="button btn-a disabled">
+                <button class="button btn-a disabled" id="pageHostAnswersNormalMedia-a">
                     <div class="char">A</div>
                     <div class="text"><span class="var-answerA">Mustafar</span></div>
                 </button>
-                <button class="button btn-b disabled">
+                <button class="button btn-b disabled" id="pageHostAnswersNormalMedia-b">
                     <div class="char">B</div>
                     <div class="text"><span class="var-answerB">Hoth</span></div>
                 </button>
-                <button class="button btn-c disabled">
+                <button class="button btn-c disabled" id="pageHostAnswersNormalMedia-c">
                     <div class="char">C</div>
                     <div class="text"><span class="var-answerC">Yavin 4</span></div>
                 </button>
-                <button class="button btn-d disabled">
+                <button class="button btn-d disabled" id="pageHostAnswersNormalMedia-d">
                     <div class="char">D</div>
                     <div class="text"><span class="var-answerD">Exegol</span></div>
                 </button>
             </div>
 
+            <div class="seconds">
+                <div><span class="var-hostQuestionCountdown">0</span></div>
+            </div>
+            <div class="answers">
+                <span class="var-answerAmount">0</span>
+                <span data-key="answers"></span>
+            </div>
         </div>
     </div>
 
-
-
-    <div class="page" id="page-hostAnswersNormal" style="display: none;">
-        <div class="pageHostAnswers Normal">
+    <div class="page pageHostAnswers normal" id="pageHostAnswersNormal" style="display: none;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
             <div class="topbar">
-                <p class="question"><span class="var-question"></span></p>
-                <button onclick="next()" class="topbar-button">Weiter</button>
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="content">
-                <span class="var-media-hostAnswersNormal"></span>
-            </div>
-
-            <div class="cards">
-                <button class="card-red" id="page-hostAnswersNormal-a">
-                    <p class="char">A</p>
-                    <p class="text"><span class="var-answerA"></span></p>
+            <div class="buttons">
+                <button class="button btn-a disabled" id="pageHostAnswersNormalMedia-a">
+                    <div class="char">A</div>
+                    <div class="text"><span class="var-answerA">Mustafar</span></div>
                 </button>
-                <button class="card-blue" id="page-hostAnswersNormal-b">
-                    <p class="char">B</p>
-                    <p class="text"><span class="var-answerB"></span></p>
+                <button class="button btn-b disabled" id="pageHostAnswersNormalMedia-b">
+                    <div class="char">B</div>
+                    <div class="text"><span class="var-answerB">Hoth</span></div>
                 </button>
-                <button class="card-yellow" id="page-hostAnswersNormal-c">
-                    <p class="char">C</p>
-                    <p class="text"><span class="var-answerC"></span></p>
+                <button class="button btn-c disabled" id="pageHostAnswersNormalMedia-c">
+                    <div class="char">C</div>
+                    <div class="text"><span class="var-answerC">Yavin 4</span></div>
                 </button>
-                <button class="card-green" id="page-hostAnswersNormal-d">
-                    <p class="char">D</p>
-                    <p class="text"><span class="var-answerD"></span></p>
+                <button class="button btn-d disabled" id="pageHostAnswersNormalMedia-d">
+                    <div class="char">D</div>
+                    <div class="text"><span class="var-answerD">Exegol</span></div>
                 </button>
             </div>
 
             <div class="seconds">
-                <p><span class="var-hostQuestionCountdown"></span></p>
+                <div><span class="var-hostQuestionCountdown">0</span></div>
             </div>
-            <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
+            <div class="answers">
+                <span class="var-answerAmount">0</span>
+                <span data-key="answers"></span>
+            </div>
         </div>
     </div>
 
-    <div class="page" id="page-hostAnswersTrueFalse" style="display: none;">
-        <div class="pageHostAnswers TrueFalse">
+    <div class="page pageHostAnswers truefalse media" id="pageHostAnswersTrueFalseMedia" style="display: none;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
             <div class="topbar">
-                <p class="question"><span class="var-question"></span></p>
-                <button onclick="next()" class="topbar-button">Weiter</button>
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="content">
-                <span class="var-media-hostAnswersTrueFalse"></span>
+            <div class="media">
+                <span class="var-media-pageHostAnswersTrueFalseMedia"><img src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
             </div>
 
-            <div class="cards">
-                <button class="card-blue">
+            <div class="buttons">
+                <button class="button btn-a disabled">
                     <p class="char"></p>
-                    <p class="text">Ja</p>
+                    <p class="text"><span data-key="pagePlayerAnswerTrueFalse.no"></span></p>
                 </button>
-                <button class="card-red">
+                <button class="button btn-b disabled">
                     <p class="char"></p>
-                    <p class="text">Nein</p>
+                    <p class="text"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></p>
                 </button>
             </div>
 
             <div class="seconds">
-                <p><span class="var-hostQuestionCountdown"></span></p>
+                <div><span class="var-hostQuestionCountdown">0</span></div>
             </div>
-            <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
+            <div class="answers">
+                <span class="var-answerAmount">0</span>
+                <span data-key="answers"></span>
+            </div>
         </div>
     </div>
 
-    <div class="page" id="page-hostAnswersText" style="display: none;">
-        <div class="pageHostAnswers Text">
+    <div class="page pageHostAnswers truefalse" id="pageHostAnswersTrueFalse" style="display: none;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
             <div class="topbar">
-                <p class="question"><span class="var-question"></span></p>
-                <button onclick="next()" class="topbar-button">Weiter</button>
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="content">
-                <span class="var-media-hostAnswersText"></span>
+            <div class="buttons">
+                <button class="button btn-a disabled">
+                    <p class="char"></p>
+                    <p class="text"><span data-key="pagePlayerAnswerTrueFalse.no"></span></p>
+                </button>
+                <button class="button btn-b disabled">
+                    <p class="char"></p>
+                    <p class="text"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></p>
+                </button>
             </div>
 
             <div class="seconds">
-                <p><span class="var-hostQuestionCountdown"></span></p>
+                <div><span class="var-hostQuestionCountdown">0</span></div>
             </div>
-            <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
+            <div class="answers">
+                <span class="var-answerAmount">0</span>
+                <span data-key="answers"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page pageHostAnswers text media" id="pageHostAnswersTextMedia" style="display: none;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
+            <div class="topbar">
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
+            </div>
+
+            <div class="media">
+                <span class="var-media-pageHostAnswersTextMedia"><img src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
+            </div>
+        </div>
+
+        <div class="seconds">
+            <div><span class="var-hostQuestionCountdown">0</span></div>
+        </div>
+        <div class="answers">
+            <span class="var-answerAmount">0</span>
+            <span data-key="answers"></span>
+        </div>
+    </div>
+
+    <div class="page pageHostAnswers text" id="pageHostAnswersTextFalse" style="display: none;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
+            <div class="topbar">
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
+            </div>
+        </div>
+
+        <div class="seconds">
+            <div><span class="var-hostQuestionCountdown">0</span></div>
+        </div>
+        <div class="answers">
+            <span class="var-answerAmount">0</span>
+            <span data-key="answers"></span>
         </div>
     </div>
 
