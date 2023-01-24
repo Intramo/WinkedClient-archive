@@ -15,6 +15,9 @@ function getText(key) {
         'German': {
             "language.short": "DE",
 
+            "next": "Weiter",
+            "answers": "Antworten",
+
             "error.id.exist": "Ungültiger Sitzungscode",
             "error.id.none": "Das Feld für die Spiel-ID ist leer",
             "error.id.toolong": "Die Spiel-ID ist zu lang",
@@ -48,7 +51,7 @@ function getText(key) {
 
             "pagePlayerResultWrong.wrong": "Falsch",
             "pagePlayerResultCorrect.right": "Richtig",
-            "pagePlayerResultCorrect.answerstreak": "Antwortserie"
+            "pagePlayerResultCorrect.answerstreak": "Antwortserie",
         },
         'English': {
             "language.short": "EN"
