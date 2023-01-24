@@ -1,6 +1,6 @@
 :root {
     --gradient: linear-gradient(to right, #FFD200, #F7971E);
-    --gap: 16px;
+    --gap: 1vmin;
     --topbar: 50px;
     --subtle-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
 
@@ -50,7 +50,6 @@ button.button {
     border: 0;
     font-size: 1.5em;
     outline: none;
-    cursor: pointer;
     color: #fff;
     background-color: #292929;
     border: 1px solid;
@@ -62,12 +61,33 @@ button.button {
     box-shadow: var(--subtle-shadow);
 }
 
-button.button:hover {
+button.button:not(".disbaled"):hover {
+    cursor: pointer;
     transform: translateY(2px);
 }
 
-button.button:active {
+button.button:active:not(".disbaled") {
     transform: translateY(5px);
+}
+
+button.btn-a{
+    background-color: var(--color-btn-red);
+    border-color: var(--color-btn-red-darker);
+}
+
+button.btn-b{
+    background-color: var(--color-btn-blue);
+    border-color: var(--color-btn-blue-darker);
+}
+
+button.btn-c{
+    background-color: var(--color-btn-yellow);
+    border-color: var(--color-btn-yellow-darker);
+}
+
+button.btn-d{
+    background-color: var(--color-btn-green);
+    border-color: var(--color-btn-green-darker);
 }
 
 errors {
