@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/pagePlayerAnswer.css">
     <link rel="stylesheet" href="css/hostPopup.css">
     <link rel="stylesheet" href="css/pagePlayerResult.css">
+    <link rel="stylesheet" href="css/pageHostAnswers.css">
 
     <script src="libs/qrcode.min.js"></script>
     <script src="translations.js" defer></script>
@@ -192,10 +193,10 @@
             </div>
 
             <div class="wrapper">
-                <button class="button a" onclick="onButtonPress('A')" id="pagePlayerAnswerNormal-a">A</button>
-                <button class="button b" onclick="onButtonPress('B')" id="pagePlayerAnswerNormal-b">B</button>
-                <button class="button c" onclick="onButtonPress('C')" id="pagePlayerAnswerNormal-c">C</button>
-                <button class="button d" onclick="onButtonPress('D')" id="pagePlayerAnswerNormal-d">D</button>
+                <button class="button btn-a" onclick="onButtonPress('A')" id="pagePlayerAnswerNormal-a">A</button>
+                <button class="button btn-b" onclick="onButtonPress('B')" id="pagePlayerAnswerNormal-b">B</button>
+                <button class="button btn-c" onclick="onButtonPress('C')" id="pagePlayerAnswerNormal-c">C</button>
+                <button class="button btn-d" onclick="onButtonPress('D')" id="pagePlayerAnswerNormal-d">D</button>
             </div>
 
             <div class="footer">
@@ -214,9 +215,9 @@
             </div>
 
             <div class="wrapper">
-                <button class="button a" onclick="onButtonPress('Y')"><span
+                <button class="button btn-a" onclick="onButtonPress('Y')"><span
                         data-key="pagePlayerAnswerTrueFalse.yes"></span></button>
-                <button class="button b" onclick="onButtonPress('N')"><span
+                <button class="button btn-b" onclick="onButtonPress('N')"><span
                         data-key="pagePlayerAnswerTrueFalse.no"></span></button>
             </div>
 
@@ -236,7 +237,7 @@
             </div>
 
             <div class="wrapper">
-                <button class="button a unselected" onclick="onSelect('A')" id="pagePlayerAnswerSelect-a">A</button>
+                <button class="button btn-a unselected" onclick="onSelect('A')" id="pagePlayerAnswerSelect-a">A</button>
                 <button class="button b unselected" onclick="onSelect('B')" id="pagePlayerAnswerSelect-b">B</button>
                 <button class="button c unselected" onclick="onSelect('C')" id="pagePlayerAnswerSelect-c">C</button>
                 <button class="button d unselected" onclick="onSelect('D')" id="pagePlayerAnswerSelect-d">D</button>
@@ -308,6 +309,53 @@
     </div>
 
     <!--################################################################################################################################-->
+
+    <div class="page pageHostAnswers" id="pageHostAnswersNormalMedia" style="display: block;">
+        <div class="bg bgAnimatedShapes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
+            <div class="topbar">
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button">Weiter</button>
+            </div>
+
+            <div class="media">
+                <img src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp">
+            </div>
+
+            <div class="buttons">
+                <button class="button btn-a disabled">
+                    <div class="char">A</div>
+                    <div class="text"><span class="var-answerA">Mustafar</span></div>
+                </button>
+                <button class="button btn-b disabled">
+                    <div class="char">B</div>
+                    <div class="text"><span class="var-answerB">Hoth</span></div>
+                </button>
+                <button class="button btn-c disabled">
+                    <div class="char">C</div>
+                    <div class="text"><span class="var-answerC">Yavin 4</span></div>
+                </button>
+                <button class="button btn-d disabled">
+                    <div class="char">D</div>
+                    <div class="text"><span class="var-answerD">Exegol</span></div>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <div class="page" id="page-hostAnswersNormal" style="display: none;">
         <div class="pageHostAnswers Normal">
