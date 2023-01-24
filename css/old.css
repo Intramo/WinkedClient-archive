@@ -247,7 +247,7 @@ https://codepen.io/samdbeckham/pen/eJpxYR
 
 /*******************************************************
 /*      pageHostAnswers
-/*******************************************************/
+/******************************************************
 
 .pageHostAnswerText {
     position: relative;
@@ -291,35 +291,9 @@ https://codepen.io/samdbeckham/pen/eJpxYR
 
 /*******************************************************
 /*      pageHostAnswers
-/*******************************************************/
+/******************************************************
 
-.topbar-button {
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-    right: 10px;
-    font-size: 20px;
-    padding: 10px 20px;
-    display: block;
-    outline: none;
-    background-color: #444444;
-    border: 1px solid;
-    border-bottom: 5px solid;
-    border-color: #292929;
-    border-radius: 3px;
-    color: white;
-    transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
-}
 
-.topbar-button:active {
-    transform: translateY(calc(-50% + 2px));
-    border-bottom: 3px solid;
-    border-color: #292929;
-    margin-top: 2px;
-}
-
-/*******************************************************
-/*      hostPodium
 /*******************************************************/
 
 .pageHostPodium {
@@ -393,49 +367,4 @@ https://codepen.io/samdbeckham/pen/eJpxYR
 
 /*******************************************************
 /*      host
-/*******************************************************/
-
-#page-playerJoin>button,
-#page-host>button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 1.4em;
-    padding: 10px 20px;
-    display: block;
-    outline: none;
-    background-color: #444444;
-    border: 1px solid;
-    border-bottom: 5px solid;
-    border-color: #292929;
-    border-radius: 3px;
-    color: white;
-    transition: border-bottom 0.2s, transform 0.2s, margin 0.2s;
-}
-
-#page-playerJoin>button,
-#page-host>button {
-    transform: translateY(2px);
-    border-bottom: 3px solid;
-    border-color: #292929;
-    margin-top: 2px;
-}
-
-.page-host input[type="file"] {
-    font-size: 1.5em;
-    margin: 1em 0em;
-    display: block;
-    width: 100%;
-    border: none;
-    outline: none;
-}
-
-.page-host label {
-    font-size: 1.5em;
-    margin: 1em 0.2em;
-    display: inline-block;
-}
-
-.page-host input[type="checkbox"] {
-    height: 100%;
-}
+/******************************************************

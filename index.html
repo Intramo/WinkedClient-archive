@@ -310,13 +310,6 @@
 
     <!--################################################################################################################################-->
 
-    <!--
-        <div class="seconds">
-            <p><span class="var-hostQuestionCountdown"></span></p>
-        </div>
-        <p class="answers"><span class="var-answerAmount">0</span> Antworten</p>
-    -->
-
     <div class="page pageHostAnswers normal media" id="pageHostAnswersNormalMedia" style="display: none;">
         <div class="bg bgHostBG">
             <li></li>
@@ -565,98 +558,115 @@
 
     <!--################################################################################################################################-->
 
-    <div class="page" id="page-hostResultsNormal" style="width: 100%; height: 100%; display: none; position: relative;">
-        <div class="pageHostAnswers Normal">
+    <div class="page pageHostAnswers normal media result" id="pageHostResultsNormal" style="display: block;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
             <div class="topbar">
-                <p class="question"><span class="var-hostQuestionName"></span></p>
-                <button onclick="next()" class="topbar-button">Weiter</button>
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="content">
-                <div class="wrapper" style="height: 85%; width: 50%;">
-                    <div class="pole" id="page-hostResultsNormal-pole-a" style="height: 25%;">
-                        <p class="amount" style="--color: var(--color-btn-red-darker)"><span
-                                class="var-answerAAmount">5</span></p>
-                        <div class="bar bar-answerAAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
-                    </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-b" style="height: 25%;">
-                        <p class="amount" style="--color: var(--color-btn-blue-darker)"><span
-                                class="var-answerBAmount">5</span></p>
-                        <div class="bar bar-answerBAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
-                    </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-c" style="height: 25%;">
-                        <p class="amount" style="--color: var(--color-btn-yellow-darker)"><span
-                                class="var-answerCAmount">5</span></p>
-                        <div class="bar bar-answerCAmount" style="--color: var(--color-btn-yellow); width: 0%;"></div>
-                    </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-d" style="height: 25%;">
-                        <p class="amount" style="--color: var(--color-btn-green-darker)"><span
-                                class="var-answerDAmount">5</span></p>
-                        <div class="bar bar-answerDAmount" style="--color: var(--color-btn-green); width: 0%;"></div>
-                    </div>
+            <div class="poles">
+                <div class="pole" id="pageHostResultsNormal-pole-a" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-red-darker)"><span
+                            class="var-answerAAmount">5</span></p>
+                    <div class="bar bar-answerAAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
+                </div>
+                <div class="pole" id="pageHostResultsNormal-pole-b" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-blue-darker)"><span
+                            class="var-answerBAmount">5</span></p>
+                    <div class="bar bar-answerBAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
+                </div>
+                <div class="pole" id="pageHostResultsNormal-pole-c" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-yellow-darker)"><span
+                            class="var-answerCAmount">5</span></p>
+                    <div class="bar bar-answerCAmount" style="--color: var(--color-btn-yellow); width: 0%;"></div>
+                </div>
+                <div class="pole" id="pageHostResultsNormal-pole-d" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-green-darker)"><span
+                            class="var-answerDAmount">5</span></p>
+                    <div class="bar bar-answerDAmount" style="--color: var(--color-btn-green); width: 0%;"></div>
                 </div>
             </div>
-            <div class="cards">
-                <button class="card-red" id="page-hostResultsNormal-a">
-                    <p class="char">A</p>
-                    <p class="text"><span class="var-answerA"></span></p>
-                    <div class="statusIndicator" id="page-hostResultsNormal-status-a"><img
-                            src="assets/indicatorCorrect.svg"></div>
+
+            <div class="buttons">
+                <button class="button btn-a disabled incorrect" id="pageHostResultsNormal-a">
+                    <div class="char">A</div>
+                    <div class="text"><span class="var-answerA">Mustafar</span></div>
+                    <div class="statusIndicator" id="pageHostResultsNormal-status-a"><img src="assets/indicatorWrong.svg"></div>
                 </button>
-                <button class="card-blue" id="page-hostResultsNormal-b">
-                    <p class="char">B</p>
-                    <p class="text"><span class="var-answerB"></span></p>
-                    <div class="statusIndicator" id="page-hostResultsNormal-status-b"><img
-                            src="assets/indicatorCorrect.svg"></div>
+                <button class="button btn-b disabled" id="pageHostResultsNormal-b">
+                    <div class="char">B</div>
+                    <div class="text"><span class="var-answerB">Hoth</span></div>
+                    <div class="statusIndicator" id="pageHostResultsNormal-status-b"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
-                <button class="card-yellow" id="page-hostResultsNormal-c">
-                    <p class="char">C</p>
-                    <p class="text"><span class="var-answerC"></span></p>
-                    <div class="statusIndicator" id="page-hostResultsNormal-status-c"><img
-                            src="assets/indicatorWrong.svg"></div>
+                <button class="button btn-c disabled incorrect" id="pageHostResultsNormal-c">
+                    <div class="char">C</div>
+                    <div class="text"><span class="var-answerC">Yavin 4</span></div>
+                    <div class="statusIndicator" id="pageHostResultsNormal-status-c"><img src="assets/indicatorWrong.svg"></div>
                 </button>
-                <button class="card-green" id="page-hostResultsNormal-d">
-                    <p class="char">D</p>
-                    <p class="text"><span class="var-answerD"></span></p>
-                    <div class="statusIndicator" id="page-hostResultsNormal-status-d"><img
-                            src="assets/indicatorWrong.svg"></div>
+                <button class="button btn-d disabled" id="pageHostResultsNormal-d">
+                    <div class="char">D</div>
+                    <div class="text"><span class="var-answerD">Exegol</span></div>
+                    <div class="statusIndicator" id="pageHostResultsNormal-status-d"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="page" id="page-hostResultsTrueFalse" style="display: none;">
-        <div class="pageHostAnswers TrueFalse">
+    <div class="page pageHostAnswers truefalse media result" id="pageHostResultsTrueFalse" style="display: block;">
+        <div class="bg bgHostBG">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="content">
             <div class="topbar">
-                <p class="question"><span class="var-question"></span></p>
-                <button onclick="next()" class="topbar-button">Weiter</button>
+                <div class="question"><span class="var-question">Auf welchem Planeten findet in 'Die Rache der Sith' das entscheidende Duell zwischen Anakin Skywalker und Obi-Wan Kenobi statt?</span></div>
+                <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
-            <div class="content">
-                <div class="wrapper" style="height: 50%; width: 50%;">
-                    <div class="pole" id="page-hostResultsNormal-pole-y" style="height: 50%;">
-                        <p class="amount" style="--color: var(--color-btn-blue-darker)"><span
-                                class="var-answerYAmount"></span></p>
-                        <div class="bar bar-answerYAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
-                    </div>
-                    <div class="pole" id="page-hostResultsNormal-pole-n" style="height: 50%;">
-                        <p class="amount" style="--color: var(--color-btn-red-darker)"><span
-                                class="var-answerNAmount"></span></p>
-                        <div class="bar bar-answerNAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
-                    </div>
+
+            <div class="poles">
+                <div class="pole" id="pageHostResultsTrueFalse-pole-a" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-red-darker)"><span
+                            class="var-answerAAmount">5</span></p>
+                    <div class="bar bar-answerAAmount" style="--color: var(--color-btn-red); width: 0%;"></div>
+                </div>
+                <div class="pole" id="pageHostResultsTrueFalse-pole-b" style="height: 25%;">
+                    <p class="amount" style="--color: var(--color-btn-blue-darker)"><span
+                            class="var-answerBAmount">5</span></p>
+                    <div class="bar bar-answerBAmount" style="--color: var(--color-btn-blue); width: 0%;"></div>
                 </div>
             </div>
-            <div class="cards">
-                <button class="card-blue">
-                    <p class="char"></p>
-                    <p class="text">Ja</p>
-                    <div class="statusIndicator" id="page-hostResultsTrueFalse-status-y"><img
-                            src="assets/indicatorCorrect.svg"></div>
+
+            <div class="buttons">
+                <button class="button btn-a disabled incorrect" id="pageHostResultsTrueFalse-a">
+                    <div class="char"></div>
+                    <div class="text"><span class="var-answerA"><span data-key="pagePlayerAnswerTrueFalse.no"></span></div>
+                    <div class="statusIndicator" id="pageHostResultsTrueFalse-status-a"><img src="assets/indicatorWrong.svg"></div>
                 </button>
-                <button class="card-red">
-                    <p class="char"></p>
-                    <p class="text">Nein</p>
-                    <div class="statusIndicator" id="page-hostResultsTrueFalse-status-n"><img
-                            src="assets/indicatorCorrect.svg"></div>
+                <button class="button btn-b disabled" id="pageHostResultsTrueFalse-b">
+                    <div class="char"></div>
+                    <div class="text"><span class="var-answerB"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></div>
+                    <div class="statusIndicator" id="pageHostResultsTrueFalse-status-a"><img src="assets/indicatorCorrect.svg"></div>
                 </button>
             </div>
         </div>

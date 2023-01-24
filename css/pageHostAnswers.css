@@ -45,8 +45,10 @@
 
 .pageHostAnswers .content>.media img{
     height: 100%;
+    max-height: 100%;
     box-shadow: var(--subtle-shadow);
     border-radius: 5px;
+    object-fit: contain;
 }
 
 .pageHostAnswers .content>.buttons{
@@ -169,4 +171,61 @@
 
 .pageHostAnswers.text .content>.media{
     height: 100%;
+}
+
+/*************************************************************************/
+
+.pageHostAnswers.result .content>.buttons>button.incorrect{
+    opacity: 0.3;
+}
+
+.pageHostAnswers.result .content>.buttons>button>.statusIndicator{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 5vmin;
+    transform: translate(33%, -33%);
+    z-index: 9999;
+}
+
+.pageHostAnswers.result .content>.poles{
+    margin: var(--gap);
+    min-height: calc(50vmin - var(--gap) - var(--gap));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.pageHostAnswers.result .content>.poles>.pole {
+    width: 50%;
+    background-color: rgba(202, 202, 202, 0.5);
+    margin-bottom: var(--gap);
+    border-radius: 5px;
+    height: 100%;
+}
+
+.pageHostAnswers.result .content>.poles>.pole>.amount {
+    float: left;
+    width: 10%;
+    font-size: 4vmin;
+    height: 100%;
+    margin: 0px;
+    background-color: var(--color);
+    color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 8px 0px 5px rgba(0, 0, 0, 0.144);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageHostAnswers.result .content>.poles>.pole>.bar {
+    float: left;
+    height: 100%;
+    background-color: var(--color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
