@@ -1,0 +1,105 @@
+.pageHostAnswers .content{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.pageHostAnswers .content>.topbar{
+    width: calc(100% - var(--gap) - var(--gap));
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--gap);
+}
+
+.pageHostAnswers .content>.topbar>.question{
+    background-color: white;
+    width: 100%;
+    margin-right: var(--gap);
+    padding: var(--gap);
+    font-size: 3vmin;
+    text-align: center;
+    box-shadow: var(--subtle-shadow);
+    border-radius: 5px;
+}
+
+.pageHostAnswers .content>.topbar>.button{
+    color: black;
+    background-color: white;
+    border-color: #ccc;
+}
+
+.pageHostAnswers .content>.media{
+    margin: var(--gap);
+    height: calc(50vmin - var(--gap) - var(--gap));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageHostAnswers .content>.media>img{
+    height: 100%;
+    box-shadow: var(--subtle-shadow);
+    border-radius: 5px;
+}
+
+.pageHostAnswers .content>.buttons{
+    position: relative;
+    margin: var(--gap);
+    height: calc(100% - var(--gap) - var(--gap));
+}
+
+.pageHostAnswers .content>.buttons>button{
+    position: absolute;
+    width: calc(50% - calc(var(--gap) / 2));
+    height: calc(50% - calc(var(--gap) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.pageHostAnswers .content>.buttons>.btn-a {
+    top: 0px;
+    left: 0px;
+}
+
+.pageHostAnswers .content>.buttons>.btn-b {
+    top: 0px;
+    right: 0px;
+}
+
+.pageHostAnswers .content>.buttons>.btn-c {
+    bottom: 0px;
+    left: 0px;
+}
+
+.pageHostAnswers .content>.buttons>.btn-d {
+    bottom: 0px;
+    right: 0px;
+}
+
+.pageHostAnswers .content>.buttons>button>.char {
+    font-size: 9vmin;
+    float: left;
+    height: 100%;
+    padding: 0px;
+    margin-right: var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pageHostAnswers .content>.buttons>button>.text {
+    font-size: 3vmin;
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
