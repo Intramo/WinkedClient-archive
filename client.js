@@ -22,6 +22,30 @@ var selectedD = false;
 var locationParamID = findGetParameter("id");
 var locationParamName = findGetParameter("name");
 
+var isSessionLocked = false;
+
+function onSessionLockButton() {
+    isSessionLocked = !isSessionLocked
+    if (isSessionLocked) {
+        document.getElementById("pageHostLobby-start-lock").innerHTML = "<i class= \"fa-solid fa-lock\"></i>"
+    } else {
+        document.getElementById("pageHostLobby-start-lock").innerHTML = "<i class= \"fa-solid fa-lock-open\"></i>"
+    }
+}
+
+document.getElementById("pagePlayerJoin-language").addEventListener("click", (event) => {
+    let element = document.getElementById("pagePlayerJoin-language-select");
+    element.style.display = element.style.display === "block" ? "none" : "block";
+})
+
+let elements = document.querySelectorAll(".pagePlayerJoin-language-selection-btn");
+for (let i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("click", (event) => {
+        currentLanguage = elements[i].dataset.language;
+        applyLanguage();
+    });
+}
+
 function pushErrorMessage(text) {
     let element = document.createElement("div");
     element.classList.add("error")
@@ -83,6 +107,10 @@ function onSubmitSend() {
 
 Array.prototype.random = function () {
     return this[Math.floor((Math.random() * this.length))];
+}
+
+Array.prototype.getLastElement = function () {
+    return this[this.length - 1];
 }
 
 function startCountDownByWordLength(length) {
@@ -263,6 +291,13 @@ connection.onmessage = function (event) {
         playerAmount += 1
         for (const element of document.getElementsByClassName("var-playerAmount")) { element.innerHTML = playerAmount };
         document.getElementById("pageHostLobby-lobby").innerHTML = document.getElementById("pageHostLobby-lobby").innerHTML + "<div class=\"pageHostLobby-lobby-div\"><div class=\"name\">" + data["name"] + "</div></div>"
+        document.querySelectorAll("#pageHostLobby-lobby>.pageHostLobby-lobby-div")[document.querySelectorAll("#pageHostLobby-lobby>.pageHostLobby-lobby-div").length - 1].addEventListener("click", (event) => {
+            connection.send(JSON.stringify({
+                "packettype": "kickplayer",
+                "name": data["name"]
+            }));
+            document.getElementById("pageHostLobby-lobby").innerHTML = document.getElementById("pageHostLobby-lobby").innerHTML.replace("<div class=\"pageHostLobby-lobby-div\"><div class=\"name\">" + data["name"] + "</div></div>", "")
+        })
         return
     }
 
