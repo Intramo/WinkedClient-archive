@@ -39,7 +39,7 @@ function getText(key) {
 
             "questionType.text": "<i class=\"fa-regular fa-keyboard\"></i> Texteingabe",
             "questionType.normal": "Quiz",
-            "questionType.select": "<i class=\"fa-regular fa-square-check\"> Antworten auswählen</i>",
+            "questionType.select": "<i class=\"fa-regular fa-square-check\"></i> Antworten auswählen",
             "questionType.truefalse": "Wahr oder falsch",
 
             "pagePlayerAnswerTrueFalse.yes": "Ja",

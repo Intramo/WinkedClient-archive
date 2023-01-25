@@ -33,7 +33,7 @@
 
 .pageHostAnswers .content>.media {
     margin: var(--gap);
-    height: calc(50vmin - var(--gap) - var(--gap));
+    min-height: calc(50vmin - var(--gap) - var(--gap));
     display: flex;
     align-items: center;
     justify-content: center;

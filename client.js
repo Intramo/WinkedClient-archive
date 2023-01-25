@@ -569,10 +569,10 @@ connection.onmessage = function (event) {
         if (gameState === "hostResultsText") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             document.getElementById("pageHostResultsText-correct").innerHTML = ''
-            for (const element of data["correct"]) { document.getElementById("pageHostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
+            for (const element of data["correct"]) { document.getElementById("pageHostResultsText-correct").innerHTML += "<div>" + element + "</div>" }
             document.getElementById("pageHostResultsText-wrong-w").style.display = data["wrong"].length == 0 ? "none" : "block"
             document.getElementById("pageHostResultsText-wrong").innerHTML = ''
-            for (const element of data["wrong"]) { document.getElementById("pageHostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
+            for (const element of data["wrong"]) { document.getElementById("pageHostResultsText-wrong").innerHTML += "<div>" + element + "</div>" }
         }
 
         if (gameState === "hostPodium") {
@@ -583,17 +583,14 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-p3name")) { element.innerHTML = data["p3name"] };
             for (const element of document.getElementsByClassName("var-p3points")) { element.innerHTML = data["p3points"] };
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "0vw"
-                setTimeout(() => { document.getElementById("medalContainer3").classList.add("shown"); soundEffects["podium"]["3"].play() }, 1 * 1000)
-            }, 0)
+                soundEffects["podium"]["3"].play()
+            }, 3200)
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "-100vw"
-                setTimeout(() => { document.getElementById("medalContainer2").classList.add("shown"); soundEffects["podium"]["2"].play() }, 1 * 1000)
-            }, 6 * 1000)
+                soundEffects["podium"]["2"].play()
+            }, 8000 + 3200)
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "-200vw"
-                setTimeout(() => { document.getElementById("medalContainer1").classList.add("shown"); soundEffects["podium"]["1"].play() }, 1 * 1000)
-            }, 12 * 1000)
+                soundEffects["podium"]["1"].play()
+            }, 16000 + 3200)
         }
 
         refreshDisplay();
