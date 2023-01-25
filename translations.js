@@ -52,6 +52,9 @@ function getText(key) {
             "pagePlayerResultWrong.wrong": "Falsch",
             "pagePlayerResultCorrect.right": "Richtig",
             "pagePlayerResultCorrect.answerstreak": "Antwortserie",
+
+            "pageHostResultsText.right": "Richtige Antworten:",
+            "pageHostResultsText.wrong": "Falsche Antworten:"
         },
         'English': {
             "language.short": "EN"

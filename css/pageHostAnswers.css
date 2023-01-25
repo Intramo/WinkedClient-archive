@@ -1,10 +1,10 @@
-.pageHostAnswers .content{
+.pageHostAnswers .content {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
 }
 
-.pageHostAnswers .content>.topbar{
+.pageHostAnswers .content>.topbar {
     width: calc(100% - var(--gap) - var(--gap));
     display: flex;
     flex-wrap: nowrap;
@@ -14,7 +14,7 @@
     margin: var(--gap);
 }
 
-.pageHostAnswers .content>.topbar>.question{
+.pageHostAnswers .content>.topbar>.question {
     background-color: white;
     width: 100%;
     margin-right: var(--gap);
@@ -25,25 +25,26 @@
     border-radius: 5px;
 }
 
-.pageHostAnswers .content>.topbar>.button{
+.pageHostAnswers .content>.topbar>.button {
     color: black;
     background-color: white;
     border-color: #ccc;
 }
 
-.pageHostAnswers .content>.media{
+.pageHostAnswers .content>.media {
     margin: var(--gap);
     height: calc(50vmin - var(--gap) - var(--gap));
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-.pageHostAnswers .content>.media>span{
+.pageHostAnswers .content>.media>span {
     height: 100%;
 }
 
-.pageHostAnswers .content>.media img{
+.pageHostAnswers .content>.media img {
     height: 100%;
     max-height: 100%;
     box-shadow: var(--subtle-shadow);
@@ -51,7 +52,7 @@
     object-fit: contain;
 }
 
-.pageHostAnswers .content>.buttons{
+.pageHostAnswers .content>.buttons {
     position: relative;
     margin: var(--gap);
     height: calc(100% - var(--gap) - var(--gap));
@@ -79,7 +80,7 @@
     justify-content: flex-start;
 }
 
-.pageHostAnswers .content>.answers{
+.pageHostAnswers .content>.answers {
     position: absolute;
     right: 16px;
     top: 40%;
@@ -116,7 +117,7 @@
 
 /*********************************************************************/
 
-.pageHostAnswers .content>.buttons>button{
+.pageHostAnswers .content>.buttons>button {
     position: absolute;
     width: calc(50% - calc(var(--gap) / 2));
     height: calc(50% - calc(var(--gap) / 2));
@@ -149,7 +150,7 @@
 
 /*************************************************************************/
 
-.pageHostAnswers.truefalse .content>.buttons>button{
+.pageHostAnswers.truefalse .content>.buttons>button {
     height: 100%;
 }
 
@@ -163,23 +164,58 @@
     right: 0px;
 }
 
-.pageHostAnswers.truefalse .content>.buttons>button>.text{
+.pageHostAnswers.truefalse .content>.buttons>button>.text {
     font-size: 15vmin;
 }
 
 /*************************************************************************/
 
-.pageHostAnswers.text .content>.media{
+.pageHostAnswers.text .content>.media {
     height: 100%;
 }
 
 /*************************************************************************/
 
-.pageHostAnswers.result .content>.buttons>button.incorrect{
+.pageHostAnswers.text.result .content>.wrapper {
+    margin: var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#pageHostResultsText-correct,
+#pageHostResultsText-wrong {
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: var(--gap);
+}
+
+#pageHostResultsText-correct>div,
+#pageHostResultsText-wrong>div {
+    margin: var(--gap);
+    padding: var(--gap);
+    display: inline;
+    border-radius: 5px;
+    box-shadow: var(--subtle-shadow);
+    color: white;
+    background-color: #56ab2f;
+}
+
+#pageHostResultsText-wrong>div {
+    background-color: #ef473a;
+}
+
+/*************************************************************************/
+
+.pageHostAnswers.result .content>.buttons>button.incorrect {
     opacity: 0.3;
 }
 
-.pageHostAnswers.result .content>.buttons>button>.statusIndicator{
+.pageHostAnswers.result .content>.buttons>button>.statusIndicator {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -188,7 +224,7 @@
     z-index: 9999;
 }
 
-.pageHostAnswers.result .content>.poles{
+.pageHostAnswers.result .content>.poles {
     margin: var(--gap);
     min-height: calc(50vmin - var(--gap) - var(--gap));
     display: flex;
