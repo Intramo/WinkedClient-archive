@@ -15,6 +15,9 @@ function getText(key) {
         'German': {
             "language.short": "DE",
 
+            "next": "Weiter",
+            "answers": "Antworten",
+
             "error.id.exist": "Ungültiger Sitzungscode",
             "error.id.none": "Das Feld für die Spiel-ID ist leer",
             "error.id.toolong": "Die Spiel-ID ist zu lang",
@@ -36,7 +39,7 @@ function getText(key) {
 
             "questionType.text": "<i class=\"fa-regular fa-keyboard\"></i> Texteingabe",
             "questionType.normal": "Quiz",
-            "questionType.select": "<i class=\"fa-regular fa-square-check\"> Antworten auswählen</i>",
+            "questionType.select": "<i class=\"fa-regular fa-square-check\"></i> Antworten auswählen",
             "questionType.truefalse": "Wahr oder falsch",
 
             "pagePlayerAnswerTrueFalse.yes": "Ja",
@@ -44,7 +47,14 @@ function getText(key) {
 
             "hostPopup.randomizeAnswers": "Antworten zufällig anordnen",
             "hostPopup.randomizeQuestions": "Fragen zufällig anordnen",
-            "hostPopup.upload": "Eigene Datei hochladen"
+            "hostPopup.upload": "Eigene Datei hochladen",
+
+            "pagePlayerResultWrong.wrong": "Falsch",
+            "pagePlayerResultCorrect.right": "Richtig",
+            "pagePlayerResultCorrect.answerstreak": "Antwortserie",
+
+            "pageHostResultsText.right": "Richtige Antworten:",
+            "pageHostResultsText.wrong": "Falsche Antworten:"
         },
         'English': {
             "language.short": "EN"

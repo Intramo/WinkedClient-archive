@@ -408,17 +408,22 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersNormal") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersNormal"
+            }else{
+                gameState = "HostAnswersNormalMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersNormalMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersNormal")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"] };
             for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"] };
             for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"] };
             for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"] };
-            document.getElementById("page-hostAnswersNormal-a").style.display = data["answers"]["A"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-b").style.display = data["answers"]["B"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-c").style.display = data["answers"]["C"] !== "" ? "initial" : "none"
-            document.getElementById("page-hostAnswersNormal-d").style.display = data["answers"]["D"] !== "" ? "initial" : "none"
+            document.getElementById("page"+gameState+"-a").style.display = data["answers"]["A"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-b").style.display = data["answers"]["B"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-c").style.display = data["answers"]["C"] !== "" ? "flex" : "none"
+            document.getElementById("page"+gameState+"-d").style.display = data["answers"]["D"] !== "" ? "flex" : "none"
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
                 let ct = getCountdown()
@@ -433,8 +438,13 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersTrueFalse") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersTrueFalse"
+            }else{
+                gameState = "HostAnswersTrueFalseMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersTrueFalseMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersTrueFalse")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
@@ -450,8 +460,13 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersText") {
+            if(data["media"] == ""){
+                gameState = "HostAnswersText"
+            }else{
+                gameState = "HostAnswersTextMedia"
+                for (const element of document.getElementsByClassName("var-media-pageHostAnswersTextMedia")) { element.innerHTML = data["media"] };
+            }
             for (const element of document.getElementsByClassName("var-answerAmount")) { element.innerHTML = answerAmount };
-            for (const element of document.getElementsByClassName("var-media-hostAnswersText")) { element.innerHTML = data["media"] };
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             startCountdown(data["duration"] * 1000)
             function hostQuestionCountdown() {
@@ -475,49 +490,57 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             let amountPoles = (data["answers"].hasOwnProperty("A") ? 1 : 0) + (data["answers"].hasOwnProperty("B") ? 1 : 0) + (data["answers"].hasOwnProperty("C") ? 1 : 0) + (data["answers"].hasOwnProperty("D") ? 1 : 0)
             let height = Math.floor((1 / amountPoles) * 100) + "%"
-            if (data["answers"].hasOwnProperty("A")) document.getElementById("page-hostResultsNormal-pole-a").style.height = height
-            if (data["answers"].hasOwnProperty("B")) document.getElementById("page-hostResultsNormal-pole-b").style.height = height
-            if (data["answers"].hasOwnProperty("C")) document.getElementById("page-hostResultsNormal-pole-c").style.height = height
-            if (data["answers"].hasOwnProperty("D")) document.getElementById("page-hostResultsNormal-pole-d").style.height = height
+            if (data["answers"].hasOwnProperty("A")) document.getElementById("pageHostResultsNormal-pole-a").style.height = height
+            if (data["answers"].hasOwnProperty("B")) document.getElementById("pageHostResultsNormal-pole-b").style.height = height
+            if (data["answers"].hasOwnProperty("C")) document.getElementById("pageHostResultsNormal-pole-c").style.height = height
+            if (data["answers"].hasOwnProperty("D")) document.getElementById("pageHostResultsNormal-pole-d").style.height = height
             if (data["answers"].hasOwnProperty("A")) {
                 for (const element of document.getElementsByClassName("var-answerA")) { element.innerHTML = data["answers"]["A"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["answers"]["A"]["amount"] };
-                document.getElementById("page-hostResultsNormal-a").style.display = "block"
-                document.getElementById("page-hostResultsNormal-pole-a").style.display = "block"
-                document.getElementById("page-hostResultsNormal-status-a").innerHTML = data["answers"]["A"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                document.getElementById("pageHostResultsNormal-a").style.display = "flex"
+                document.getElementById("pageHostResultsNormal-pole-a").style.display = "block"
+                document.getElementById("pageHostResultsNormal-status-a").innerHTML = data["answers"]["A"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                if(data["answers"]["A"]["correct"]) document.getElementById("pageHostResultsNormal-a").classList.remove("incorrect")
+                if(!data["answers"]["A"]["correct"]) document.getElementById("pageHostResultsNormal-a").classList.add("incorrect")
             } else {
-                document.getElementById("page-hostResultsNormal-a").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-a").style.display = "none"
+                document.getElementById("pageHostResultsNormal-a").style.display = "none"
+                document.getElementById("pageHostResultsNormal-pole-a").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("B")) {
                 for (const element of document.getElementsByClassName("var-answerB")) { element.innerHTML = data["answers"]["B"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["answers"]["B"]["amount"] };
-                document.getElementById("page-hostResultsNormal-b").style.display = "block"
-                document.getElementById("page-hostResultsNormal-pole-b").style.display = "block"
-                document.getElementById("page-hostResultsNormal-status-b").innerHTML = data["answers"]["B"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                document.getElementById("pageHostResultsNormal-b").style.display = "flex"
+                document.getElementById("pageHostResultsNormal-pole-b").style.display = "block"
+                document.getElementById("pageHostResultsNormal-status-b").innerHTML = data["answers"]["B"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                if(data["answers"]["B"]["correct"]) document.getElementById("pageHostResultsNormal-b").classList.remove("incorrect")
+                if(!data["answers"]["B"]["correct"]) document.getElementById("pageHostResultsNormal-b").classList.add("incorrect")
             } else {
-                document.getElementById("page-hostResultsNormal-b").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-b").style.display = "none"
+                document.getElementById("pageHostResultsNormal-b").style.display = "none"
+                document.getElementById("pageHostResultsNormal-pole-b").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("C")) {
                 for (const element of document.getElementsByClassName("var-answerC")) { element.innerHTML = data["answers"]["C"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerCAmount")) { element.innerHTML = data["answers"]["C"]["amount"] };
-                document.getElementById("page-hostResultsNormal-c").style.display = "block"
-                document.getElementById("page-hostResultsNormal-pole-c").style.display = "block"
-                document.getElementById("page-hostResultsNormal-status-c").innerHTML = data["answers"]["C"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                document.getElementById("pageHostResultsNormal-c").style.display = "flex"
+                document.getElementById("pageHostResultsNormal-pole-c").style.display = "block"
+                document.getElementById("pageHostResultsNormal-status-c").innerHTML = data["answers"]["C"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                if(data["answers"]["C"]["correct"]) document.getElementById("pageHostResultsNormal-c").classList.remove("incorrect")
+                if(!data["answers"]["C"]["correct"]) document.getElementById("pageHostResultsNormal-c").classList.add("incorrect")
             } else {
-                document.getElementById("page-hostResultsNormal-c").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-c").style.display = "none"
+                document.getElementById("pageHostResultsNormal-c").style.display = "none"
+                document.getElementById("pageHostResultsNormal-pole-c").style.display = "none"
             }
             if (data["answers"].hasOwnProperty("D")) {
                 for (const element of document.getElementsByClassName("var-answerD")) { element.innerHTML = data["answers"]["D"]["text"] };
                 for (const element of document.getElementsByClassName("var-answerDAmount")) { element.innerHTML = data["answers"]["D"]["amount"] };
-                document.getElementById("page-hostResultsNormal-d").style.display = "block"
-                document.getElementById("page-hostResultsNormal-pole-d").style.display = "block"
-                document.getElementById("page-hostResultsNormal-status-d").innerHTML = data["answers"]["D"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                document.getElementById("pageHostResultsNormal-d").style.display = "flex"
+                document.getElementById("pageHostResultsNormal-pole-d").style.display = "block"
+                document.getElementById("pageHostResultsNormal-status-d").innerHTML = data["answers"]["D"]["correct"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+                if(data["answers"]["D"]["correct"]) document.getElementById("pageHostResultsNormal-d").classList.remove("incorrect")
+                if(!data["answers"]["D"]["correct"]) document.getElementById("pageHostResultsNormal-d").classList.add("incorrect")
             } else {
-                document.getElementById("page-hostResultsNormal-d").style.display = "none"
-                document.getElementById("page-hostResultsNormal-pole-d").style.display = "none"
+                document.getElementById("pageHostResultsNormal-d").style.display = "none"
+                document.getElementById("pageHostResultsNormal-pole-d").style.display = "none"
             }
             let amountA = data["answers"].hasOwnProperty("A") ? data["answers"]["A"]["amount"] : 0
             let amountB = data["answers"].hasOwnProperty("B") ? data["answers"]["B"]["amount"] : 0
@@ -531,21 +554,25 @@ connection.onmessage = function (event) {
 
         if (gameState === "hostResultsTrueFalse") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            for (const element of document.getElementsByClassName("var-answerYAmount")) { element.innerHTML = data["trueAmount"] };
-            for (const element of document.getElementsByClassName("var-answerNAmount")) { element.innerHTML = data["falseAmount"] };
-            for (const element of document.getElementsByClassName("bar-answerYAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
-            for (const element of document.getElementsByClassName("bar-answerNAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
-            document.getElementById("page-hostResultsTrueFalse-status-y").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            document.getElementById("page-hostResultsTrueFalse-status-n").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+            for (const element of document.getElementsByClassName("var-answerBAmount")) { element.innerHTML = data["trueAmount"] };
+            for (const element of document.getElementsByClassName("var-answerAAmount")) { element.innerHTML = data["falseAmount"] };
+            for (const element of document.getElementsByClassName("bar-answerBAmount")) { element.style.width = (data["trueAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
+            for (const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
+            document.getElementById("pageHostResultsTrueFalse-status-b").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+            document.getElementById("pageHostResultsTrueFalse-status-a").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
+            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.remove("incorrect")
+            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.add("incorrect")
+            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.remove("incorrect")
+            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.add("incorrect")
         }
 
         if (gameState === "hostResultsText") {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
-            document.getElementById("page-hostResultsText-correct").innerHTML = ''
-            for (const element of data["correct"]) { document.getElementById("page-hostResultsText-correct").innerHTML += "<p>" + element + "</p>" }
-            document.getElementById("page-hostResultsText-wrongHeading").style.display = data["wrong"].length == 0 ? "none" : "block"
-            document.getElementById("page-hostResultsText-wrong").innerHTML = ''
-            for (const element of data["wrong"]) { document.getElementById("page-hostResultsText-wrong").innerHTML += "<p>" + element + "</p>" }
+            document.getElementById("pageHostResultsText-correct").innerHTML = ''
+            for (const element of data["correct"]) { document.getElementById("pageHostResultsText-correct").innerHTML += "<div>" + element + "</div>" }
+            document.getElementById("pageHostResultsText-wrong-w").style.display = data["wrong"].length == 0 ? "none" : "block"
+            document.getElementById("pageHostResultsText-wrong").innerHTML = ''
+            for (const element of data["wrong"]) { document.getElementById("pageHostResultsText-wrong").innerHTML += "<div>" + element + "</div>" }
         }
 
         if (gameState === "hostPodium") {
@@ -556,17 +583,14 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-p3name")) { element.innerHTML = data["p3name"] };
             for (const element of document.getElementsByClassName("var-p3points")) { element.innerHTML = data["p3points"] };
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "0vw"
-                setTimeout(() => { document.getElementById("medalContainer3").classList.add("shown"); soundEffects["podium"]["3"].play() }, 1 * 1000)
-            }, 0)
+                soundEffects["podium"]["3"].play()
+            }, 3200)
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "-100vw"
-                setTimeout(() => { document.getElementById("medalContainer2").classList.add("shown"); soundEffects["podium"]["2"].play() }, 1 * 1000)
-            }, 6 * 1000)
+                soundEffects["podium"]["2"].play()
+            }, 8000 + 3200)
             setTimeout(() => {
-                document.getElementById("page-hostPodium-wrapper").style.right = "-200vw"
-                setTimeout(() => { document.getElementById("medalContainer1").classList.add("shown"); soundEffects["podium"]["1"].play() }, 1 * 1000)
-            }, 12 * 1000)
+                soundEffects["podium"]["1"].play()
+            }, 16000 + 3200)
         }
 
         refreshDisplay();

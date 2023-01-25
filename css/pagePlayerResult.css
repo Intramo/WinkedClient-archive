@@ -1,0 +1,31 @@
+#pagePlayerResultWrong .bg {
+    background: linear-gradient(to right, #ef473a, #cb2d3e);
+}
+
+#pagePlayerResultCorrectSelect .bg,
+#pagePlayerResultCorrect .bg {
+    background: linear-gradient(to right, #56ab2f, #a8e063);
+}
+
+.pagePlayerResult>.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    color: white;
+}
+
+.pagePlayerResult>.content>img {
+    height: 5rem;
+}
+
+.pagePlayerResult>.content>p {
+    margin: 0px;
+    margin-top: 16px;
+}
+
+.pagePlayerResult>.content>.indicator {
+    font-weight: bold;
+    font-style: italic;
+}

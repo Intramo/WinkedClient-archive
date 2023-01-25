@@ -1,0 +1,144 @@
+#medalContainer1 {
+    z-index: 1300;
+    opacity: 0%;
+    height: 80vh;
+    animation: medalContainer1anim 8s;
+    animation-delay: 16s;
+    animation-fill-mode: forwards;
+}
+
+#medalContainer2 {
+    z-index: 1200;
+    opacity: 0%;
+    height: 65vh;
+    animation: medalContainer2anim 8s;
+    animation-delay: 8s;
+    animation-fill-mode: forwards;
+}
+
+#medalContainer3 {
+    z-index: 1100;
+    opacity: 0%;
+    height: 50vh;
+    animation: medalContainer3anim 8s;
+    animation-fill-mode: forwards;
+}
+
+#pageHostPodium .content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#pageHostPodium .content>.poleContainer {
+    position: relative;
+    width: calc(100% - var(--gap) - var(--gap));
+    max-width: 84vmin;
+    display: flex;
+    align-items: flex-end;
+    justify-content: stretch;
+    gap: var(--gap);
+}
+
+#pageHostPodium .content>.poleContainer>.pole {
+    background-color: whitesmoke;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    box-shadow: 0 0 30px #fff;
+    color: black;
+}
+
+#pageHostPodium .content>.poleContainer>.pole>img {
+    width: 75%;
+}
+
+#pageHostPodium .content>.poleContainer>.pole>div {
+    margin: var(--gap) 0;
+    font-size: 2em;
+}
+
+@keyframes medalContainer3anim {
+    0% {
+        opacity: 100%;
+        height: 0px;
+        color: whitesmoke;
+        transform: translateX(calc(-28vmin - calc(var(--gap) / 2))) scale(150%);
+    }
+
+    40% {
+        height: 60vh;
+        color: whitesmoke;
+    }
+
+    70% {
+        height: 60vh;
+        color: black;
+        transform: translateX(calc(-28vmin - calc(var(--gap) / 2))) scale(150%);
+    }
+
+    100% {
+        height: 50vh;
+        transform: translateX(0px) scale(100%);
+        opacity: 100%;
+    }
+}
+
+@keyframes medalContainer2anim {
+    0% {
+        opacity: 100%;
+        height: 0px;
+        color: whitesmoke;
+        transform: translateX(calc(28vmin - calc(var(--gap) / 2))) scale(150%);
+    }
+
+    40% {
+        height: 60vh;
+        color: whitesmoke;
+    }
+
+    70% {
+        height: 60vh;
+        color: black;
+        transform: translateX(calc(28vmin - calc(var(--gap) / 2))) scale(150%);
+    }
+
+    100% {
+        height: 65vh;
+        transform: translateX(0px) scale(100%);
+        opacity: 100%;
+    }
+}
+
+@keyframes medalContainer1anim {
+    0% {
+        opacity: 100%;
+        height: 0px;
+        color: whitesmoke;
+        transform: scale(150%);
+    }
+
+    40% {
+        height: 60vh;
+        color: whitesmoke;
+    }
+
+    70% {
+        color: black;
+        height: 60vh;
+        opacity: 100%;
+        transform: scale(150%);
+    }
+
+    100% {
+        color: black;
+        height: 80vh;
+        opacity: 100%;
+        transform: scale(100%);
+    }
+}
