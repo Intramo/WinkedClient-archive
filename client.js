@@ -210,7 +210,7 @@ function refreshDisplay() {
         element.style.display = "none";
     }
     if (document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)) != null) document.getElementById("page" + gameState.charAt(0).toUpperCase() + gameState.slice(1)).style.display = "block";
-    if (document.getElementById("page-" + gameState) != null) document.getElementById("page-" + gameState).style.display = "block";
+    if (document.getElementById("page-" + gameState) != null) document.getElementById("page-" + gameState).style.display = "block"; /* TODO: LEGACY */
 }
 
 function findGetParameter(parameterName) {
@@ -260,6 +260,13 @@ function preloadImage(list) {
     for (var i = 0; i < list.length; i++) {
         preloadedImages[i] = new Image();
         preloadedImages[i].src = list[i];
+    }
+}
+
+var preloadedAudio = [];
+function preloadAudio(list) {
+    for (var i = 0; i < list.length; i++) {
+        preloadedAudio[i] = new Audio(list[i]);
     }
 }
 
@@ -350,6 +357,7 @@ connection.onmessage = function (event) {
                 ]
             }
             preloadImage(data["preload"]["images"])
+            preloadAudio(data["preload"]["audio"])
         }
 
         if (gameState === "playerAnswerNormal") {
@@ -419,7 +427,6 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-progress")) { element.innerHTML = data["progress"] };
             document.getElementById("pageHostQuestion-progress").style.width = "0%"
             for (const element of document.getElementsByClassName("var-type")) { element.innerHTML = getText("questionType." + data["type"]) };
-            console.log("questionType." + data["type"])
 
             setTimeout(() => {
                 startCountDownByWordLength(data["question"].length)
@@ -437,7 +444,7 @@ connection.onmessage = function (event) {
             }, 2000);
         }
 
-        if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe")) {
+        if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe") && !data["media"].includes("audio")) {
             audioTrack1.currentTime = audioTrack1Positions.random()
             audioTrack1.play()
         }
@@ -517,6 +524,10 @@ connection.onmessage = function (event) {
         }
 
         if (gameState.startsWith("hostResults")) {
+            for (const element of document.getElementsByClassName("var-media-pageHostAnswersNormalMedia")) { element.innerHTML = "" };
+            for (const element of document.getElementsByClassName("var-media-pageHostAnswersTrueFalseMedia")) { element.innerHTML = "" };
+            for (const element of document.getElementsByClassName("var-media-pageHostAnswersTextMedia")) { element.innerHTML = "" };
+
             audioTrack1.pause()
             soundEffects["nextQuestion"].random().play()
         }
