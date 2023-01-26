@@ -641,10 +641,10 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("bar-answerAAmount")) { element.style.width = (data["falseAmount"] / (data["trueAmount"] + data["falseAmount"])) * 90 + "%" };
             document.getElementById("pageHostResultsTrueFalse-status-b").innerHTML = data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
             document.getElementById("pageHostResultsTrueFalse-status-a").innerHTML = !data["isRight"] ? "<img src=\"assets/indicatorCorrect.svg\">" : "<img src=\"assets/indicatorWrong.svg\">"
-            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.remove("incorrect")
-            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.add("incorrect")
-            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.remove("incorrect")
-            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.add("incorrect")
+            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.remove("incorrect")
+            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-a").classList.add("incorrect")
+            if(data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.remove("incorrect")
+            if(!data["isRight"]) document.getElementById("pageHostResultsTrueFalse-b").classList.add("incorrect")
         }
 
         if (gameState === "hostResultsText") {
