@@ -8,7 +8,7 @@ var countdownStart = 0;
 var countdownDuration = 10000;
 
 var audioTrack1 = null;
-var audioTrack1Positions = [47, 73, 98, 128, 140];
+var audioTrack1Positions = null;
 var audioDownloadProgress = 0;
 var soundEffects = null;
 
@@ -338,7 +338,18 @@ connection.onmessage = function (event) {
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            audioTrack1 = new Howl({src: ["assets/Sam Day & wes mills - Running Away [NCS Release].mp3"]})
+            audioTrack1Positions = ["track01", "track02", "track03", "track04", "track05"]
+
+            audioTrack1 = new Howl({
+                src: ["assets/Sam Day & wes mills - Running Away [NCS Release].mp3"],
+                sprite: {
+                    track01: [47000, 180000],
+                    track02: [73000, 180000],
+                    track03: [98000, 180000],
+                    track04: [128000, 180000],
+                    track05: [140000, 180000]
+                }
+            })
             soundEffects = {
                 "podium": {
                     "3": new Howl({src: [[
@@ -452,8 +463,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe") && !data["media"].includes("audio")) {
-            audioTrack1.play()
-            audioTrack1.pos(audioTrack1Positions.random())
+            audioTrack1.play(audioTrack1Positions.random())
         }
 
         if (gameState === "hostAnswersNormal") {
