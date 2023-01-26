@@ -605,7 +605,7 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-question")) { element.innerHTML = data["question"] };
             document.getElementById("pageHostResultsText-correct").innerHTML = ''
             for (const element of data["correct"]) { document.getElementById("pageHostResultsText-correct").innerHTML += "<div>" + element + "</div>" }
-            document.getElementById("pageHostResultsText-wrong-w").style.display = data["wrong"].length == 0 ? "none" : "block"
+            document.getElementById("pageHostResultsText-wrong-w").style.display = data["wrong"].length == 0 ? "none" : "flex"
             document.getElementById("pageHostResultsText-wrong").innerHTML = ''
             for (const element of data["wrong"]) { document.getElementById("pageHostResultsText-wrong").innerHTML += "<div>" + element + "</div>" }
         }
