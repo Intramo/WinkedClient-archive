@@ -11,7 +11,6 @@ var audioTrack1 = null;
 var audioTrack1Positions = [47, 73, 98, 128, 140];
 var audioDownloadProgress = 0;
 var soundEffects = null;
-var soundEffectsSrc = null;
 
 var hostFileContent = "";
 
@@ -24,8 +23,6 @@ var locationParamID = findGetParameter("id");
 var locationParamName = findGetParameter("name");
 
 var isSessionLocked = false;
-
-var miniMP3 = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
 
 function onSessionLockButton() {
     isSessionLocked = !isSessionLocked
@@ -341,51 +338,30 @@ connection.onmessage = function (event) {
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            audioTrack1 = addSound(miniMP3) //addSound("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
-            soundEffectsSrc = {
+            audioTrack1 = new Howl({src: ["assets/Sam Day & wes mills - Running Away [NCS Release].mp3"]})
+            soundEffects = {
                 "podium": {
-                    "3": [
+                    "3": new Howl({src: [[
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076126951100447/fail.mp3"//, // Spongebob Fail
                         //"https://cdn.discordapp.com/attachments/1059075995535163403/1059076126074474516/doyouspeakgermany.mp3", // Do you speak germany?
                         //"https://cdn.discordapp.com/attachments/1059075995535163403/1059076126619742208/emotionaldamage.mp3" // Emotional damage
-                    ].random(),
-                    "2": [
+                    ].random()]}),
+                    "2": new Howl({src: [[
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076102108229702/wow.mp3", // Wow
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076101776887898/sad.mp3", // Sad
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076101462302770/credits.mp3" // Directed by Robert D.
-                    ].random(),
-                    "1": [
+                    ].random()]}),
+                    "1": new Howl({src: [[
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076055723409408/outro.mp3", // Outro song
                         "https://cdn.discordapp.com/attachments/1059075995535163403/1059076055991857222/walking.mp3" // Wide
-                    ].random()
+                    ].random()]})
                 },
                 "nextQuestion": [
-                    "https://cdn.discordapp.com/attachments/1059075995535163403/1059077748913623040/aktex.mp3", // Mysterious
-                    "https://cdn.discordapp.com/attachments/1059075995535163403/1059077748569681960/windowsshutdown.mp3", // Windows XP Shutdown
-                    "https://cdn.discordapp.com/attachments/1059075995535163403/1059077748255113256/windowsxperror.mp3" // Windows XP Error
+                    new Howl({src: ["https://cdn.discordapp.com/attachments/1059075995535163403/1059077748913623040/aktex.mp3"]}), // Mysterious
+                    new Howl({src: ["https://cdn.discordapp.com/attachments/1059075995535163403/1059077748569681960/windowsshutdown.mp3"]}), // Windows XP Shutdown
+                    new Howl({src: ["https://cdn.discordapp.com/attachments/1059075995535163403/1059077748255113256/windowsxperror.mp3"]}) // Windows XP Error
                 ]
             }
-
-            soundEffects = {
-                "podium": {
-                    "3": addSound(miniMP3),
-                    "2": addSound(miniMP3),
-                    "1": addSound(miniMP3)
-                },
-                "nextQuestion": [
-                    addSound(miniMP3),
-                    addSound(miniMP3),
-                    addSound(miniMP3)
-                ]
-            }
-
-            addSoundPreload("assets/Sam Day & wes mills - Running Away [NCS Release].mp3")
-            addSoundPreload(soundEffectsSrc["podium"]["1"])
-            addSoundPreload(soundEffectsSrc["podium"]["2"])
-            addSoundPreload(soundEffectsSrc["podium"]["3"])
-            addSoundPreload(soundEffectsSrc["nextQuestion"][0])
-            addSoundPreload(soundEffectsSrc["nextQuestion"][1])
-            addSoundPreload(soundEffectsSrc["nextQuestion"][2])
 
             preloadImage(data["preload"]["images"])
             preloadAudio(data["preload"]["audio"])
@@ -476,8 +452,8 @@ connection.onmessage = function (event) {
         }
 
         if (gameState.startsWith("hostAnswers") && !data["media"].includes("iframe") && !data["media"].includes("audio")) {
-            audioTrack1.src = "assets/Sam Day & wes mills - Running Away [NCS Release].mp3"
-            audioTrack1.currentTime = audioTrack1Positions.random()
+            audioTrack1.play()
+            audioTrack1.pos(audioTrack1Positions.random())
         }
 
         if (gameState === "hostAnswersNormal") {
@@ -559,12 +535,12 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-media-pageHostAnswersTrueFalseMedia")) { element.innerHTML = "" };
             for (const element of document.getElementsByClassName("var-media-pageHostAnswersTextMedia")) { element.innerHTML = "" };
 
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersNormalMedia>audio")) { element.src = miniMP3 };
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTrueFalseMedia>audio")) { element.src = miniMP3 };
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTextMedia>audio")) { element.src = miniMP3 };
+            for (const element of document.querySelectorAll(".var-media-pageHostAnswersNormalMedia>audio")) { element.pause() };
+            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTrueFalseMedia>audio")) { element.pause() };
+            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTextMedia>audio")) { element.pause() };
 
-            audioTrack1.src = miniMP3
-            soundEffects["nextQuestion"].random().src = soundEffectsSrc["nextQuestion"].random()
+            audioTrack1.stop()
+            soundEffects["nextQuestion"].random().play()
         }
 
         if (gameState === "hostResultsNormal") {
@@ -664,13 +640,13 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-p3name")) { element.innerHTML = data["p3name"] };
             for (const element of document.getElementsByClassName("var-p3points")) { element.innerHTML = data["p3points"] };
             setTimeout(() => {
-                soundEffects["podium"]["3"].src = soundEffectsSrc["podium"]["3"]
+                soundEffects["podium"]["3"].play()
             }, 3200)
             setTimeout(() => {
-                soundEffects["podium"]["2"].src = soundEffectsSrc["podium"]["2"]
+                soundEffects["podium"]["2"].play()
             }, 8000 + 3200)
             setTimeout(() => {
-                soundEffects["podium"]["1"].src = soundEffectsSrc["podium"]["1"]
+                soundEffects["podium"]["1"].play()
             }, 16000 + 3200)
         }
 
