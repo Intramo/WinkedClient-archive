@@ -101,7 +101,7 @@
     justify-content: flex-start;
 }
 
-.pageHostAnswers .content>.info{
+.pageHostAnswers .content>.info {
     position: absolute;
     left: 0px;
     top: 40%;
@@ -114,7 +114,7 @@
     z-index: 1000;
 }
 
-.pageHostAnswers.nomedia .content>.info{
+.pageHostAnswers.nomedia .content>.info {
     position: relative;
     transform: none;
     top: 0px;
