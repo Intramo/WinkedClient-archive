@@ -24,6 +24,8 @@ var locationParamName = findGetParameter("name");
 
 var isSessionLocked = false;
 
+var currentAudioPlayback = null
+
 function onSessionLockButton() {
     isSessionLocked = !isSessionLocked
     if (isSessionLocked) {
@@ -466,8 +468,13 @@ connection.onmessage = function (event) {
             audioTrack1.play(audioTrack1Positions.random())
         }
 
+        if (gameState.startsWith("hostAnswers") && data["media"].includes("audio=")) {
+            currentAudioPlayback = new Howl({src: [data["media"].split("audio=")[1]]})
+            currentAudioPlayback.play()
+        }
+
         if (gameState === "hostAnswersNormal") {
-            if(data["media"] == ""){
+            if(data["media"] == "" || data["media"].startsWith("audio=")){
                 gameState = "HostAnswersNormal"
             }else{
                 gameState = "HostAnswersNormalMedia"
@@ -497,7 +504,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersTrueFalse") {
-            if(data["media"] == ""){
+            if(data["media"] == "" || data["media"].startsWith("audio=")){
                 gameState = "HostAnswersTrueFalse"
             }else{
                 gameState = "HostAnswersTrueFalseMedia"
@@ -519,7 +526,7 @@ connection.onmessage = function (event) {
         }
 
         if (gameState === "hostAnswersText") {
-            if(data["media"] == ""){
+            if(data["media"] == "" || data["media"].startsWith("audio=")){
                 gameState = "HostAnswersText"
             }else{
                 gameState = "HostAnswersTextMedia"
@@ -544,11 +551,7 @@ connection.onmessage = function (event) {
             for (const element of document.getElementsByClassName("var-media-pageHostAnswersNormalMedia")) { element.innerHTML = "" };
             for (const element of document.getElementsByClassName("var-media-pageHostAnswersTrueFalseMedia")) { element.innerHTML = "" };
             for (const element of document.getElementsByClassName("var-media-pageHostAnswersTextMedia")) { element.innerHTML = "" };
-
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersNormalMedia>audio")) { element.pause() };
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTrueFalseMedia>audio")) { element.pause() };
-            for (const element of document.querySelectorAll(".var-media-pageHostAnswersTextMedia>audio")) { element.pause() };
-
+            if(currentAudioPlayback!=null) currentAudioPlayback.stop()
             audioTrack1.stop()
             soundEffects["nextQuestion"].random().play()
         }
