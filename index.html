@@ -25,7 +25,7 @@
 
     <script src="https://kit.fontawesome.com/99501a977a.js" crossorigin="anonymous"></script>
 
-    <title>Winked.App</title>
+    <title>WINKED.APP</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
@@ -329,8 +329,7 @@
             </div>
 
             <div class="media">
-                <span class="var-media-pageHostAnswersNormalMedia"><img
-                        src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
+                <span class="var-media-pageHostAnswersNormalMedia"></span>
             </div>
 
             <div class="buttons">
@@ -382,20 +381,22 @@
                 <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
+            <div class="media"></div>
+
             <div class="buttons">
-                <button class="button btn-a disabled" id="pageHostAnswersNormalMedia-a">
+                <button class="button btn-a disabled" id="pageHostAnswersNormal-a">
                     <div class="char">A</div>
                     <div class="text"><span class="var-answerA">Mustafar</span></div>
                 </button>
-                <button class="button btn-b disabled" id="pageHostAnswersNormalMedia-b">
+                <button class="button btn-b disabled" id="pageHostAnswersNormal-b">
                     <div class="char">B</div>
                     <div class="text"><span class="var-answerB">Hoth</span></div>
                 </button>
-                <button class="button btn-c disabled" id="pageHostAnswersNormalMedia-c">
+                <button class="button btn-c disabled" id="pageHostAnswersNormal-c">
                     <div class="char">C</div>
                     <div class="text"><span class="var-answerC">Yavin 4</span></div>
                 </button>
-                <button class="button btn-d disabled" id="pageHostAnswersNormalMedia-d">
+                <button class="button btn-d disabled" id="pageHostAnswersNormal-d">
                     <div class="char">D</div>
                     <div class="text"><span class="var-answerD">Exegol</span></div>
                 </button>
@@ -477,6 +478,8 @@
                 <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
+            <div class="media"></div>
+
             <div class="buttons">
                 <button class="button btn-a disabled">
                     <div class="char"></div>
@@ -534,7 +537,7 @@
         </div>
     </div>
 
-    <div class="page pageHostAnswers text" id="pageHostAnswersTextFalse" style="display: none;">
+    <div class="page pageHostAnswers text" id="pageHostAnswersText" style="display: none;">
         <div class="bg bgHostBG">
             <li></li>
             <li></li>
@@ -674,16 +677,14 @@
             <div class="buttons">
                 <button class="button btn-a disabled incorrect" id="pageHostResultsTrueFalse-a">
                     <div class="char"></div>
-                    <div class="text"><span class="var-answerA"><span data-key="pagePlayerAnswerTrueFalse.no"></span>
-                    </div>
+                    <div class="text"><span data-key="pagePlayerAnswerTrueFalse.no"></span></div>
                     <div class="statusIndicator" id="pageHostResultsTrueFalse-status-a"><img
                             src="assets/indicatorWrong.svg"></div>
                 </button>
                 <button class="button btn-b disabled" id="pageHostResultsTrueFalse-b">
                     <div class="char"></div>
-                    <div class="text"><span class="var-answerB"><span data-key="pagePlayerAnswerTrueFalse.yes"></span>
-                    </div>
-                    <div class="statusIndicator" id="pageHostResultsTrueFalse-status-a"><img
+                    <div class="text"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></div>
+                    <div class="statusIndicator" id="pageHostResultsTrueFalse-status-b"><img
                             src="assets/indicatorCorrect.svg"></div>
                 </button>
             </div>

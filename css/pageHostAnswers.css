@@ -67,6 +67,12 @@
     object-fit: contain;
 }
 
+.pageHostAnswers .content>.media span:has(audio) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .pageHostAnswers .content>.buttons {
     position: relative;
     margin: var(--gap);
