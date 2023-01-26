@@ -19,7 +19,7 @@
     <script src="libs/qrcode.min.js"></script>
     <script src="translations.js" defer></script>
 
-    <script src="client.js" defer></script>
+    <script src="client.jss" defer></script>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -332,6 +332,16 @@
                 <span class="var-media-pageHostAnswersNormalMedia"></span>
             </div>
 
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
+            </div>
+
             <div class="buttons">
                 <button class="button btn-a disabled" id="pageHostAnswersNormalMedia-a">
                     <div class="char">A</div>
@@ -350,18 +360,10 @@
                     <div class="text"><span class="var-answerD">Exegol</span></div>
                 </button>
             </div>
-
-            <div class="seconds">
-                <div><span class="var-hostQuestionCountdown">0</span></div>
-            </div>
-            <div class="answers">
-                <span class="var-answerAmount">0</span>
-                <span data-key="answers"></span>
-            </div>
         </div>
     </div>
 
-    <div class="page pageHostAnswers normal" id="pageHostAnswersNormal" style="display: none;">
+    <div class="page pageHostAnswers normal nomedia" id="pageHostAnswersNormal" style="display: block;">
         <div class="bg bgHostBG">
             <li></li>
             <li></li>
@@ -381,7 +383,15 @@
                 <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="media"></div>
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
+            </div>
 
             <div class="buttons">
                 <button class="button btn-a disabled" id="pageHostAnswersNormal-a">
@@ -400,14 +410,6 @@
                     <div class="char">D</div>
                     <div class="text"><span class="var-answerD">Exegol</span></div>
                 </button>
-            </div>
-
-            <div class="seconds">
-                <div><span class="var-hostQuestionCountdown">0</span></div>
-            </div>
-            <div class="answers">
-                <span class="var-answerAmount">0</span>
-                <span data-key="answers"></span>
             </div>
         </div>
     </div>
@@ -437,6 +439,16 @@
                         src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
             </div>
 
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
+            </div>
+
             <div class="buttons">
                 <button class="button btn-a disabled">
                     <div class="char"></div>
@@ -447,18 +459,10 @@
                     <div class="text"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></div>
                 </button>
             </div>
-
-            <div class="seconds">
-                <div><span class="var-hostQuestionCountdown">0</span></div>
-            </div>
-            <div class="answers">
-                <span class="var-answerAmount">0</span>
-                <span data-key="answers"></span>
-            </div>
         </div>
     </div>
 
-    <div class="page pageHostAnswers truefalse" id="pageHostAnswersTrueFalse" style="display: none;">
+    <div class="page pageHostAnswers truefalse nomedia" id="pageHostAnswersTrueFalse" style="display: none;">
         <div class="bg bgHostBG">
             <li></li>
             <li></li>
@@ -480,6 +484,16 @@
 
             <div class="media"></div>
 
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
+            </div>
+
             <div class="buttons">
                 <button class="button btn-a disabled">
                     <div class="char"></div>
@@ -490,14 +504,6 @@
                         </p>
                         <div class="text"><span data-key="pagePlayerAnswerTrueFalse.yes"></span></div>
                 </button>
-            </div>
-
-            <div class="seconds">
-                <div><span class="var-hostQuestionCountdown">0</span></div>
-            </div>
-            <div class="answers">
-                <span class="var-answerAmount">0</span>
-                <span data-key="answers"></span>
             </div>
         </div>
     </div>
@@ -526,18 +532,20 @@
                 <span class="var-media-pageHostAnswersTextMedia"><img
                         src="https://images-cdn.kahoot.it/cdc3e926-5281-4a95-a8e3-24572209144c?auto=webp"></span>
             </div>
-        </div>
 
-        <div class="seconds">
-            <div><span class="var-hostQuestionCountdown">0</span></div>
-        </div>
-        <div class="answers">
-            <span class="var-answerAmount">0</span>
-            <span data-key="answers"></span>
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="page pageHostAnswers text" id="pageHostAnswersText" style="display: none;">
+    <div class="page pageHostAnswers text nomedia" id="pageHostAnswersText" style="display: none;">
         <div class="bg bgHostBG">
             <li></li>
             <li></li>
@@ -557,12 +565,14 @@
                 <button onclick="next()" class="button"><span data-key="next">Weiter</span></button>
             </div>
 
-            <div class="seconds">
-                <div><span class="var-hostQuestionCountdown">0</span></div>
-            </div>
-            <div class="answers">
-                <span class="var-answerAmount">0</span>
-                <span data-key="answers"></span>
+            <div class="info">
+                <div class="seconds">
+                    <div><span class="var-hostQuestionCountdown">0</span></div>
+                </div>
+                <div class="answers">
+                    <span class="var-answerAmount">0</span>
+                    <span data-key="answers"></span>
+                </div>
             </div>
         </div>
     </div>
