@@ -469,8 +469,12 @@ connection.onmessage = function (event) {
         }
 
         if (gameState.startsWith("hostAnswers") && data["media"].includes("audio=")) {
-            currentAudioPlayback = new Howl({src: [data["media"].split("audio=")[1]]})
-            currentAudioPlayback.play()
+            currentAudioPlayback = new Howl({
+                src: [data["media"].split("audio=")[1]],
+                onload: function(){
+                    currentAudioPlayback.play()
+                }
+            })
         }
 
         if (gameState === "hostAnswersNormal") {
