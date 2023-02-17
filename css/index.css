@@ -49,6 +49,7 @@ button.button {
     background-color: var(--color-btn);
     margin: 0;
     border: 0;
+    outline: none;
     font-size: 1.5em;
     outline: none;
     color: #fff;
