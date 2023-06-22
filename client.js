@@ -26,6 +26,9 @@ var isSessionLocked = false;
 
 var currentAudioPlayback = null
 
+var serverHost = findGetParameter("server");
+if(serverHost == null) serverHost = "server.winked.app:4348"
+
 function onSessionLockButton() {
     isSessionLocked = !isSessionLocked
     if (isSessionLocked) {
@@ -228,7 +231,7 @@ function findGetParameter(parameterName) {
     return result;
 }
 
-var connection = new WebSocket("wss://server.winked.app:4348/");
+var connection = new WebSocket("wss://"+serverHost+"/");
 
 connection.onopen = function (e) {
     console.log("Verbindung zu den Servern hergestellt")
